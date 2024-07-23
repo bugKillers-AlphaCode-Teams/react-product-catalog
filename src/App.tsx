@@ -1,5 +1,17 @@
-import React from "react";
+import { Outlet } from "react-router-dom";
 import "./App.scss";
-export const App: React.FC = () => {
-  return <div>Hello</div>;
+import { Footer } from "./components/footer";
+import { Navbar } from "./components/navbar/Navbar";
+export const App = () => {
+  return (
+    <>
+      <Navbar />
+
+      <main className="page__main">
+        <Outlet />
+      </main>
+
+      <Footer />
+    </>
+  );
 };
