@@ -1,4 +1,4 @@
-import "./Shop.scss";
+import "./ShopByCategory.scss";
 import { Link } from "react-router-dom";
 export const ShopByCategory = () => {
   return (
