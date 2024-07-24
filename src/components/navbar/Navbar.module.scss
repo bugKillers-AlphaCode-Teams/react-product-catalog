@@ -64,11 +64,27 @@ h6 {
 .header {
   width: 100%;
   background-color: #0f1121;
-  position: relative;
+  position: absolute;
   left: 0;
   right: 0;
-  z-index: 50;
+  top: 0;
   border-bottom: 1px solid #75767f;
+
+  @media (max-width: 639px) {
+    &__active {
+      &::after {
+        position: relative;
+        z-index: 100;
+        content: "";
+        width: 100%;
+        height: 1px;
+        top: -13px;
+        left: 0;
+        right: 0;
+        background-color: #75767f;
+      }
+    }
+  }
 
   &__content {
     display: flex;
@@ -80,45 +96,69 @@ h6 {
     }
   }
   &__icon {
-    display: none;
-    width: 14px;
-    height: 8.5px;
-    position: relative;
-    z-index: 60;
-    cursor: pointer;
-
-    span {
+    @media (max-width: 639px) {
+      width: 14px;
+      height: 8.5px;
       position: absolute;
-      top: calc(50% - 0.7px);
-      left: 0;
-      width: 100%;
-      height: 1.4px;
-      background-color: #f1f2f9;
-      border-radius: 40px;
+      top: 20px;
+      right: 21px;
+      cursor: pointer;
 
-      &:first-child {
-        top: 0;
+      span {
+        position: absolute;
+        top: calc(50% - 0.7px);
+        left: 0;
+        width: 16px;
+        height: 1.4px;
+        background-color: #f1f2f9;
+        border-radius: 40px;
+
+        &:first-child {
+          top: 0;
+          background-color: #f1f2f9;
+        }
+        &:last-child {
+          top: auto;
+          bottom: 0;
+          background-color: #f1f2f9;
+        }
       }
-      &:last-child {
-        top: auto;
-        bottom: 0;
+      &.active {
+        span {
+          transform: scale(0);
+          &:first-child {
+            transform: rotate(-45deg);
+            top: calc(50% - 1px);
+          }
+          &:last-child {
+            transform: rotate(45deg);
+            top: calc(50% - 1px);
+          }
+        }
       }
     }
   }
 }
-@media (max-width: 639px) {
-  .header__icon {
-    position: relative;
-    left: 0;
+.icon__container {
+  @media (max-width: 639px) {
+    position: absolute;
+    z-index: 60;
+    right: 0;
+    top: 0;
+    border-left: 1px solid #75767f;
+    width: 55px;
+    height: 48px;
   }
 }
 
-// .header__container {
-//   // padding: 0 24px;
-//   // max-width: 1150px;
-//   // margin: 0 auto;
-// }
-
+.nav {
+  @media (max-width: 639px) {
+    display: none;
+    &__active {
+      display: block;
+    }
+  }
+}
 .navbar {
   gap: 64px;
   font-size: 20px;
@@ -140,6 +180,9 @@ h6 {
     background-color: #0f1121;
     flex-direction: column;
     align-items: center;
+    &.active {
+      display: block;
+    }
   }
 }
 
@@ -161,14 +204,18 @@ h6 {
       top: 33px;
       background-color: #f1f2f9;
       width: 100%;
-      height: 3px;
+      height: 2px;
       left: 0;
       right: 0;
       @media (max-width: 1199px) {
-        top: 25px;;
+        top: 25px;
       }
     }
   }
+}
+
+.active {
+  display: block;
 }
 
 .logo {
@@ -186,10 +233,17 @@ h6 {
   margin-left: auto;
   display: flex;
   @media (max-width: 639px) {
+    opacity: 0;
     position: relative;
     bottom: -504px;
     left: -80px;
     margin-left: 0;
+  }
+}
+
+.buttons.show {
+  @media (max-width: 639px) {
+    opacity: 1;
   }
 }
 
@@ -204,8 +258,8 @@ h6 {
     height: 48px;
   }
   &:first-child {
-    border-left: 1px solid  #323542;
-    border-right: 1px solid  #323542;
+    border-left: 1px solid #323542;
+    border-right: 1px solid #323542;
   }
   @media (max-width: 639px) {
     width: 50vw;
@@ -213,6 +267,35 @@ h6 {
     & {
       border: 1px solid #323542;
       border: 1px solid #323542;
+    }
+    &:hover {
+      color: #f1f2f9;
+      &:first-child::after {
+        position: absolute;
+        content: "";
+        top: 33px;
+        background-color: #f1f2f9;
+        width: 50%;
+        height: 2px;
+        left: 0;
+        right: 0;
+        @media (max-width: 1199px) {
+          top: 45px;
+        }
+      }
+      &:last-child::after {
+        position: absolute;
+        content: "";
+        top: 33px;
+        background-color: #f1f2f9;
+        width: 50%;
+        height: 2px;
+        left: 50%;
+        right: 0;
+        @media (max-width: 1199px) {
+          top: 45px;
+        }
+      }
     }
   }
 }

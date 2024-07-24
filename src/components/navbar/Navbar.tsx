@@ -1,15 +1,22 @@
 import { NavLink } from "react-router-dom";
 import styles from "./Navbar.module.scss";
+import { useState } from "react";
 
 export const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
-    <div className={styles.header}>
+    <div className={isMenuOpen ? styles.header__active : styles.header}>
       <div className={styles.header__container}>
         <div className={styles.header__content}>
           <NavLink to="/" className="">
             <img src="/img/Logo.svg" alt="logo" className={styles.logo} />
           </NavLink>
-          <nav className="">
+          <nav className={isMenuOpen ? styles.nav__active : styles.nav}>
             <ul className={styles.navbar}>
               <li>
                 <NavLink to="/" className={styles.nav__link}>
@@ -33,12 +40,18 @@ export const Navbar = () => {
               </li>
             </ul>
           </nav>
-          <div className={styles.header__icon}>
-            <span></span>
-            <span></span>
-            <span></span>
+          <div className={styles.icon__container} onClick={() => toggleMenu()}>
+            <div
+              className={`${styles.header__icon} ${
+                isMenuOpen ? styles.active : ""
+              }`}
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
           </div>
-          <div className={styles.buttons}>
+          <div className={`${styles.buttons} ${isMenuOpen ? styles.show : ''}`}>
             <NavLink to="favourit" className={styles.cart_and_like}>
               <img src="/img/favourit.svg" alt="favourit" />
             </NavLink>
