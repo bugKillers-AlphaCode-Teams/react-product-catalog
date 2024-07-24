@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import styles from "./Navbar.module.scss";
+import { ThemeButton } from "../ThemeButton/ThemeButton";
 
 export const Navbar = () => {
   return (
@@ -24,6 +25,9 @@ export const Navbar = () => {
           <NavLink className="" to="accessories">
             accessories
           </NavLink>
+        </li>
+        <li>
+          <ThemeButton />
         </li>
       </ul>
     </nav>
