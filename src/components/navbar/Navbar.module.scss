@@ -132,7 +132,7 @@ h6 {
   @media (max-width: 639px) {
     position: fixed;
     top: 0;
-    left: -30px;
+    left: -35px;
     right: 0;
     height: 100%;
     width: 110%;
@@ -185,6 +185,12 @@ h6 {
 .buttons {
   margin-left: auto;
   display: flex;
+  @media (max-width: 639px) {
+    position: relative;
+    bottom: -504px;
+    left: -80px;
+    margin-left: 0;
+  }
 }
 
 .cart_and_like {
@@ -198,7 +204,15 @@ h6 {
     height: 48px;
   }
   &:first-child {
-    border-left: 1px solid #75767f;
-    border-right: 1px solid #75767f;
+    border-left: 1px solid  #323542;
+    border-right: 1px solid  #323542;
+  }
+  @media (max-width: 639px) {
+    width: 50vw;
+
+    & {
+      border: 1px solid #323542;
+      border: 1px solid #323542;
+    }
   }
 }
