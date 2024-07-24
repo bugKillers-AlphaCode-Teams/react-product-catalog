@@ -21,7 +21,7 @@ export default {
     sourceType: 'module',
     project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
     tsconfigRootDir: __dirname,
-  },
+  }, sdf
 }
 ```
 
