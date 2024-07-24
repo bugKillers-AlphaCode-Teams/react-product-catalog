@@ -78,9 +78,6 @@ h6 {
     @media (max-width: 1199px) {
       max-height: 48px;
     }
-    @media (max-width: 639px) {
-      justify-content: space-between;
-    }
   }
   &__icon {
     display: none;
@@ -161,12 +158,15 @@ h6 {
     &::after {
       position: absolute;
       content: "";
-      top: 39px;
+      top: 33px;
       background-color: #f1f2f9;
       width: 100%;
       height: 3px;
       left: 0;
       right: 0;
+      @media (max-width: 1199px) {
+        top: 25px;;
+      }
     }
   }
 }
