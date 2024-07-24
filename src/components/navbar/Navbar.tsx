@@ -1,6 +1,10 @@
 import { NavLink } from "react-router-dom";
 import styles from "./Navbar.module.scss";
+<<<<<<< HEAD
 import { useState } from "react";
+=======
+import { ThemeButton } from "../ThemeButton/ThemeButton"; 
+>>>>>>> 726ce513094ebdb868078b6e19e8f7908611ed89
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,6 +20,7 @@ export const Navbar = () => {
           <NavLink to="/" className="">
             <img src="/img/Logo.svg" alt="logo" className={styles.logo} />
           </NavLink>
+<<<<<<< HEAD
           <nav className={isMenuOpen ? styles.nav__active : styles.nav}>
             <ul className={styles.navbar}>
               <li>
@@ -62,5 +67,28 @@ export const Navbar = () => {
         </div>
       </div>
     </div>
+=======
+        </li>
+        <li>
+          <NavLink className="" to="phone">
+            Phones
+          </NavLink>
+        </li>
+        <li>
+          <NavLink className="" to="tablets">
+            Tablets
+          </NavLink>
+        </li>
+        <li>
+          <NavLink className="" to="accessories">
+            accessories
+          </NavLink>
+        </li>
+        <li>
+          <ThemeButton />
+        </li>
+      </ul>
+    </nav>
+>>>>>>> 726ce513094ebdb868078b6e19e8f7908611ed89
   );
 };
