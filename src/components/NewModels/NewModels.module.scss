@@ -1,0 +1,147 @@
+@font-face {
+  font-family: 'Mont';
+  src: url('../../../public/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+}
+font-face {
+  font-family: 'Mont';
+  src: url('../../../public/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+font-face {
+  font-family: 'Mont';
+  src: url('../../../public/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+.newModels__brand {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+
+  &-title {
+    font-family: 'Mont', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    text-align: left;
+    color: #F1F2F9;
+
+  }
+}
+
+.buttonsSlider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  &__left {
+    width: 32px;
+    height: 32px;
+    border: none;
+  }
+
+  &__right {
+    width: 32px;
+    height: 32px;
+    border: none;
+  }
+}
+
+.productsCards {
+  display: flex;
+  gap: 16px;
+}
+
+.productCard {
+  box-sizing: border-box;
+  max-width: 272px;
+  background: #161827;
+  padding: 32px;
+
+  &__title {
+    margin-top: 24px;
+    font-family: 'Mont', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    text-align: left;
+    color: #f1f2f9;
+  }
+
+  &__price {
+    margin-top: 8px;
+    font-family: 'Mont', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 30.8px;
+    text-align: left;
+    color: #f1f2f9;
+  }
+
+  &__underscore {
+    position: relative;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 100%;
+      border: 1px solid #3b3e4a;
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+    }
+  }
+
+  &__specs {
+    margin-top: 16px;
+
+    &-spec {
+      margin-top: 8px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &-label {
+      font-family: 'Mont', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 15.34px;
+      text-align: left;
+      color: #75767f;
+    }
+
+    &-value {
+      font-family: 'Mont', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 15.34px;
+      text-align: right;
+      color: #f1f2f9;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+
+    &-add {
+      width: 160px;
+      height: 40px;
+      background: #905bff;
+      border: none;
+      font-family: 'Mont', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 21px;
+      text-align: center;
+      color: #f1f2f9;
+    }
+  }
+}
