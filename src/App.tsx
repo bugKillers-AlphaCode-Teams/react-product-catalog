@@ -17,7 +17,7 @@ export const App = () => {
       <main className={styles.pageMain}>
         <Outlet />
       </main>
-
+      
       <Footer />
     </div>
   );
