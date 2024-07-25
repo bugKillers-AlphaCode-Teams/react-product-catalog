@@ -7,6 +7,7 @@ import { TabletsPage } from "./pages/TabletsPage";
 import { AccessoriesPage } from "./pages/AccessoriesPage";
 import { FavouritesPage } from "./pages/FavoritesPage";
 import { ThemeContextProvider } from "./store/ThemeContext";
+import { Cart } from "./components/cart/Cart";
 
 export const Root = () => (
   <HashRouter>
@@ -31,6 +32,9 @@ export const Root = () => (
 
           <Route path="favorites">
             <Route index element={<FavouritesPage />} />
+          </Route>
+          <Route path="cart">
+            <Route index element={<Cart />} />
           </Route>
 
           <Route path="*" element={<NotFoundPage />} />
