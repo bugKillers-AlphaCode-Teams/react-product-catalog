@@ -1,10 +1,7 @@
 import { NavLink } from "react-router-dom";
 import styles from "./Navbar.module.scss";
-<<<<<<< HEAD
 import { useState } from "react";
-=======
-import { ThemeButton } from "../ThemeButton/ThemeButton"; 
->>>>>>> 726ce513094ebdb868078b6e19e8f7908611ed89
+import { ThemeButton } from "../ThemeButton/ThemeButton";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,81 +11,66 @@ export const Navbar = () => {
   };
 
   return (
-    <div className={isMenuOpen ? styles.header__active : styles.header}>
-      <div className={styles.header__container}>
-        <div className={styles.header__content}>
-          <NavLink to="/" className="">
-            <img src="/img/Logo.svg" alt="logo" className={styles.logo} />
+    <header className={isMenuOpen ? styles.dropdown__menu : ""}>
+      <div className={styles.header__top}>
+        <NavLink to="/" className="">
+          <img src="/img/Logo.svg" alt="logo" className="" />
+        </NavLink>
+
+        <nav className={""}>
+          <ul className={styles.navbar}>
+            <li>
+              <NavLink to="/" className={styles.nav__link}>
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className={styles.nav__link} to="phone">
+                Phones
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className={styles.nav__link} to="tablets">
+                Tablets
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className={styles.nav__link} to="accessories">
+                accessories
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
+        <div className={styles.themeButton}>
+          <ThemeButton />
+        </div>
+        <div className={styles.icons}>
+          <NavLink to="favourit" className={`${styles.icon} icon--favourit`}>
+            <img src="/img/favourit.svg" alt="favourit" />
           </NavLink>
-<<<<<<< HEAD
-          <nav className={isMenuOpen ? styles.nav__active : styles.nav}>
-            <ul className={styles.navbar}>
-              <li>
-                <NavLink to="/" className={styles.nav__link}>
-                  Home
-                </NavLink>
-              </li>
-              <li>
-                <NavLink className={styles.nav__link} to="phone">
-                  Phones
-                </NavLink>
-              </li>
-              <li>
-                <NavLink className={styles.nav__link} to="tablets">
-                  Tablets
-                </NavLink>
-              </li>
-              <li>
-                <NavLink className={styles.nav__link} to="accessories">
-                  accessories
-                </NavLink>
-              </li>
-            </ul>
-          </nav>
-          <div className={styles.icon__container} onClick={() => toggleMenu()}>
+          <NavLink to="shoping" className={`${styles.icon} icon--shoping`}>
+            <img src="/img/shoping.svg" alt="shoping" />
+          </NavLink>
+        </div>
+
+        <div className={styles.burger__menu}>
+          {isMenuOpen ? (
             <div
-              className={`${styles.header__icon} ${
-                isMenuOpen ? styles.active : ""
-              }`}
+              className={`${styles.burger__menu__close}`}
+              onClick={() => toggleMenu()}
             >
-              <span></span>
-              <span></span>
-              <span></span>
+              <img src="/img/closer-menu.svg" alt="Close" />
             </div>
-          </div>
-          <div className={`${styles.buttons} ${isMenuOpen ? styles.show : ''}`}>
-            <NavLink to="favourit" className={styles.cart_and_like}>
-              <img src="/img/favourit.svg" alt="favourit" />
-            </NavLink>
-            <NavLink to="shoping" className={styles.cart_and_like}>
-              <img src="/img/shoping.svg" alt="shoping" />
-            </NavLink>
-          </div>
+          ) : (
+            <div
+              className={`${styles.burger__menu__open}`}
+              onClick={() => toggleMenu()}
+            >
+              <img src="/img/open-menu.svg" alt="Open" />
+            </div>
+          )}
         </div>
       </div>
-    </div>
-=======
-        </li>
-        <li>
-          <NavLink className="" to="phone">
-            Phones
-          </NavLink>
-        </li>
-        <li>
-          <NavLink className="" to="tablets">
-            Tablets
-          </NavLink>
-        </li>
-        <li>
-          <NavLink className="" to="accessories">
-            accessories
-          </NavLink>
-        </li>
-        <li>
-          <ThemeButton />
-        </li>
-      </ul>
-    </nav>
->>>>>>> 726ce513094ebdb868078b6e19e8f7908611ed89
+    </header>
   );
 };
