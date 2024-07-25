@@ -2,7 +2,6 @@ import "./ShopByCategory.scss";
 import { Link } from "react-router-dom";
 export const ShopByCategory = () => {
   return (
-  
     <section className="section">
       <h2 className="section__title">Shop by category</h2>
 
