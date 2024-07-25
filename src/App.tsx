@@ -2,8 +2,10 @@ import { Outlet } from "react-router-dom";
 import styles from "./App.module.scss";
 import { Footer } from "./components/footer";
 import { Navbar } from "./components/navbar/Navbar";
+import { NewModels } from "./components/NewModels";
 import { useContext } from "react";
 import { themeContext } from "./store/ThemeContext";
+
 export const App = () => {
   const { theme } = useContext(themeContext);
   return (
@@ -13,6 +15,7 @@ export const App = () => {
       }`}
     >
       <Navbar />
+      <NewModels />
 
       <main className={styles.pageMain}>
         <Outlet />
