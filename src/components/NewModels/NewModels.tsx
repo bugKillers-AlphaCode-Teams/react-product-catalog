@@ -5,8 +5,8 @@ import redPhone from "../../../public/img/phones/apple-iphone-14-pro/red/apple-i
 
 import sliderRight from "../../images/icons/buttonSlider-right.png";
 import sliderLeft from "../../images/icons/buttonSlider-left.png";
-import addToFavorites from "../../images/icons/add-to-favorite.png";
 import styles from "./NewModels.module.scss";
+import { ProductCard } from "../ProductCard";
 
 export const NewModels = () => {
   return (
@@ -25,154 +25,43 @@ export const NewModels = () => {
           </div>
         </div>
 
-        <div className={styles.productsCards}>
-          <div className={styles.productCard}>
-            <img
-              src={silverPhone}
-              alt="Apple iPhone 14 Pro 128GB Silver"
-              className="productCard__img"
-            />
-            <p className={styles.productCard__title}>
-              Apple iPhone 14 Pro 128GB Silver (MQ023)
-            </p>
-            <p className={styles.productCard__price}>$999</p>
-            <p className={styles.productCard__underscore}></p>
-
-            <div className={styles.productCard__specs}>
-              <div className={styles['productCard__specs-spec'] }>
-                <span className={styles['productCard__specs-label']}>Screen</span>
-                <span className={styles['productCard__specs-value']}>6.1” OLED</span>
-              </div>
-              <div className={styles['productCard__specs-spec'] }>
-                <span className={styles['productCard__specs-label']}>Capacity</span>
-                <span className={styles['productCard__specs-value']}>128 GB</span>
-              </div>
-              <div className={styles['productCard__specs-spec'] }>
-                <span className={styles['productCard__specs-label']}>RAM</span>
-                <span className={styles['productCard__specs-value']}>6 GB</span>
-              </div>
-            </div>
-
-            <div className={styles.productCard__buttons}>
-              <button className={ styles['productCard__buttons-add']}>Add to cart</button>
-              <img
-                className="productCard__buttons-add-to-favorite"
-                src={addToFavorites}
-                alt="add to favorites"
-              />
-            </div>
-          </div>
-
-          <div className={styles.productCard}>
-            <img
-              src={purplePhone}
-              alt="Apple iPhone 14 Pro 128GB Deep Purple"
-              className="productCard__img"
-            />
-            <p className={styles.productCard__title}>
-              Apple iPhone 14 Pro 128GB Deep Purple (MQ0G3)
-            </p>
-            <p className={styles.productCard__price}>$999</p>
-            <p className={styles.productCard__underscore}></p>
-
-            <div className={styles.productCard__specs}>
-              <div className={styles['productCard__specs-spec'] }>
-                <span className={styles['productCard__specs-label']}>Screen</span>
-                <span className={styles['productCard__specs-value']}>6.1” OLED</span>
-              </div>
-              <div className={styles['productCard__specs-spec'] }>
-                <span className={styles['productCard__specs-label']}>Capacity</span>
-                <span className={styles['productCard__specs-value']}>128 GB</span>
-              </div>
-              <div className={styles['productCard__specs-spec'] }>
-                <span className={styles['productCard__specs-label']}>RAM</span>
-                <span className={styles['productCard__specs-value']}>6 GB</span>
-              </div>
-            </div>
-
-            <div className={styles.productCard__buttons}>
-              <button className={ styles['productCard__buttons-add']}>Add to cart</button>
-              <img
-                className="productCard__buttons-add-to-favorite"
-                src={addToFavorites}
-                alt="add to favorites"
-              />
-            </div>
-          </div>
-
-          <div className={styles.productCard}>
-            <img
-              src={goldPhone}
-              alt="Apple iPhone 14 Pro 128GB Gold"
-              className="productCard__img"
-            />
-            <p className={styles.productCard__title}>
-              Apple iPhone 14 Pro 128GB Gold (MQ083)
-            </p>
-            <p className={styles.productCard__price}>$999</p>
-            <p className={styles.productCard__underscore}></p>
-
-            <div className={styles.productCard__specs}>
-              <div className={styles['productCard__specs-spec'] }>
-                <span className={styles['productCard__specs-label']}>Screen</span>
-                <span className={styles['productCard__specs-value']}>6.1” OLED</span>
-              </div>
-              <div className={styles['productCard__specs-spec'] }>
-                <span className={styles['productCard__specs-label']}>Capacity</span>
-                <span className={styles['productCard__specs-value']}>128 GB</span>
-              </div>
-              <div className={styles['productCard__specs-spec'] }>
-                <span className={styles['productCard__specs-label']}>RAM</span>
-                <span className={styles['productCard__specs-value']}>6 GB</span>
-              </div>
-            </div>
-
-            <div className={styles.productCard__buttons}>
-              <button className={ styles['productCard__buttons-add']}>Add to cart</button>
-              <img
-                className="productCard__buttons-add-to-favorite"
-                src={addToFavorites}
-                alt="add to favorites"
-              />
-            </div>
-          </div>
-
-          <div className={styles.productCard}>
-            <img
-              src={redPhone}
-              alt="Apple iPhone 14 Pro 128GB PRODUCT Red"
-              className="productCard__img"
-            />
-            <p className={styles.productCard__title}>
-              Apple iPhone 14 Pro 128GB PRODUCT Red (MQ513)
-            </p>
-            <p className={styles.productCard__price}>$999</p>
-            <p className={styles.productCard__underscore}></p>
-
-            <div className={styles.productCard__specs}>
-              <div className={styles['productCard__specs-spec'] }>
-                <span className={styles['productCard__specs-label']}>Screen</span>
-                <span className={styles['productCard__specs-value']}>6.7” OLED</span>
-              </div>
-              <div className={styles['productCard__specs-spec'] }>
-                <span className={styles['productCard__specs-label']}>Capacity</span>
-                <span className={styles['productCard__specs-value']}>128 GB</span>
-              </div>
-              <div className={styles['productCard__specs-spec'] }>
-                <span className={styles['productCard__specs-label']}>RAM</span>
-                <span className={styles['productCard__specs-value']}>6 GB</span>
-              </div>
-            </div>
-
-            <div className={styles.productCard__buttons}>
-              <button className={ styles['productCard__buttons-add']}>Add to cart</button>
-              <img
-                className="productCard__buttons-add-to-favorite"
-                src={addToFavorites}
-                alt="add to favorites"
-              />
-            </div>
-          </div>
+        <div className={styles.productsList}>
+          <ProductCard
+            imgSrc={silverPhone}
+            imgAlt="Apple iPhone 14 Pro 128GB Silver"
+            title="Apple iPhone 14 Pro 128GB Silver (MQ023)"
+            price="$999"
+            screen="6.1” OLED"
+            capacity="128 GB"
+            ram="6 GB"
+          />
+          <ProductCard
+            imgSrc={purplePhone}
+            imgAlt="Apple iPhone 14 Pro 128GB Deep Purple"
+            title="Apple iPhone 14 Pro 128GB Deep Purple (MQ0G3)"
+            price="$999"
+            screen="6.1” OLED"
+            capacity="128 GB"
+            ram="6 GB"
+          />
+          <ProductCard
+            imgSrc={goldPhone}
+            imgAlt="Apple iPhone 14 Pro 128GB Gold"
+            title="Apple iPhone 14 Pro 128GB Gold (MQ083)"
+            price="$999"
+            screen="6.1” OLED"
+            capacity="128 GB"
+            ram="6 GB"
+          />
+          <ProductCard
+            imgSrc={redPhone}
+            imgAlt="Apple iPhone 14 Pro 128GB PRODUCT Red"
+            title="Apple iPhone 14 Pro 128GB PRODUCT Red (MQ513)"
+            price="$999"
+            screen="6.7” OLED"
+            capacity="128 GB"
+            ram="6 GB"
+          />
         </div>
       </section>
     </>
