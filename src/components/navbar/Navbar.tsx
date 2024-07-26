@@ -48,7 +48,7 @@ export const Navbar = () => {
           <NavLink to="favourit" className={`${styles.icon} icon--favourit`}>
             <img src="/img/favourit.svg" alt="favourit" />
           </NavLink>
-          <NavLink to="shoping" className={`${styles.icon} icon--shoping`}>
+          <NavLink to="cart" className={`${styles.icon} icon--shoping`}>
             <img src="/img/shoping.svg" alt="shoping" />
           </NavLink>
         </div>

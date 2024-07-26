@@ -17,7 +17,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   imgAlt,
   title,
   price,
+
   oldPrice,
+
+
   screen,
   capacity,
   ram,
@@ -26,6 +29,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     <div className={styles.productCard}>
       <img src={imgSrc} alt={imgAlt} className="productCard__img" />
       <p className={styles.productCard__title}>{title}</p>
+
       <div className={styles.productCard__priceWrapper}>
         <p className={styles.productCard__price}>{price}</p>
         {oldPrice && (
@@ -36,6 +40,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           />
         )}
       </div>
+
+      <p className={styles.productCard__price}>{price}</p>
+
       <p className={styles.productCard__underscore}></p>
 
       <div className={styles.productCard__specs}>
