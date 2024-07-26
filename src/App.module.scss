@@ -1,6 +1,11 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+.pageMain {
+  max-width: 1136px;
+  margin: 0 auto;
 }
 .app {
   display: flex;
@@ -8,11 +13,6 @@
   min-height: 100vh;
   color: inherit;
 }
-
-// .pageMain {
-//   flex: 1;
-//   padding: 20px;
-// }
 
 .light {
   background-color: #f1f2f9;
