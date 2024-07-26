@@ -10,6 +10,12 @@ export const Navbar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const toggleMenuWhenActive = () => {
+    if (isMenuOpen) {
+      setIsMenuOpen(!isMenuOpen);
+    }
+  };
+
   return (
     <header className={isMenuOpen ? styles.dropdown__menu : ""}>
       <div className={styles.header__top}>
@@ -20,22 +26,38 @@ export const Navbar = () => {
         <nav className={""}>
           <ul className={styles.navbar}>
             <li>
-              <NavLink to="/" className={styles.nav__link}>
+              <NavLink
+                to="/"
+                className={styles.nav__link}
+                onClick={() => toggleMenuWhenActive()}
+              >
                 Home
               </NavLink>
             </li>
             <li>
-              <NavLink className={styles.nav__link} to="phone">
+              <NavLink
+                className={styles.nav__link}
+                to="phone"
+                onClick={() => toggleMenuWhenActive()}
+              >
                 Phones
               </NavLink>
             </li>
             <li>
-              <NavLink className={styles.nav__link} to="tablets">
+              <NavLink
+                className={styles.nav__link}
+                to="tablets"
+                onClick={() => toggleMenuWhenActive()}
+              >
                 Tablets
               </NavLink>
             </li>
             <li>
-              <NavLink className={styles.nav__link} to="accessories">
+              <NavLink
+                className={styles.nav__link}
+                to="accessories"
+                onClick={() => toggleMenuWhenActive()}
+              >
                 accessories
               </NavLink>
             </li>
@@ -72,5 +94,6 @@ export const Navbar = () => {
         </div>
       </div>
     </header>
+    
   );
 };

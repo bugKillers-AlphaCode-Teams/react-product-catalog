@@ -13,15 +13,26 @@
     text-align: left;
     color: #f1f2f9;
   }
+  
+  &__priceWrapper {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+  }
 
   &__price {
-    margin-top: 8px;
     font-family: "Mont", sans-serif;
     font-size: 22px;
     font-weight: 800;
     line-height: 30.8px;
     text-align: left;
     color: #f1f2f9;
+    margin-top: 8px;
+  }
+
+  &__oldPrice {
+    margin-top: 8px;
+    width: 52px;
   }
 
   &__underscore {

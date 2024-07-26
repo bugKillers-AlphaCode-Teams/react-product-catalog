@@ -9,6 +9,7 @@ interface ProductCardProps {
   screen: string;
   capacity: string;
   ram: string;
+  oldPrice: number;
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({
@@ -25,6 +26,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       <img src={imgSrc} alt={imgAlt} className="productCard__img" />
       <p className={styles.productCard__title}>{title}</p>
       <p className={styles.productCard__price}>{price}</p>
+
       <p className={styles.productCard__underscore}></p>
 
       <div className={styles.productCard__specs}>
