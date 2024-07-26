@@ -5,7 +5,7 @@ interface ProductCardProps {
   imgSrc: string;
   imgAlt: string;
   title: string;
-  price: string;
+  price: number;
   screen: string;
   capacity: string;
   ram: string;
