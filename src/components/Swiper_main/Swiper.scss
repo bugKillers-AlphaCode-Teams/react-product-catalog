@@ -1,10 +1,10 @@
 /* fonts.css */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:wght@700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:wght@700&display=swap");
 
 .header {
   justify-content: center;
   text-align: center;
-  color:  #F1F2F9;
+  color: #f1f2f9;
   font-size: 48px;
   font-weight: bold;
   margin-top: 20px;
@@ -13,33 +13,6 @@
 
 .swiper-container {
   position: relative;
-  justify-content: center;
-  align-items: center;
-
-}
-@media (min-width: 640px) and (max-width: 1200px) {
-  .swiper-button-prev,
-  .swiper-button-next {
-    margin-right: 20px;
-    width: 32px;
-    height: 108px;
-  }
-  .swiper-container {
-    display: flex;
-    position: relative;
-    justify-content: center;
-    align-items: center;
-    max-width: 1136px;
-  }
-  .header {
-    justify-content: center;
-    text-align: center;
-    color:  #F1F2F9;
-    font-size: 48px;
-    font-weight: bold;
-    margin-top: 20px;
-    margin-bottom: 56px;
-  }
 }
 
 .swiper-button-prev,
@@ -48,7 +21,7 @@
   position: absolute;
   top: 50%;
   width: 32px; /* Ширина іконки */
-  height: 32px; /* Висота іконки */
+  height: 400px; /* Висота іконки */
   transform: translateY(-50%);
   cursor: pointer;
   z-index: 10;
@@ -56,11 +29,11 @@
 }
 
 .swiper-button-prev {
-
-  border: 5px solid white ;
-  width: 50px;
+  position:fixed;
+  border: 5px solid white;
+  background-color: #323542;
+  width: 32px;
   height: 400px;
-  left: 10px;
 }
 
 .swiper-button-next {
@@ -81,3 +54,20 @@
   display: none;
 }
 
+@media (min-width: 640px) and (max-width: 1200px) {
+  // .swiper-button-prev,
+  // .swiper-button-next {
+  //   margin-right: 20px;
+  //   width: 32px;
+  //   height: 108px;
+  // }
+}
+
+@media (min-width: 1200px) {
+  .swiper-container {
+    position: relative;
+    width: 1136px;
+    height: 432px;
+    margin-bottom: 150px;
+  }
+}

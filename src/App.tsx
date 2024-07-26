@@ -5,7 +5,6 @@ import { Footer } from "./components/footer";
 import { Navbar } from "./components/navbar/Navbar";
 import { useContext } from "react";
 import { themeContext } from "./store/ThemeContext";
-import { HotPrices } from "./components/HotPrices";
 
 export const App = () => {
   const { theme } = useContext(themeContext);
@@ -16,12 +15,9 @@ export const App = () => {
       }`}
     >
       <Navbar />
-
       <main className={styles.pageMain}>
         <Outlet />
       </main>
-
-      <HotPrices />
 
       <Footer />
     </div>
