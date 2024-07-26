@@ -3,10 +3,8 @@ import "./styles/fonts.scss";
 import styles from "./App.module.scss";
 import { Footer } from "./components/footer";
 import { Navbar } from "./components/navbar/Navbar";
-
 import { useContext } from "react";
 import { themeContext } from "./store/ThemeContext";
-
 
 export const App = () => {
   const { theme } = useContext(themeContext);
@@ -17,7 +15,6 @@ export const App = () => {
       }`}
     >
       <Navbar />
-
       <main className={styles.pageMain}>
         <Outlet />
       </main>

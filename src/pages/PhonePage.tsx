@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { ProductList } from "../components/ProductList/ProductList";
 import { Product } from "../types/Product";
@@ -20,4 +21,10 @@ export const PhonePage = () => {
       <ProductList phones={products} />
     </>
   );
+
+
+export const PhonePage = () => {
+
+  return <div>PhonePage</div>;
+
 };
