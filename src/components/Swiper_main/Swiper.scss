@@ -18,7 +18,7 @@
 .swiper-button-prev,
 .swiper-button-next {
   margin-right: 50px;
-  position: absolute;
+  // position: absolute;
   top: 50%;
   width: 32px; /* Ширина іконки */
   height: 400px; /* Висота іконки */
@@ -29,15 +29,23 @@
 }
 
 .swiper-button-prev {
-  position:fixed;
-  border: 5px solid white;
+  // position:fixed;
+  top: 80%;
+  left: -4%;
+  // border: 5px solid white;
   background-color: #323542;
   width: 32px;
-  height: 400px;
+  height: 100%;
 }
 
 .swiper-button-next {
   right: 10px;
+  top: 80%;
+  right: -9%;
+  // border: 5px solid white;
+  background-color: #323542;
+  width: 32px;
+  height: 100%;
 }
 
 .swiper-button-prev img,
@@ -54,13 +62,22 @@
   display: none;
 }
 
-@media (min-width: 640px) and (max-width: 1200px) {
-  // .swiper-button-prev,
-  // .swiper-button-next {
-  //   margin-right: 20px;
-  //   width: 32px;
-  //   height: 108px;
-  // }
+@media (min-width: 640px) and (max-width: 1199px) {
+  .swiper-container {
+    position: relative;
+    width: 592px;
+    height: 221px;
+    top: 224px;
+    left: 24px;
+    gap: 0px;
+    opacity: 0px;
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    width: 32px;
+    height: 198px;
+  }
 }
 
 @media (min-width: 1200px) {
@@ -70,4 +87,20 @@
     height: 432px;
     margin-bottom: 150px;
   }
+}
+
+@media (min-width: 320px) and (max-width: 639px) {
+  .swiper-container {
+    width: 320px;
+    height: 352px;
+    top: 178px;
+    gap: 0px;
+    opacity: 0px;
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: none;
+  }
+
 }

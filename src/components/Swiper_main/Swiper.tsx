@@ -39,7 +39,7 @@ const SimpleSlider = () => {
         <img src="src\images\icons\Chevron (Arrow Left).png" alt="Overlay" className="overlay-image" />
       </div>
       <div className="swiper-button-next">
-        <img src="src\images\icons\Rectangle 20.png" alt="Next" />
+        <img src="src\images\icons\Chevron (Arrow Right).png" alt="Next" />
       </div>
     </div>
   );
