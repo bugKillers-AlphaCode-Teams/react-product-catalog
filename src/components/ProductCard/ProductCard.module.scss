@@ -1,8 +1,44 @@
+@import "../../styles/utils/mixins";
+
 .productCard {
+  display: grid;
   box-sizing: border-box;
-  max-width: 272px;
   background: #161827;
+  text-align: center;
+  grid-column: 1/-1;
   padding: 32px;
+  min-height: 440px;
+  align-items: center;
+
+  @include on-tablet {
+    padding: 23px;
+    grid-column: span 6;
+    min-height: 506px;
+  }
+
+  @include on-tablet-medium {
+    grid-column: span 4;
+    padding: 32px;
+  }
+
+  @include on-desktop {
+    grid-column: span 6;
+  }
+  .productImage {
+    width: 224px;
+    padding-bottom: 8px;
+    object-fit: contain;
+    height: 130px;
+
+    @include on-tablet {
+      width: 165px;
+      height: 195px;
+    }
+
+    @include on-desktop {
+      width: 200px;
+    }
+  }
 
   &__title {
     margin-top: 24px;
@@ -12,12 +48,15 @@
     line-height: 21px;
     text-align: left;
     color: #f1f2f9;
+    padding-bottom: 8px;
   }
   
   &__priceWrapper {
     display: flex;
     align-items: center;
     column-gap: 8px;
+    padding-bottom: 8px;
+    padding-bottom: 8px;
   }
 
   &__price {
@@ -27,12 +66,16 @@
     line-height: 30.8px;
     text-align: left;
     color: #f1f2f9;
+    padding-top: 16px;
+    padding-bottom: 8px;
     margin-top: 8px;
   }
 
   &__oldPrice {
     margin-top: 8px;
     width: 52px;
+    padding-top: 16px;
+    padding-bottom: 8px;
   }
 
   &__underscore {
@@ -44,7 +87,7 @@
       width: 100%;
       border: 1px solid #3b3e4a;
       position: absolute;
-      bottom: -8px;
+      //  bottom: -8px;
       left: 0;
     }
   }
@@ -80,7 +123,7 @@
   &__buttons {
     display: flex;
     justify-content: space-between;
-    margin-top: 16px;
+    padding-top: 8px;
 
     &-add {
       width: 160px;
@@ -93,6 +136,15 @@
       line-height: 21px;
       text-align: center;
       color: #f1f2f9;
+      margin-right: 8px;
+
+      @include on-tablet-medium {
+        min-width: 115px;
+      }
+
+      @include on-desktop {
+        width: 160px;
+      }
     }
   }
 }

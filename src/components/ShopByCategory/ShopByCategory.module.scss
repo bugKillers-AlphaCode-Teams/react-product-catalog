@@ -2,7 +2,7 @@
   &__title {
     font-size: 32px;
     margin-bottom: 24px;
-    // color: #F1F2F9;
+    color: #f1f2f9;
   }
 }
 
@@ -11,8 +11,16 @@
   grid-template-columns: 1fr 1fr 1fr;
   gap: 16px;
 
-  @media(max-width: 640px) {
+  @media (max-width: 640px) {
     grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 1200px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    width: 1136px;
+    height: 508px;
   }
 
   &__image {
@@ -21,7 +29,6 @@
     height: 100%;
     object-fit: cover;
 
-
     &--tablets {
       transform: scale(1.1);
     }
@@ -29,9 +36,8 @@
 
   &__photo {
     margin-bottom: 24px;
-    aspect-ratio: 1 / 1 ;
+    aspect-ratio: 1 / 1;
     overflow: hidden;
-
 
     &:hover > .category__image {
       scale: 1.1;
@@ -52,7 +58,6 @@
 
   &__title {
     font-size: 20px;
-
   }
 
   &__text {
