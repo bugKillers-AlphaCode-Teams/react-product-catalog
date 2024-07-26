@@ -1,4 +1,4 @@
-import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { App } from "./App";
 import { NotFoundPage } from "./pages/NotFoundPage";
 import { HomePage } from "./pages/HomePage";
@@ -9,7 +9,7 @@ import { FavouritesPage } from "./pages/FavoritesPage";
 import { ThemeContextProvider } from "./store/ThemeContext";
 
 export const Root = () => (
-  <HashRouter>
+  <BrowserRouter>
     <ThemeContextProvider>
       <Routes>
         <Route path="/" element={<App />}>
@@ -17,25 +17,14 @@ export const Root = () => (
 
           <Route path="home" element={<Navigate to="/" replace />} />
 
-          <Route path="phone">
-            <Route index element={<PhonePage />} />
-          </Route>
-
-          <Route path="tablets">
-            <Route index element={<TabletsPage />} />
-          </Route>
-
-          <Route path="accessories">
-            <Route index element={<AccessoriesPage />} />
-          </Route>
-
-          <Route path="favorites">
-            <Route index element={<FavouritesPage />} />
-          </Route>
-
-          <Route path="*" element={<NotFoundPage />} />
+          <Route path="home" element={<Navigate to="/" replace />} />
+          <Route path="phone" element={<PhonePage />} />
+          <Route path="tablets" element={<TabletsPage />} />
+          <Route path="accessories" element={<AccessoriesPage />} />
+          <Route path="favorites" element={<FavouritesPage />} />
         </Route>
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </ThemeContextProvider>
-  </HashRouter>
+  </BrowserRouter>
 );

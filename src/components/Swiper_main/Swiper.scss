@@ -1,0 +1,83 @@
+/* fonts.css */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:wght@700&display=swap');
+
+.header {
+  justify-content: center;
+  text-align: center;
+  color:  #F1F2F9;
+  font-size: 48px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 56px;
+}
+
+.swiper-container {
+  position: relative;
+  justify-content: center;
+  align-items: center;
+
+}
+@media (min-width: 640px) and (max-width: 1200px) {
+  .swiper-button-prev,
+  .swiper-button-next {
+    margin-right: 20px;
+    width: 32px;
+    height: 108px;
+  }
+  .swiper-container {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    max-width: 1136px;
+  }
+  .header {
+    justify-content: center;
+    text-align: center;
+    color:  #F1F2F9;
+    font-size: 48px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 56px;
+  }
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  margin-right: 50px;
+  position: absolute;
+  top: 50%;
+  width: 32px; /* Ширина іконки */
+  height: 32px; /* Висота іконки */
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 10;
+  background: none; /* Приховує фонове зображення стандартних кнопок */
+}
+
+.swiper-button-prev {
+
+  border: 5px solid white ;
+  width: 50px;
+  height: 400px;
+  left: 10px;
+}
+
+.swiper-button-next {
+  right: 10px;
+}
+
+.swiper-button-prev img,
+.swiper-button-next img {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  border-radius: 5px;
+}
+
+/* Приховує стандартні кнопки Swiper */
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  display: none;
+}
+
