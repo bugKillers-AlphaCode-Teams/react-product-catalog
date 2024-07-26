@@ -5,7 +5,7 @@ import { HomePage } from "./pages/HomePage";
 import { PhonePage } from "./pages/PhonePage";
 import { TabletsPage } from "./pages/TabletsPage";
 import { AccessoriesPage } from "./pages/AccessoriesPage";
-import { FavouritesPage } from "./pages/FavoritesPage";
+import { FavouritesPage } from "./pages/FavouritesPage";
 import { ThemeContextProvider } from "./store/ThemeContext";
 import { Cart } from "./components/cart/Cart";
 
@@ -30,7 +30,7 @@ export const Root = () => (
             <Route index element={<AccessoriesPage />} />
           </Route>
 
-          <Route path="favorites">
+          <Route path="favourites">
             <Route index element={<FavouritesPage />} />
           </Route>
           <Route path="cart">

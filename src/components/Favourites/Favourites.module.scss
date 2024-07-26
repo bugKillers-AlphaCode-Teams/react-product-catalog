@@ -1,0 +1,78 @@
+@import "../../styles/utils/mixins";
+
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-Bold.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-SemiBold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+}
+.container {
+  margin: 0 auto;
+  max-width: 1200px;
+  // padding: 0 30px;
+  box-sizing: border-box;
+
+  
+  @include on-desktop {
+    
+  }
+  
+  @include on-tablet {
+    
+  }
+}
+
+.productsList {
+  width: 100%;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.favourite {
+  &__links {
+    height: 80px;
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+  }
+
+  &_title {
+    font-family: "Mont", sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    text-align: left;
+    color: #f1f2f9;
+    margin-bottom: 8px;
+  }
+  &_score_items {
+    font-family: "Mont", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    margin-bottom: 40px;
+    color: #75767f;
+  }
+
+  &__link {
+    display: block;
+
+    &_text {
+      color: #75767f;
+      font-size: 12px;
+      font-family: "Montserrat", sans-serif;
+      font-weight: 600;
+      line-height: 15.34px;
+    }
+  }
+}
