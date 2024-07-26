@@ -23,8 +23,4 @@ export const PhonePage = () => {
   );
 
 
-export const PhonePage = () => {
-
-  return <div>PhonePage</div>;
-
 };
