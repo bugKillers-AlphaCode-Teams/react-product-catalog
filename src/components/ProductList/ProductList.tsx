@@ -13,6 +13,7 @@ export const ProductList: React.FC<Props> = ({ phones }) => {
     <section className={styles.productList}>
       {phones.map((phone) => (
         <ProductCard
+          oldPrice={phone.priceRegular}
           imgAlt={"phones image"}
           title={phone.name}
           price={phone.priceRegular}

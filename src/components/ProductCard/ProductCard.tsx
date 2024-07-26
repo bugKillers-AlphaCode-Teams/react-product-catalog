@@ -23,24 +23,27 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 }) => {
   return (
     <div className={styles.productCard}>
-      <img src={imgSrc} alt={imgAlt} className="productCard__img" />
-      <p className={styles.productCard__title}>{title}</p>
-      <p className={styles.productCard__price}>{price}</p>
+      <div className={styles.wrapper}>
+        <img src={imgSrc} alt={imgAlt} className={styles.productImage} />
+        <p className={styles.productCard__title}>{title}</p>
+        <p className={styles.productCard__price}>{price}</p>
+        <p className={styles.productCard__underscore}></p>
 
-      <p className={styles.productCard__underscore}></p>
-
-      <div className={styles.productCard__specs}>
-        <div className={styles["productCard__specs-spec"]}>
-          <span className={styles["productCard__specs-label"]}>Screen</span>
-          <span className={styles["productCard__specs-value"]}>{screen}</span>
-        </div>
-        <div className={styles["productCard__specs-spec"]}>
-          <span className={styles["productCard__specs-label"]}>Capacity</span>
-          <span className={styles["productCard__specs-value"]}>{capacity}</span>
-        </div>
-        <div className={styles["productCard__specs-spec"]}>
-          <span className={styles["productCard__specs-label"]}>RAM</span>
-          <span className={styles["productCard__specs-value"]}>{ram}</span>
+        <div className={styles.productCard__specs}>
+          <div className={styles["productCard__specs-spec"]}>
+            <span className={styles["productCard__specs-label"]}>Screen</span>
+            <span className={styles["productCard__specs-value"]}>{screen}</span>
+          </div>
+          <div className={styles["productCard__specs-spec"]}>
+            <span className={styles["productCard__specs-label"]}>Capacity</span>
+            <span className={styles["productCard__specs-value"]}>
+              {capacity}
+            </span>
+          </div>
+          <div className={styles["productCard__specs-spec"]}>
+            <span className={styles["productCard__specs-label"]}>RAM</span>
+            <span className={styles["productCard__specs-value"]}>{ram}</span>
+          </div>
         </div>
       </div>
 

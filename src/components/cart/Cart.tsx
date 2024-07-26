@@ -1,8 +1,11 @@
+import { Product } from "../../types/Product";
 import { CartItem } from "../CartItem/CartItem";
 import styles from "./Cart.module.scss";
-
+import cartEmpty from "../../../public/img/cart-is-empty.png";
 export const Cart = () => {
-  return (
+  const cartProducts: Product[] = [];
+
+  return cartProducts.length > 0 ? (
     <div className={styles.cart}>
       <h1>Cart</h1>
       <div className={styles.cartList}>
@@ -17,6 +20,15 @@ export const Cart = () => {
         </div>
         <button className={styles.button}>Checkout</button>
       </div>
+    </div>
+  ) : (
+    <div className={styles.cartEmpty}>
+      <h2>Cart is empty</h2>
+      <img
+        className={styles.cartEmptyImg}
+        src={cartEmpty}
+        alt="cart is empty"
+      />
     </div>
   );
 };
