@@ -1,3 +1,4 @@
+import { HotPrices } from "../components/HotPrices";
 import { NewModels } from "../components/NewModels";
 import { ShopByCategory } from "../components/ShopByCategory/ShopByCategory";
 import SimpleSlider from "../components/Swiper_main/Swiper";
@@ -8,6 +9,7 @@ export const HomePage = () => {
       <SimpleSlider />
       <NewModels />
       <ShopByCategory />
+      <HotPrices />
     </div>
   );
 };
