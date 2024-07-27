@@ -37,6 +37,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         <p className={styles.productCard__price}>{price}</p>
         <p className={styles.productCard__underscore}></p>
 
+
+      <p className={styles.productCard__underscore}></p>
+
         <div className={styles.productCard__specs}>
           <div className={styles["productCard__specs-spec"]}>
             <span className={styles["productCard__specs-label"]}>Screen</span>
@@ -52,6 +55,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             <span className={styles["productCard__specs-label"]}>RAM</span>
             <span className={styles["productCard__specs-value"]}>{ram}</span>
           </div>
+
         </div>
       </div>
 
