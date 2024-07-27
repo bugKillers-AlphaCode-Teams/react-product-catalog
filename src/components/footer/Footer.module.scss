@@ -1,0 +1,114 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,800;1,800&display=swap");
+
+.footer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: #0F1121;
+  box-sizing: border-box;
+  padding: 32px 16px;
+  font-family: "Montserrat", serif;
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    width: 100%;
+  }
+
+  &__logo {
+    margin-bottom: 32px;
+  }
+
+  &__items-links {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    gap: 32px;
+
+    &-item {
+      text-transform: uppercase;
+      font-weight: 800;
+      font-size: 12px;
+      line-height: 11px;
+      color: #F1F2F9;
+    }
+  }
+
+  &__goup {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    align-self: center; /* Центрування елемента goup */
+
+    &-text {
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 15px;
+      color: #75767F;
+      display: flex;
+      align-items: center;
+      white-space: nowrap; /* Prevents line breaks */
+    }
+
+    &-chevron {
+      height: 32px;
+      width: 32px;
+      margin-left: 16px;
+      background-color: #323542;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+@media (min-width: 640px) {
+  .footer {
+    height: 96px;
+    padding: 32px 132px;
+  }
+
+  .footer__wrapper {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .footer__logo,
+  .footer__items-links,
+  .footer__goup {
+    margin-bottom: 0;
+  }
+
+  .footer__items-links {
+    flex-direction: row;
+    gap: 32px;
+  }
+
+  .footer__goup {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 639px) {
+  .footer__wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer__items {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+  }
+
+  .footer__goup {
+    align-self: center;
+  }
+}

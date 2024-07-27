@@ -5,11 +5,13 @@ interface ProductCardProps {
   imgSrc: string;
   imgAlt: string;
   title: string;
-  price: string;
-  oldPrice?: string;
+  price: number;
   screen: string;
   capacity: string;
   ram: string;
+  oldPrice: number;
+  addProducts: () => void;
+  productQuontity: number;
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({
@@ -17,47 +19,49 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   imgAlt,
   title,
   price,
-  oldPrice,
   screen,
   capacity,
   ram,
+  addProducts,
+  productQuontity,
 }) => {
+  const buttonStyle =
+    productQuontity > 0
+      ? styles["productCard__buttons-disabled"]
+      : styles["productCard__buttons-add"];
   return (
     <div className={styles.productCard}>
-      <img src={imgSrc} alt={imgAlt} className="productCard__img" />
-      <p className={styles.productCard__title}>{title}</p>
-
-      <div className={styles.productCard__priceWrapper}>
+      <div className={styles.wrapper}>
+        <img src={imgSrc} alt={imgAlt} className={styles.productImage} />
+        <p className={styles.productCard__title}>{title}</p>
         <p className={styles.productCard__price}>{price}</p>
-        {oldPrice && (
-          <img
-            src={oldPrice}
-            alt="Old price"
-            className={styles.productCard__oldPrice}
-          />
-        )}
-      </div>
+        <p className={styles.productCard__underscore}></p>
+
 
       <p className={styles.productCard__underscore}></p>
 
-      <div className={styles.productCard__specs}>
-        <div className={styles["productCard__specs-spec"]}>
-          <span className={styles["productCard__specs-label"]}>Screen</span>
-          <span className={styles["productCard__specs-value"]}>{screen}</span>
-        </div>
-        <div className={styles["productCard__specs-spec"]}>
-          <span className={styles["productCard__specs-label"]}>Capacity</span>
-          <span className={styles["productCard__specs-value"]}>{capacity}</span>
-        </div>
-        <div className={styles["productCard__specs-spec"]}>
-          <span className={styles["productCard__specs-label"]}>RAM</span>
-          <span className={styles["productCard__specs-value"]}>{ram}</span>
+        <div className={styles.productCard__specs}>
+          <div className={styles["productCard__specs-spec"]}>
+            <span className={styles["productCard__specs-label"]}>Screen</span>
+            <span className={styles["productCard__specs-value"]}>{screen}</span>
+          </div>
+          <div className={styles["productCard__specs-spec"]}>
+            <span className={styles["productCard__specs-label"]}>Capacity</span>
+            <span className={styles["productCard__specs-value"]}>
+              {capacity}
+            </span>
+          </div>
+          <div className={styles["productCard__specs-spec"]}>
+            <span className={styles["productCard__specs-label"]}>RAM</span>
+            <span className={styles["productCard__specs-value"]}>{ram}</span>
+          </div>
+
         </div>
       </div>
 
       <div className={styles.productCard__buttons}>
-        <button className={styles["productCard__buttons-add"]}>
-          Add to cart
+        <button onClick={addProducts} className={buttonStyle}>
+          {productQuontity > 0 ? "Added to cart" : "Add to cart"}
         </button>
         <img
           className="productCard__buttons-add-to-favorite"

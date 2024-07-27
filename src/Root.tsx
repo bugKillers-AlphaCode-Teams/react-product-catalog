@@ -1,4 +1,4 @@
-import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { App } from "./App";
 import { NotFoundPage } from "./pages/NotFoundPage";
 import { HomePage } from "./pages/HomePage";
@@ -8,38 +8,42 @@ import { AccessoriesPage } from "./pages/AccessoriesPage";
 import { FavouritesPage } from "./pages/FavoritesPage";
 import { ThemeContextProvider } from "./store/ThemeContext";
 import { Cart } from "./components/cart/Cart";
+import { CartContextProvider } from "./store/CartContext";
 
 export const Root = () => (
-  <HashRouter>
+  <BrowserRouter>
     <ThemeContextProvider>
-      <Routes>
-        <Route path="/" element={<App />}>
-          <Route index element={<HomePage />} />
+      <CartContextProvider>
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route index element={<HomePage />} />
 
-          <Route path="home" element={<Navigate to="/" replace />} />
+            <Route path="home" element={<Navigate to="/" replace />} />
 
-          <Route path="phone">
-            <Route index element={<PhonePage />} />
+            <Route path="phone">
+              <Route index element={<PhonePage />} />
+            </Route>
+
+            <Route path="tablets">
+              <Route index element={<TabletsPage />} />
+            </Route>
+
+            <Route path="accessories">
+              <Route index element={<AccessoriesPage />} />
+            </Route>
+
+            <Route path="favorites">
+              <Route index element={<FavouritesPage />} />
+            </Route>
+            <Route path="cart">
+              <Route index element={<Cart />} />
+            </Route>
+
+            <Route path="*" element={<NotFoundPage />} />
           </Route>
-
-          <Route path="tablets">
-            <Route index element={<TabletsPage />} />
-          </Route>
-
-          <Route path="accessories">
-            <Route index element={<AccessoriesPage />} />
-          </Route>
-
-          <Route path="favorites">
-            <Route index element={<FavouritesPage />} />
-          </Route>
-          <Route path="cart">
-            <Route index element={<Cart />} />
-          </Route>
-
           <Route path="*" element={<NotFoundPage />} />
-        </Route>
-      </Routes>
+        </Routes>
+      </CartContextProvider>
     </ThemeContextProvider>
-  </HashRouter>
+  </BrowserRouter>
 );
