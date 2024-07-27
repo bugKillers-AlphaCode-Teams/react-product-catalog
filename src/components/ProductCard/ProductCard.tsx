@@ -17,10 +17,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   imgAlt,
   title,
   price,
-
   oldPrice,
-
-
   screen,
   capacity,
   ram,
@@ -40,8 +37,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           />
         )}
       </div>
-
-      <p className={styles.productCard__price}>{price}</p>
 
       <p className={styles.productCard__underscore}></p>
 
