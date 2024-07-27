@@ -2,9 +2,11 @@ import { NavLink } from "react-router-dom";
 import styles from "./Navbar.module.scss";
 import { useState } from "react";
 import { ThemeButton } from "../ThemeButton/ThemeButton";
+import { useCart } from "../../utils/useCart";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { totalQuantity } = useCart();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -72,6 +74,7 @@ export const Navbar = () => {
           </NavLink>
           <NavLink to="cart" className={`${styles.icon} icon--shoping`}>
             <img src="/img/shoping.svg" alt="shoping" />
+            <span className={styles.iconCount}>{totalQuantity}</span>
           </NavLink>
         </div>
 
@@ -94,6 +97,5 @@ export const Navbar = () => {
         </div>
       </div>
     </header>
-    
   );
 };

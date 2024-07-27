@@ -2,25 +2,30 @@ import React from "react";
 import styles from "./ProductList.module.scss";
 import { Product } from "../../types/Product";
 import { ProductCard } from "../ProductCard";
+import { useCart } from "../../utils/useCart";
 
 type Props = {
-  phones: Product[];
+  products: Product[];
 };
-export const ProductList: React.FC<Props> = ({ phones }) => {
-  console.log(phones);
+export const ProductList: React.FC<Props> = ({ products }) => {
+  const { addProducts, getProductQuontity } = useCart();
 
+  console.log(addProducts);
   return (
     <section className={styles.productList}>
-      {phones.map((phone) => (
+      {products.map((product) => (
         <ProductCard
-          oldPrice={phone.priceRegular}
-          imgAlt={"phones image"}
-          title={phone.name}
-          price={phone.priceRegular}
-          imgSrc={phone.images[0]}
-          screen={phone.screen}
-          capacity={phone.capacity}
-          ram={phone.ram}
+          key={product.id}
+          oldPrice={product.priceRegular}
+          imgAlt={"image"}
+          title={product.name}
+          price={product.priceRegular}
+          imgSrc={product.images[0]}
+          screen={product.screen}
+          capacity={product.capacity}
+          ram={product.ram}
+          addProducts={() => addProducts(product)}
+          productQuontity={getProductQuontity(product.id)}
         />
       ))}
     </section>

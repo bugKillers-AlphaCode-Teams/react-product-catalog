@@ -8,6 +8,7 @@ import { themeContext } from "./store/ThemeContext";
 
 export const App = () => {
   const { theme } = useContext(themeContext);
+
   return (
     <div
       className={`${styles.app} ${

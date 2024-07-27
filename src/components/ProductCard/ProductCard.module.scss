@@ -50,7 +50,7 @@
     color: #f1f2f9;
     padding-bottom: 8px;
   }
-  
+
   &__priceWrapper {
     display: flex;
     align-items: center;
@@ -135,6 +135,28 @@
       font-weight: 700;
       line-height: 21px;
       text-align: center;
+      color: #f1f2f9;
+      margin-right: 8px;
+
+      @include on-tablet-medium {
+        min-width: 115px;
+      }
+
+      @include on-desktop {
+        width: 160px;
+      }
+    }
+    &-disabled {
+      width: 160px;
+      height: 40px;
+      background: #905bff;
+      border: none;
+      font-family: "Mont", sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 21px;
+      text-align: center;
+      background: rgba(50, 53, 66, 1);
       color: #f1f2f9;
       margin-right: 8px;
 
