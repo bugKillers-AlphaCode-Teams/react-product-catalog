@@ -49,11 +49,6 @@ export const NewModels = () => {
             slidesPerView={"auto"}
             spaceBetween={16}
             modules={[Navigation]}
-            // breakpoints={{
-            //   320: { width: 260, slidesPerView: 1 },
-            //   640: { width: 640, slidesPerView: 2 },
-            //   1199: { width: 1199, slidesPerView: 4 },
-            // }}
           >
             <SwiperSlide className={styles['swiper-slide']}>
               <ProductCard
