@@ -10,6 +10,8 @@ interface ProductCardProps {
   capacity: string;
   ram: string;
   oldPrice: number;
+  addProducts: () => void;
+  productQuontity: number;
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({
@@ -20,7 +22,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   screen,
   capacity,
   ram,
+  addProducts,
+  productQuontity,
 }) => {
+  const buttonStyle =
+    productQuontity > 0
+      ? styles["productCard__buttons-disabled"]
+      : styles["productCard__buttons-add"];
   return (
     <div className={styles.productCard}>
       <div className={styles.wrapper}>
@@ -28,6 +36,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         <p className={styles.productCard__title}>{title}</p>
         <p className={styles.productCard__price}>{price}</p>
         <p className={styles.productCard__underscore}></p>
+
+
+      <p className={styles.productCard__underscore}></p>
 
         <div className={styles.productCard__specs}>
           <div className={styles["productCard__specs-spec"]}>
@@ -44,12 +55,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             <span className={styles["productCard__specs-label"]}>RAM</span>
             <span className={styles["productCard__specs-value"]}>{ram}</span>
           </div>
+
         </div>
       </div>
 
       <div className={styles.productCard__buttons}>
-        <button className={styles["productCard__buttons-add"]}>
-          Add to cart
+        <button onClick={addProducts} className={buttonStyle}>
+          {productQuontity > 0 ? "Added to cart" : "Add to cart"}
         </button>
         <img
           className="productCard__buttons-add-to-favorite"

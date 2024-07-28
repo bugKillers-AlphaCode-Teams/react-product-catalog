@@ -13,27 +13,27 @@
   font-weight: 600;
   font-style: normal;
 }
-.container {
-  margin: 0 auto;
-  max-width: 1200px;
-  // padding: 0 30px;
-  box-sizing: border-box;
+// .container {
+//   margin: 0 auto;
+//   max-width: 1200px;
+//   // padding: 0 30px;
+//   box-sizing: border-box;
 
   
-  @include on-desktop {
+//   @include on-desktop {
     
-  }
+//   }
   
-  @include on-tablet {
+//   @include on-tablet {
     
-  }
-}
+//   }
+// }
 
 .productsList {
   width: 100%;
   display: flex;
   gap: 16px;
-  flex-wrap: wrap;
+  // flex-wrap: wrap;
 }
 
 .favourite {
