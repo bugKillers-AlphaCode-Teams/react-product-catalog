@@ -19,20 +19,26 @@
 
   &__logo {
     margin-bottom: 32px;
+
+    &-image {
+      display: block;
+    }
   }
 
-  &__items-links {
-    display: flex;
-    flex-direction: column;
-    list-style-type: none;
-    gap: 32px;
+  &__items {
+    &-links {
+      display: flex;
+      flex-direction: column;
+      list-style-type: none;
+      gap: 32px;
 
-    &-item {
-      text-transform: uppercase;
-      font-weight: 800;
-      font-size: 12px;
-      line-height: 11px;
-      color: #F1F2F9;
+      &-item {
+        text-transform: uppercase;
+        font-weight: 800;
+        font-size: 12px;
+        line-height: 11px;
+        color: #F1F2F9;
+      }
     }
   }
 
@@ -40,7 +46,8 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    align-self: center; /* Центрування елемента goup */
+    align-self: center;
+    cursor: pointer; /* Змінено на курсор для вказівки клікабельності */
 
     &-text {
       font-weight: 700;
@@ -49,7 +56,7 @@
       color: #75767F;
       display: flex;
       align-items: center;
-      white-space: nowrap; /* Prevents line breaks */
+      white-space: nowrap;
     }
 
     &-chevron {
