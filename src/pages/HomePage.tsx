@@ -1,12 +1,12 @@
 import { HotPrices } from "../components/HotPrices";
 import { NewModels } from "../components/NewModels";
 import { ShopByCategory } from "../components/ShopByCategory/ShopByCategory";
-import SimpleSlider from "../components/Swiper_main/Swiper";
+import { Slider } from "../components/Swiper_main/Swiper";
 
 export const HomePage = () => {
   return (
     <div>
-      <SimpleSlider />
+      <Slider />
       <NewModels />
       <ShopByCategory />
       <HotPrices />
