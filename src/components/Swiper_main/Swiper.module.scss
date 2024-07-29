@@ -1,0 +1,111 @@
+@import "../../styles/utils/mixins";
+.swiper {
+  max-width: 320px;
+  max-height: 320px;
+  margin: 0 auto;
+  position: relative;
+  margin-bottom: 50px;
+
+
+  @include on-tablet {
+    max-width: 490px;
+    max-height: 190px;
+  }
+
+  @include on-desktop {
+    max-width: 1040px;
+    max-height: 400px;
+  }
+
+  &__slide {
+    width: 320px;
+    height: 320px;
+    display: grid;
+    display: flex;
+    border-radius: 15px;
+
+    @include on-tablet {
+      width: 490px;
+      height: 190px;
+    }
+
+    @include on-desktop {
+      width: 1040px;
+      height: 400px;
+    }
+  }
+
+  &__wrapper {
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+
+    &--1 {
+      background-color: black;
+    }
+
+    &--2 {
+      background-color: black;
+    }
+
+    &--3 {
+      background-color: black;
+    }
+  }
+
+  &__image {
+    background-size: contain;
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 8px;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &--1 {
+      background-image: url("../../images/icons/firstSlide.png");
+
+      @include on-tablet {
+        background-image: url("../../images/icons/Banner.png");
+        background-position: right;
+        background-size: cover;
+        width: 50%;
+        border-radius: 0 8px 8px 0;
+      }
+    }
+
+    &--2 {
+      background-image: url("../../images/icons/Apple_iPhone_15_Pro.webp");
+      background-position: bottom;
+    }
+
+    &--3 {
+      background-image: url("../../images/icons/cameraIphone.webp");
+      background-size: cover;
+    }
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__title {
+    color: #f1f2f9;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    padding: 0 16px;
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 56px;
+      padding: 0 24px;
+      letter-spacing: 0.01em;
+    }
+  }
+}

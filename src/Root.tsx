@@ -38,8 +38,6 @@ export const Root = () => (
             <Route path="cart">
               <Route index element={<Cart />} />
             </Route>
-
-            <Route path="*" element={<NotFoundPage />} />
           </Route>
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
