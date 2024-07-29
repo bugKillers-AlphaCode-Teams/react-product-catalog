@@ -6,9 +6,10 @@
   background: #161827;
   text-align: center;
   grid-column: 1/-1;
-  padding: 32px;
   min-height: 440px;
   align-items: center;
+  justify-content: center;
+  padding: 32px;
 
   @include on-tablet {
     padding: 23px;
@@ -24,6 +25,7 @@
   @include on-desktop {
     grid-column: span 6;
   }
+
   .productImage {
     width: 224px;
     padding-bottom: 8px;
@@ -49,6 +51,19 @@
     text-align: left;
     color: #f1f2f9;
     padding-bottom: 8px;
+    width: 100%;
+
+    max-width: 224px;
+
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+
+    @include on-tablet-medium {
+      max-width: 165px;
+    }
+    @include on-desktop {
+      max-width: 208px;
+    }
   }
 
   &__priceWrapper {
@@ -66,9 +81,22 @@
     line-height: 30.8px;
     text-align: left;
     color: #f1f2f9;
+
     padding-top: 16px;
     padding-bottom: 8px;
     margin-top: 8px;
+
+    max-width: 224px;
+
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+
+    @include on-tablet-medium {
+      max-width: 165px;
+    }
+    @include on-desktop {
+      max-width: 208px;
+    }
   }
 
   &__oldPrice {
@@ -87,7 +115,6 @@
       width: 100%;
       border: 1px solid #3b3e4a;
       position: absolute;
-      //  bottom: -8px;
       left: 0;
     }
   }
@@ -124,6 +151,7 @@
     display: flex;
     justify-content: space-between;
     padding-top: 8px;
+    margin-top: auto;
 
     &-add {
       width: 160px;
