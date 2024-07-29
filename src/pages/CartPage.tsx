@@ -1,5 +1,5 @@
 import { BackButton } from "../components/ButtonBack/BackButton";
-import { Cart } from "../components/cart/Cart";
+import { Cart } from "../components/Cart/Cart";
 
 export const CartPage = () => {
   return (

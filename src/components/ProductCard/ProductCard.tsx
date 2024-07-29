@@ -54,20 +54,20 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             <span className={styles["productCard__specs-label"]}>RAM</span>
             <span className={styles["productCard__specs-value"]}>{ram}</span>
           </div>
-        </div>
-      </div>
 
-      <div className={styles.productCard__buttons}>
-        <button onClick={addProducts} className={buttonStyle}>
-          {productQuontity && productQuontity > 0
-            ? "Added to cart"
-            : "Add to cart"}
-        </button>
-        <img
-          className="productCard__buttons-add-to-favorite"
-          src={addToFavorites}
-          alt="add to favorites"
-        />
+          <div className={styles.productCard__buttons}>
+            <button onClick={addProducts} className={buttonStyle}>
+              {productQuontity && productQuontity > 0
+                ? "Added to cart"
+                : "Add to cart"}
+            </button>
+            <img
+              className="productCard__buttons-add-to-favorite"
+              src={addToFavorites}
+              alt="add to favorites"
+            />
+          </div>
+        </div>
       </div>
     </div>
   );
