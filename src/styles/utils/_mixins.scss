@@ -3,7 +3,11 @@
     @content;
   }
 }
-
+@mixin on-tablet-medium {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
 @mixin on-desktop {
   @media (min-width: 1199px) {
     @content;
@@ -14,6 +18,9 @@
   padding-inline: 16px;
 
   @include on-tablet {
+    padding-inline: 24px;
+  }
+  @include on-tablet-medium {
     padding-inline: 24px;
   }
 

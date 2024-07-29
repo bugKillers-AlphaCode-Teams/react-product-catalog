@@ -1,4 +1,4 @@
-@import "../../styles/utils/mixins";
+@import "../../../styles/utils/mixins";
 .cartitem {
   background-color: rgba(22, 24, 39, 1);
   color: rgba(241, 242, 249, 1);
@@ -43,7 +43,7 @@
   }
   .title {
     font-weight: 600;
-   
+
     font-size: 14px;
   }
   .buttonContent {
