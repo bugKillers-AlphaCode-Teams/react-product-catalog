@@ -55,7 +55,7 @@ export const NewModels = () => {
                 imgSrc={silver_iPhone_14_Pro}
                 imgAlt="Apple iPhone 14 Pro 128GB Silver"
                 title="Apple iPhone 14 Pro 128GB Silver (MQ023)"
-                price="$999"
+                price={999}
                 screen="6.1” OLED"
                 capacity="128 GB"
                 ram="6 GB"
@@ -66,7 +66,7 @@ export const NewModels = () => {
                 imgSrc={purple_iPhone_14_Pro}
                 imgAlt="Apple iPhone 14 Pro 128GB Deep Purple"
                 title="Apple iPhone 14 Pro 128GB Deep Purple (MQ0G3)"
-                price="$999"
+                price={999}
                 screen="6.1” OLED"
                 capacity="128 GB"
                 ram="6 GB"
@@ -77,7 +77,7 @@ export const NewModels = () => {
                 imgSrc={gold_iPhone_14_Pro}
                 imgAlt="Apple iPhone 14 Pro 128GB Gold"
                 title="Apple iPhone 14 Pro 128GB Gold (MQ083)"
-                price="$999"
+                price={999}
                 screen="6.1” OLED"
                 capacity="128 GB"
                 ram="6 GB"
@@ -88,7 +88,7 @@ export const NewModels = () => {
                 imgSrc={red_iPhone_14_Plus}
                 imgAlt="Apple iPhone 14 Plus 128GB PRODUCT Red"
                 title="Apple iPhone 14 Plus 128GB PRODUCT Red (MQ513)"
-                price="$859"
+                price={859}
                 screen="6.7” OLED"
                 capacity="128 GB"
                 ram="6 GB"
@@ -100,7 +100,7 @@ export const NewModels = () => {
                 imgSrc={red_iPhone_14_Plus}
                 imgAlt="Apple iPhone 14 Plus 128GB PRODUCT Red"
                 title="Apple iPhone 14 Plus 128GB PRODUCT Red (MQ513)"
-                price="$859"
+                price={859}
                 screen="6.7” OLED"
                 capacity="128 GB"
                 ram="6 GB"
@@ -111,7 +111,7 @@ export const NewModels = () => {
                 imgSrc={red_iPhone_14_Plus}
                 imgAlt="Apple iPhone 14 Plus 128GB PRODUCT Red"
                 title="Apple iPhone 14 Plus 128GB PRODUCT Red (MQ513)"
-                price="$859"
+                price={859}
                 screen="6.7” OLED"
                 capacity="128 GB"
                 ram="6 GB"
@@ -122,7 +122,7 @@ export const NewModels = () => {
                 imgSrc={red_iPhone_14_Plus}
                 imgAlt="Apple iPhone 14 Plus 128GB PRODUCT Red"
                 title="Apple iPhone 14 Plus 128GB PRODUCT Red (MQ513)"
-                price="$859"
+                price={859}
                 screen="6.7” OLED"
                 capacity="128 GB"
                 ram="6 GB"
@@ -133,7 +133,7 @@ export const NewModels = () => {
                 imgSrc={red_iPhone_14_Plus}
                 imgAlt="Apple iPhone 14 Plus 128GB PRODUCT Red"
                 title="Apple iPhone 14 Plus 128GB PRODUCT Red (MQ513)"
-                price="$859"
+                price={859}
                 screen="6.7” OLED"
                 capacity="128 GB"
                 ram="6 GB"
