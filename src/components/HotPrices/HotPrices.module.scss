@@ -1,50 +1,9 @@
-@font-face {
-  font-family: "Mont";
-  src: url("/fonts/Mont-Bold.otf") format("opentype");
-  font-weight: 800;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Mont";
-  src: url("/fonts/Mont-Regular.otf") format("opentype");
-  font-weight: 400;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Mont";
-  src: url("/fonts/Mont-SemiBold.otf") format("opentype");
-  font-weight: 600;
-  font-style: normal;
-}
-
-.hotPrices__brand {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-sizing: border-box;
-
-  &-title {
-    font-family: "Mont", sans-serif;
-    font-size: 32px;
-    font-weight: 800;
-    line-height: 41px;
-    letter-spacing: -0.01em;
-    text-align: left;
-    color: #f1f2f9;
-  }
-}
-
 .buttonsSlider {
   display: flex;
   align-items: center;
   gap: 16px;
 
-  &__left {
-    width: 32px;
-    height: 32px;
-    border: none;
-  }
-
+  &__left,
   &__right {
     width: 32px;
     height: 32px;
@@ -55,4 +14,13 @@
 .productsList {
   display: flex;
   gap: 16px;
+
+  .swiper {
+    width: 100vw;
+  }
+
+  .swiper-slide {
+    max-width: 272px;
+    width: 272px;
+  }
 }
