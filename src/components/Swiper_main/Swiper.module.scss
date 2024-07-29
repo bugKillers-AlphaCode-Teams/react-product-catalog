@@ -1,4 +1,10 @@
 @import "../../styles/utils/mixins";
+
+.swiper__prev,
+.swiper__next {
+  display: none;
+}
+
 .swiper {
   max-width: 320px;
   max-height: 320px;
@@ -6,15 +12,64 @@
   position: relative;
   margin-bottom: 50px;
 
-
   @include on-tablet {
-    max-width: 490px;
+    max-width: 590px;
     max-height: 190px;
+
+    .overlayImage {
+      width: 25px;
+      height: 25px;
+      }
+
+    .swiper__prev {
+      position: absolute;
+      top: 0;
+      display: flex;
+      left: -50px;
+      background-color: #323542;
+      width: 25px;
+      height: 100%;
+    }
+    
+    .swiper__next {
+      background-color: #323542;
+      position: absolute;
+      top: 0;
+      display: flex;
+      width: 25px;
+      height: 100%;
+      right: -50px;
+    }
   }
 
   @include on-desktop {
     max-width: 1040px;
     max-height: 400px;
+
+    .overlayImage {
+      width: 25px;
+      height: 25px;
+      }
+
+    .swiper__prev {
+      position: absolute;
+      top: 0;
+      display: flex;
+      left: -50px;
+      background-color: #323542;
+      width: 25px;
+      height: 100%;
+    }
+    
+    .swiper__next {
+      background-color: #323542;
+      position: absolute;
+      top: 0;
+      display: flex;
+      width: 25px;
+      height: 100%;
+      right: -50px;
+    }
   }
 
   &__slide {
