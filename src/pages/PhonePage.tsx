@@ -23,6 +23,18 @@ export const PhonePage = () => {
   const currentProduct = products.slice(firstProductIndex, lastProductIndex);
 
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+  const nextPage = (current: number) => {
+    if (currentPage === Math.ceil(products.length / productsPerPage)) {
+      return;
+    }
+    setCurrentPage(current + 1);
+  };
+  const prevPage = (current: number) => {
+    if (currentPage === 1) {
+      return;
+    }
+    setCurrentPage(current - 1);
+  };
 
   return (
     <>
@@ -33,6 +45,8 @@ export const PhonePage = () => {
         totalProducts={products.length}
         paginate={paginate}
         currentPage={currentPage}
+        nextPage={nextPage}
+        prevPage={prevPage}
       />
     </>
   );

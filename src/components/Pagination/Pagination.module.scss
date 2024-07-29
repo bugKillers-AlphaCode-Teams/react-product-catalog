@@ -11,8 +11,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #323542;
+  background-color: #161827;
   transition: all 0.3s;
+
+  &.arrow {
+    background-color: #323542;
+  }
 
   &.active {
     background-color: #905BFF

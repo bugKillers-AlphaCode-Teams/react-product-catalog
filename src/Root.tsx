@@ -32,7 +32,7 @@ export const Root = () => (
               <Route index element={<AccessoriesPage />} />
             </Route>
 
-            <Route path="favorites">
+            <Route path="favourites">
               <Route index element={<FavouritesPage />} />
             </Route>
             <Route path="cart">
