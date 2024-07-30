@@ -1,12 +1,12 @@
-import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import styles from './Swiper.module.scss';
-import { Autoplay, Navigation, Pagination } from 'swiper/modules';
-import { Order } from './Order Now/Order';
+import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import styles from "./Swiper.module.scss";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import { Order } from "./Order Now/Order";
+import classNames from "classnames";
 
 export const Slider: React.FC = () => {
   return (
@@ -26,47 +26,63 @@ export const Slider: React.FC = () => {
             disableOnInteraction: false,
           }}
           navigation={{
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
+            nextEl: `.${styles.swiper__next}`,
+            prevEl: `.${styles.swiper__prev}`,
           }}
           pagination={{
-            type: 'bullets',
-            el: '.swiper-pagination',
+            el: `.${styles.swiper__pagination}`,
             clickable: true,
+            bulletClass: `${styles["swiper-pagination-bullet"]}`,
+            bulletActiveClass: `${styles["swiper-pagination-bullet-active"]}`
           }}
+          scrollbar={{ draggable: true }}
         >
           <SwiperSlide className={styles.swiper__slide}>
             <Order />
             <a
-              className={`${styles.swiper__image} ${styles[`swiper__image--1`]}`}
+              className={`${styles.swiper__image} ${
+                styles[`swiper__image--1`]
+              }`}
             ></a>
           </SwiperSlide>
           <SwiperSlide className={styles.swiper__slide}>
             <div
-              className={`${styles.swiper__wrapper} ${styles['swiper__wrapper--1']} `}
+              className={`${styles.swiper__wrapper} ${styles["swiper__wrapper--1"]} `}
             >
               <a
-                className={`${styles.swiper__image} ${styles[`swiper__image--2`]}`}
+                className={`${styles.swiper__image} ${
+                  styles[`swiper__image--2`]
+                }`}
               ></a>
             </div>
           </SwiperSlide>
           <SwiperSlide className={styles.swiper__slide}>
             <div
-              className={`${styles.swiper__wrapper} ${styles['swiper__wrapper--2']} `}
+              className={`${styles.swiper__wrapper} ${styles["swiper__wrapper--2"]} `}
             >
               <a
-                className={`${styles.swiper__image} ${styles[`swiper__image--3`]}`}
+                className={`${styles.swiper__image} ${
+                  styles[`swiper__image--3`]
+                }`}
               ></a>
             </div>
           </SwiperSlide>
         </Swiper>
-        <div className="button-arrangment">
-          <div className="button-swiper">
-            <button className="swiper-button-prev"></button>
-            <button className="swiper-button-next"></button>
-            <button className="swiper-pagination"></button>
-          </div>
+        <div className={classNames(styles.swiper__prev, "swiper__Button__Prev")}>
+          <img
+            src="src/images/icons/Chevron (Arrow Left).png"
+            alt="Prev"
+            className={styles.overlayImage}
+          />
         </div>
+        <div className={classNames(styles.swiper__next, "swiper__Button__Next")}>
+          <img
+            src="src/images/icons/Chevron (Arrow Right).png"
+            alt="Next"
+            className={styles.overlayImage}
+          />
+        </div>
+        <div className={classNames(styles.swiper__pagination, "swiper-pagination")}></div>
       </div>
     </div>
   );

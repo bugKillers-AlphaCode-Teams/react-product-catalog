@@ -1,10 +1,12 @@
 import { Outlet } from "react-router-dom";
 import "./styles/fonts.scss";
 import styles from "./App.module.scss";
+
 import { useContext } from "react";
 import { themeContext } from "./store/ThemeContext";
 import { Navbar } from "./components/navbar";
 import { Footer } from "./components/footer";
+
 
 export const App = () => {
   const { theme } = useContext(themeContext);
