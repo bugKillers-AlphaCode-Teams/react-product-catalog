@@ -1,8 +1,8 @@
 import styles from "./CartItem.module.scss";
-import closeWhiteIcon from "../../images/icons/CloseWhiteIcon.png";
-import minusWhiteIcon from "../../images/icons/MinusWhite.png";
-import plusWhiteIcon from "../../images/icons/PlusWhite.png";
-import { Product } from "../../types/Product";
+import closeWhiteIcon from "../../../images/icons/CloseWhiteIcon.png";
+import minusWhiteIcon from "../../../images/icons/MinusWhite.png";
+import plusWhiteIcon from "../../../images/icons/PlusWhite.png";
+import { Product } from "../../../types/Product";
 
 type CartItemType = {
   product: Product;
