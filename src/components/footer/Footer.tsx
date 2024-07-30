@@ -25,6 +25,8 @@ export const Footer: React.FC = () => {
 
   return (
     <div className={styles.footer}>
+
+
       <div className={styles.wrapper}>
         <a href="/" className={styles.logo}>
           <img src={logo} className={styles.logoImage} alt="logo" />
@@ -40,9 +42,11 @@ export const Footer: React.FC = () => {
             </li>
             <li>
               <a href="#" className={styles.link}>Rights</a>
+
             </li>
           </ul>
         </div>
+
 
         <div className={styles.goUp} onClick={scrollToTop}>
           <span className={styles.goUpText}>
@@ -53,6 +57,7 @@ export const Footer: React.FC = () => {
               </div>
             </div>
           </span>
+
         </div>
       </div>
     </div>

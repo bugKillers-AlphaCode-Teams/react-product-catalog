@@ -6,10 +6,10 @@ interface ProductCardProps {
   imgAlt: string;
   title: string;
   price: number;
+  oldPrice?: number;
   screen: string;
   capacity: string;
   ram: string;
-  oldPrice?: number;
   addProducts?: () => void;
   productQuontity?: number;
 }
@@ -22,52 +22,58 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   screen,
   capacity,
   ram,
+  oldPrice,
   addProducts,
   productQuontity,
 }) => {
   const buttonStyle =
     productQuontity && productQuontity > 0
-      ? styles["productCard__buttons-disabled"]
-      : styles["productCard__buttons-add"];
+      ? styles.productCardButtonsDisabled
+      : styles.productCardButtonsAdd;
   return (
     <div className={styles.productCard}>
       <div className={styles.wrapper}>
         <img src={imgSrc} alt={imgAlt} className={styles.productImage} />
-        <p className={styles.productCard__title}>{title}</p>
-        <p className={styles.productCard__price}>${price}</p>
-        <p className={styles.productCard__underscore}></p>
+        <p className={styles.productCardTitle}>{title}</p>
 
-        <p className={styles.productCard__underscore}></p>
-
-        <div className={styles.productCard__specs}>
-          <div className={styles["productCard__specs-spec"]}>
-            <span className={styles["productCard__specs-label"]}>Screen</span>
-            <span className={styles["productCard__specs-value"]}>{screen}</span>
-          </div>
-          <div className={styles["productCard__specs-spec"]}>
-            <span className={styles["productCard__specs-label"]}>Capacity</span>
-            <span className={styles["productCard__specs-value"]}>
-              {capacity}
-            </span>
-          </div>
-          <div className={styles["productCard__specs-spec"]}>
-            <span className={styles["productCard__specs-label"]}>RAM</span>
-            <span className={styles["productCard__specs-value"]}>{ram}</span>
-          </div>
-
-          <div className={styles.productCard__buttons}>
-            <button onClick={addProducts} className={buttonStyle}>
-              {productQuontity && productQuontity > 0
-                ? "Added to cart"
-                : "Add to cart"}
-            </button>
-            <img
-              className="productCard__buttons-add-to-favorite"
-              src={addToFavorites}
-              alt="add to favorites"
-            />
-          </div>
+        <div className={styles.priceWrapper}>
+          <p className={styles.productCardPrice}>${price}</p>
+          {oldPrice && <p className={styles.oldPrice}>{oldPrice}</p>}
         </div>
+
+        <p className={styles.productCardUnderscore}></p>
+
+        <div className={styles.productCardSpecs}>
+          <div className={styles.productCardSpec}>
+            <span className={styles.productCardLabel}>Screen</span>
+            <span className={styles.productCardValue}>{screen}</span>
+          </div>
+
+          <div className={styles.productCardSpec}>
+            <span className={styles.productCardLabel}>Capacity</span>
+            <span className={styles.productCardValue}>{capacity}</span>
+          </div>
+
+          <div className={styles.productCardSpec}>
+            <span className={styles.productCardLabel}>RAM</span>
+            <span className={styles.productCardValue}>{ram}</span>
+          </div>
+
+
+      <div className={styles.productCardButtons}>
+        <button onClick={addProducts} className={buttonStyle}>
+          {productQuontity && productQuontity > 0
+            ? "Added to cart"
+            : "Add to cart"}
+        </button>
+        <button className={styles.toFavorite}>
+          <img
+            className={styles.addToFavorite}
+            src={addToFavorites}
+            alt="add to favorites"
+          />
+        </button>
+
       </div>
     </div>
   );
