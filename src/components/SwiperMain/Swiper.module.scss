@@ -20,6 +20,7 @@
 
 .swiper-pagination-bullet {
   // position: absolute;
+  cursor: pointer;
   width: 14px;
   height: 4px;
   background: gray; /* default color for inactive bullets */
@@ -49,6 +50,7 @@
     }
 
     .swiper__prev {
+      cursor: pointer;
       position: absolute;
       top: 0;
       display: flex;
@@ -59,6 +61,7 @@
     }
 
     .swiper__next {
+      cursor: pointer;
       background-color: #323542;
       position: absolute;
       top: 0;
