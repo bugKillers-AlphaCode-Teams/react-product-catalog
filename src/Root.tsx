@@ -9,7 +9,8 @@ import { FavouritesPage } from "./pages/FavouritesPage";
 import { ThemeContextProvider } from "./store/ThemeContext";
 
 import { CartContextProvider } from "./store/CartContext";
-import { Cart } from "./components/Cart/Cart";
+import { Cart } from "./components/cart/Cart";
+
 
 export const Root = () => (
   <BrowserRouter>
