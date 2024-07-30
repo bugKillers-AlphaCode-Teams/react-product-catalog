@@ -2,6 +2,7 @@ import styles from "./Cart.module.scss";
 import cartEmpty from "../../../public/img/cart-is-empty.png";
 import { useCart } from "../../utils/useCart";
 import { CartItem } from "./CartItem/CartItem";
+//import { CartItem } from "./CartItem/CartItem";
 export const Cart = () => {
   const {
     products,
