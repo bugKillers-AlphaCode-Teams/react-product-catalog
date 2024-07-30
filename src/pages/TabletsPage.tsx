@@ -42,7 +42,7 @@ export const TabletsPage = () => {
 
   return (
     <>
-      <h1>Tablets phones</h1>
+      <h1>Tablets</h1>
       <ProductList products={currentProduct} />
       <Pagination
         productsPerPage={productsPerPage}

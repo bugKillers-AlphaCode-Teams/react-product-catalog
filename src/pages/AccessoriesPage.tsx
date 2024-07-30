@@ -1,10 +1,8 @@
-
 import { useEffect, useState } from "react";
 import { ProductList } from "../components/ProductList/ProductList";
 import { Product } from "../types/Product";
 import { Pagination } from "../components/Pagination/Pagination.tsx";
 import { fetchProducts } from "../services/accessoriesService.ts";
-
 
 export const AccessoriesPage = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -44,7 +42,7 @@ export const AccessoriesPage = () => {
 
   return (
     <>
-      <h1>Tablets phones</h1>
+      <h1>Accessories</h1>
       <ProductList products={currentProduct} />
       <Pagination
         productsPerPage={productsPerPage}
