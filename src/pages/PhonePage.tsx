@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { ProductList } from "../components/ProductList/ProductList";
 import { Product } from "../types/Product";
 import { Pagination } from "../components/Pagination/Pagination.tsx";
-import { fetchPhones } from "../services/phoneService.ts";
-
+import { fetchProducts } from "../services/phoneService.ts";
+import "../styles/pages.scss";
 export const PhonePage = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -12,7 +12,7 @@ export const PhonePage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const phones = await fetchPhones();
+        const phones = await fetchProducts();
         setProducts(phones);
       } catch (error) {
         console.error("Failed to fetch phones:", error);

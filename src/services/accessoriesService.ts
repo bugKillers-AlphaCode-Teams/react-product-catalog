@@ -1,8 +1,8 @@
 import { fetchData } from "../apiService";
 import { Product } from "../types/Product";
 
-const PHONES_URL = "/api/accessories.json";
+const ACCESSORIES_URL = "/api/accessories.json";
 
-export const fetchPhones = async (): Promise<Product[]> => {
-  return fetchData<Product[]>(PHONES_URL);
+export const fetchProducts = async (): Promise<Product[]> => {
+  return fetchData<Product[]>(ACCESSORIES_URL);
 };
