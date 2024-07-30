@@ -30,6 +30,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     productQuontity && productQuontity > 0
       ? styles.productCardButtonsDisabled
       : styles.productCardButtonsAdd;
+
   return (
     <div className={styles.productCard}>
       <div className={styles.wrapper}>
@@ -58,22 +59,22 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             <span className={styles.productCardLabel}>RAM</span>
             <span className={styles.productCardValue}>{ram}</span>
           </div>
+        </div>
 
-
-      <div className={styles.productCardButtons}>
-        <button onClick={addProducts} className={buttonStyle}>
-          {productQuontity && productQuontity > 0
-            ? "Added to cart"
-            : "Add to cart"}
-        </button>
-        <button className={styles.toFavorite}>
-          <img
-            className={styles.addToFavorite}
-            src={addToFavorites}
-            alt="add to favorites"
-          />
-        </button>
-
+        <div className={styles.productCardButtons}>
+          <button onClick={addProducts} className={buttonStyle}>
+            {productQuontity && productQuontity > 0
+              ? "Added to cart"
+              : "Add to cart"}
+          </button>
+          <button className={styles.toFavorite}>
+            <img
+              className={styles.addToFavorite}
+              src={addToFavorites}
+              alt="add to favorites"
+            />
+          </button>
+        </div>
       </div>
     </div>
   );
