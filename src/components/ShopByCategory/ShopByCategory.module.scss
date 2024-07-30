@@ -1,4 +1,8 @@
+@import "../../styles/utils/mixins";
+
 .section {
+  @include content-padding-inlain();
+
   &__title {
     font-size: 32px;
     margin-bottom: 24px;
