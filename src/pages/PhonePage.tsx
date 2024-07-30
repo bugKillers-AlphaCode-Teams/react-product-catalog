@@ -4,6 +4,7 @@ import { Product } from "../types/Product";
 import { Pagination } from "../components/Pagination/Pagination.tsx";
 import { fetchProducts } from "../services/phoneService.ts";
 import "../styles/pages.scss";
+import { CurrentLocation } from "../components/CurrentLocation/CurrentLocation.tsx";
 export const PhonePage = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -42,6 +43,7 @@ export const PhonePage = () => {
 
   return (
     <>
+      <CurrentLocation />
       <h1>Mobile phones</h1>
       <ProductList products={currentProduct} />
       <Pagination
