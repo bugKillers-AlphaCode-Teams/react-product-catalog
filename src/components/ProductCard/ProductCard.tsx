@@ -58,8 +58,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             <span className={styles.productCardLabel}>RAM</span>
             <span className={styles.productCardValue}>{ram}</span>
           </div>
-        </div>
-      </div>
+
 
       <div className={styles.productCardButtons}>
         <button onClick={addProducts} className={buttonStyle}>
@@ -74,6 +73,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             alt="add to favorites"
           />
         </button>
+
       </div>
     </div>
   );

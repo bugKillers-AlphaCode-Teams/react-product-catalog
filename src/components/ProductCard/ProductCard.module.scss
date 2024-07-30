@@ -7,9 +7,10 @@
   background: #161827;
   text-align: center;
   grid-column: 1/-1;
-  padding: 32px;
   min-height: 440px;
   align-items: center;
+  justify-content: center;
+  padding: 32px;
 
   @include on-tablet {
     padding: 23px;
@@ -52,6 +53,19 @@
     text-align: left;
     color: #f1f2f9;
     padding-bottom: 8px;
+    width: 100%;
+
+    max-width: 224px;
+
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+
+    @include on-tablet-medium {
+      max-width: 165px;
+    }
+    @include on-desktop {
+      max-width: 208px;
+    }
   }
 
   .priceWrapper {
@@ -68,9 +82,22 @@
     line-height: 30.8px;
     text-align: left;
     color: #f1f2f9;
+
     padding-top: 16px;
     padding-bottom: 8px;
     margin-top: 8px;
+
+    max-width: 224px;
+
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+
+    @include on-tablet-medium {
+      max-width: 165px;
+    }
+    @include on-desktop {
+      max-width: 208px;
+    }
   }
 
   .oldPrice {
@@ -132,6 +159,7 @@
     display: flex;
     justify-content: space-between;
     padding-top: 8px;
+    margin-top: auto;
 
     .productCardButtonsAdd {
       width: 160px;

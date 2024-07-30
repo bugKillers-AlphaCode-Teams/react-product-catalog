@@ -1,0 +1,41 @@
+@import "../../../styles/utils/mixins";
+
+.modalCart {
+  position: absolute;
+  border: 1px solid rgba(59, 62, 74, 1);
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(22, 24, 39, 1);
+  padding: 20px;
+  line-height: 41px;
+
+  .close {
+    position: absolute;
+    right: 15px;
+  }
+
+  .button {
+    width: 160px;
+    height: 40px;
+    background: #905bff;
+    border: none;
+    font-family: "Mont", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    text-align: center;
+    color: #f1f2f9;
+    margin-right: 8px;
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(33, 33, 33, 0.5);
+  z-index: 1000;
+}

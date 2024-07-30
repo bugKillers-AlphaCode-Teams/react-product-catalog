@@ -5,10 +5,13 @@ import { HomePage } from "./pages/HomePage";
 import { PhonePage } from "./pages/PhonePage";
 import { TabletsPage } from "./pages/TabletsPage";
 import { AccessoriesPage } from "./pages/AccessoriesPage";
-import { FavouritesPage } from "./pages/FavoritesPage";
+import { FavouritesPage } from "./pages/FavouritesPage";
 import { ThemeContextProvider } from "./store/ThemeContext";
-import { Cart } from "./components/cart/Cart";
+import { Cart } from "./components/Cart/Cart";
 import { CartContextProvider } from "./store/CartContext";
+
+
+
 
 export const Root = () => (
   <BrowserRouter>
@@ -20,7 +23,7 @@ export const Root = () => (
 
             <Route path="home" element={<Navigate to="/" replace />} />
 
-            <Route path="phone">
+            <Route path="phones">
               <Route index element={<PhonePage />} />
             </Route>
 
@@ -32,7 +35,7 @@ export const Root = () => (
               <Route index element={<AccessoriesPage />} />
             </Route>
 
-            <Route path="favorites">
+            <Route path="favourites">
               <Route index element={<FavouritesPage />} />
             </Route>
             <Route path="cart">

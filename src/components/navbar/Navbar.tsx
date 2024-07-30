@@ -39,7 +39,7 @@ export const Navbar = () => {
             <li>
               <NavLink
                 className={styles.nav__link}
-                to="phone"
+                to="phones"
                 onClick={() => toggleMenuWhenActive()}
               >
                 Phones
@@ -69,10 +69,10 @@ export const Navbar = () => {
           <ThemeButton />
         </div>
         <div className={styles.icons}>
-          <NavLink to="favourit" className={`${styles.icon} icon--favourit`}>
+          <NavLink to="favourites" className={`${styles.icon} icon--favourit`} onClick={() => toggleMenuWhenActive()}>
             <img src="/img/favourit.svg" alt="favourit" />
           </NavLink>
-          <NavLink to="cart" className={`${styles.icon} icon--shoping`}>
+          <NavLink to="cart" className={`${styles.icon} icon--shoping`} onClick={() => toggleMenuWhenActive()}>
             <img src="/img/shoping.svg" alt="shoping" />
             <span className={styles.iconCount}>{totalQuantity}</span>
           </NavLink>
