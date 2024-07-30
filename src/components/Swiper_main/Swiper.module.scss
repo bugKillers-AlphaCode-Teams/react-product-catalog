@@ -5,6 +5,31 @@
   display: none;
 }
 
+.swiper__pagination {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+  transform: translateZ(0);
+  transition: opacity 0.3s;
+  z-index: 10;
+  bottom: -25px !important;
+  // border: 1px solid red;
+}
+
+.swiper-pagination-bullet {
+  // position: absolute;
+  width: 14px;
+  height: 4px;
+  background: gray; /* default color for inactive bullets */
+  opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+  background: #e5e5ea; /* color for active bullet */
+}
+
 .swiper {
   max-width: 320px;
   max-height: 320px;
@@ -19,7 +44,9 @@
     .overlayImage {
       width: 25px;
       height: 25px;
-      }
+      transform: translate(0%, 13vh);
+      padding-top: 8px;
+    }
 
     .swiper__prev {
       position: absolute;
@@ -30,7 +57,7 @@
       width: 25px;
       height: 100%;
     }
-    
+
     .swiper__next {
       background-color: #323542;
       position: absolute;
@@ -49,7 +76,8 @@
     .overlayImage {
       width: 25px;
       height: 25px;
-      }
+      transform: translate(0%, 30vh);
+    }
 
     .swiper__prev {
       position: absolute;
@@ -60,7 +88,7 @@
       width: 25px;
       height: 100%;
     }
-    
+
     .swiper__next {
       background-color: #323542;
       position: absolute;

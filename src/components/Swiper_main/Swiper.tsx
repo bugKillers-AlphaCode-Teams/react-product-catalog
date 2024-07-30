@@ -26,10 +26,15 @@ export const Slider: React.FC = () => {
             disableOnInteraction: false,
           }}
           navigation={{
-            nextEl: ".swiper__Button__Next",
-            prevEl: ".swiper__Button__Prev",
+            nextEl: `.${styles.swiper__next}`,
+            prevEl: `.${styles.swiper__prev}`,
           }}
-          pagination={{ clickable: true }}
+          pagination={{
+            el: `.${styles.swiper__pagination}`,
+            clickable: true,
+            bulletClass: `${styles["swiper-pagination-bullet"]}`,
+            bulletActiveClass: `${styles["swiper-pagination-bullet-active"]}`
+          }}
           scrollbar={{ draggable: true }}
         >
           <SwiperSlide className={styles.swiper__slide}>
@@ -63,16 +68,21 @@ export const Slider: React.FC = () => {
             </div>
           </SwiperSlide>
         </Swiper>
-        <div className={classNames("swiper__Button__Prev", styles.swiper__prev)}>
+        <div className={classNames(styles.swiper__prev, "swiper__Button__Prev")}>
           <img
-            src="src\images\icons\Chevron (Arrow Left).png"
+            src="src/images/icons/Chevron (Arrow Left).png"
             alt="Prev"
             className={styles.overlayImage}
           />
         </div>
-        <div className={classNames("swiper__Button__Next", styles.swiper__next)} >
-          <img className={styles.overlayImage} src="src\images\icons\Chevron (Arrow Right).png" alt="Next" />
+        <div className={classNames(styles.swiper__next, "swiper__Button__Next")}>
+          <img
+            src="src/images/icons/Chevron (Arrow Right).png"
+            alt="Next"
+            className={styles.overlayImage}
+          />
         </div>
+        <div className={classNames(styles.swiper__pagination, "swiper-pagination")}></div>
       </div>
     </div>
   );
