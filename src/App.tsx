@@ -4,8 +4,10 @@ import styles from "./App.module.scss";
 
 import { useContext } from "react";
 import { themeContext } from "./store/ThemeContext";
-import { Navbar } from "./components/navbar/Navbar";
-import { Footer } from "./components/footer/Footer";
+
+import { Navbar } from "./components/navbar";
+import { Footer } from "./components/footer";
+
 
 
 
