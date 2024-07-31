@@ -1,58 +1,51 @@
 import React from "react";
 import styles from "./ItemCard.module.scss";
-import { chevronRight } from "../../images/icons/Chevron (Arrow Right).png";
-import { chevronLeft } from "../../images/icons/Chevron (Arrow Left).png";
-import { home } from "../../../public/img/House.svg";
-import { productImage } from "../../images/icons/iphone14 models.png";
-import { galleryImage1 } from "../../images/icons/Slider photo 1.png";
-import { galleryImage2 } from "../../images/icons/Slider photo 2.png";
-import { galleryImage3 } from "../../images/icons/Slider photo 3.png";
-import { galleryImage4 } from "../../images/icons/Slider photo 4.png";
-import { galleryImage5 } from "../../images/icons/Slider photo 5.png";
+import ChevronArrowRight from "../../images/icons/Chevron (Arrow Right).png";
+import ChevronArrowLeft from "../../images/icons/Chevron (Arrow Left).png";
+import home from "../../../public/img/House.svg";
+import iphoneMask from "../../images/icons/Photo mask.svg";
+import SliderPhoto1 from "../../images/icons/Slider photo 1.svg";
+import SliderPhoto2 from "../../images/icons/Slider photo 2.svg";
+import SliderPhoto3 from "../../images/icons/Slider photo 3.svg";
+import SliderPhoto4 from "../../images/icons/Slider photo 4.svg";
+import SliderPhoto5 from "../../images/icons/Slider photo 5.svg";
 
 export const ProductPage: React.FC = () => {
   return (
     <div className={styles.productPage}>
-      {/* Breadcrumbs */}
       <div className={styles.breadcrumbs}>
         <img src={home} alt="Home" className={styles.icon} />
-        <img src={chevronRight} alt="Arrow" className={styles.icon} />
+        <img src={ChevronArrowRight} alt="Arrow" className={styles.icon} />
         <span className={styles.breadcrumbItem}>Phones</span>
-        <img src={chevronRight} alt="Arrow" className={styles.icon} />
+        <img src={ChevronArrowRight} alt="Arrow" className={styles.icon} />
         <span className={styles.breadcrumbItem}>Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)</span>
       </div>
 
-      {/* Back Button */}
       <button className={styles.backButton}>
-        <img src={chevronLeft} alt="Back" className={styles.icon} />
+        <img src={ChevronArrowLeft} alt="Back" className={styles.icon} />
         <span className={styles.backText}>Back</span>
       </button>
 
-      {/* Product Title */}
       <h1 className={styles.productTitle}>
         Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)
       </h1>
 
-      {/* Product Image */}
       <div className={styles.productImageWrapper}>
-        <img src={productImage} alt="Apple iPhone 11 Pro Max" className={styles.productImage} />
+        <img src={iphoneMask} alt="Apple iPhone 11 Pro Max" className={styles.productImage} />
       </div>
 
-      {/* Product Gallery */}
       <div className={styles.gallery}>
-        <img src={galleryImage3} alt="Gallery 3" className={styles.galleryImage} />
-        <img src={galleryImage1} alt="Gallery 1" className={styles.galleryImage} />
-        <img src={galleryImage4} alt="Gallery 4" className={styles.galleryImage} />
-        <img src={galleryImage2} alt="Gallery 2" className={styles.galleryImage} />
-        <img src={galleryImage5} alt="Gallery 5" className={styles.galleryImage} />
+        <img src={SliderPhoto3} alt="Gallery 3" className={styles.galleryImage} />
+        <img src={SliderPhoto1} alt="Gallery 1" className={styles.galleryImage} />
+        <img src={SliderPhoto4} alt="Gallery 4" className={styles.galleryImage} />
+        <img src={SliderPhoto2} alt="Gallery 2" className={styles.galleryImage} />
+        <img src={SliderPhoto5} alt="Gallery 5" className={styles.galleryImage} />
       </div>
 
-      {/* Product Elements */}
       <div className={styles.productElements}>
-        {/* Здесь могут быть различные элементы, например, цена, кнопки покупки и т.д. */}
+
       </div>
 
-      {/* Product Details */}
       <div className={styles.productDetails}>
         <div className={styles.section}>
           <h2>About</h2>
