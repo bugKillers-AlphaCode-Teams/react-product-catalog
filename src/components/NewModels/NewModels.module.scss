@@ -2,6 +2,8 @@
 
 .newModels {
   @include content-padding-inlain();
+  
+  max-width: 100vw;
 }
 
 .newModelsBrand {
