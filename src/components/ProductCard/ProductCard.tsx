@@ -1,5 +1,6 @@
 import styles from "./ProductCard.module.scss";
 import addToFavorites from "../../images/icons/add-to-favorite.png";
+import isFvoutites from "/public/img/favourite-red.svg";
 
 interface ProductCardProps {
   imgSrc: string;
@@ -12,6 +13,8 @@ interface ProductCardProps {
   ram: string;
   addProducts?: () => void;
   productQuontity?: number;
+  toggleFavouriteProduct: () => void;
+  isFavourite: boolean;
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({
@@ -25,6 +28,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   oldPrice,
   addProducts,
   productQuontity,
+  toggleFavouriteProduct,
+  isFavourite,
 }) => {
   const buttonStyle =
     productQuontity && productQuontity > 0
@@ -39,7 +44,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
         <div className={styles.priceWrapper}>
           <p className={styles.productCardPrice}>${price}</p>
-          {oldPrice && <p className={styles.oldPrice}>{oldPrice}</p>}
+          {oldPrice && <p className={styles.oldPrice}>${oldPrice}</p>}
         </div>
 
         <p className={styles.productCardUnderscore}></p>
@@ -67,13 +72,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               ? "Added to cart"
               : "Add to cart"}
           </button>
-          <button className={styles.toFavorite}>
-            <img
-              className={styles.addToFavorite}
-              src={addToFavorites}
-              alt="add to favorites"
-            />
-          </button>
+          <img
+            className={styles.productCardAddToFavorite}
+            src={isFavourite ? isFvoutites : addToFavorites}
+            alt="add to favorites"
+            onClick={toggleFavouriteProduct}
+          />
         </div>
       </div>
     </div>
