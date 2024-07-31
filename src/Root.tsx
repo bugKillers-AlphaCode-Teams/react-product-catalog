@@ -11,6 +11,9 @@ import { Cart } from "./components/cart/Cart";
 import { CartContextProvider } from "./store/CartContext";
 import { FvouritesContextProvider } from "./store/FavouritesContext";
 
+
+
+
 export const Root = () => (
   <BrowserRouter>
     <ThemeContextProvider>

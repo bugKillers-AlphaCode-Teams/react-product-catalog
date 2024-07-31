@@ -17,6 +17,7 @@ export type Product = {
   ram: string;
   cell: string[];
 };
+
 export type ProductDescription = {
   title: string;
   text: string[];

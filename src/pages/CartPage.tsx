@@ -1,11 +1,10 @@
-import { BackButton } from "../components/ButtonBack/BackButton";
-import { Cart } from "../components/cart/Cart";
+import { Cart } from "../components/Cart/Cart";
+import { CurrentLocation } from "../components/CurrentLocation/CurrentLocation";
 
 export const CartPage = () => {
   return (
     <div>
-      <BackButton />
-
+      <CurrentLocation />
       <Cart />
     </div>
   );

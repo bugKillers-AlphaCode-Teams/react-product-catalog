@@ -1,26 +1,60 @@
+@import "../../styles/utils/mixins";
+
+.hotPrices {
+  @include content-padding-inlain();
+}
+
+.hotPricesBrand {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+
+  .hotPricesBrandTitle {
+    font-family: "Mont", sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    text-align: left;
+    color: #f1f2f9;
+  }
+}
+
 .buttonsSlider {
   display: flex;
   align-items: center;
   gap: 16px;
 
-  &__left,
-  &__right {
+  .buttonsSliderLeft,
+  .buttonsSliderRight {
     width: 32px;
     height: 32px;
     border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 }
 
 .productsList {
   display: flex;
-  gap: 16px;
+  margin-top: 24px;
 
   .swiper {
     width: 100vw;
   }
 
-  .swiper-slide {
-    max-width: 272px;
-    width: 272px;
+  .swiperSlide {
+    max-width: 260px;
+    cursor: pointer;
+    transition: transform 0.5s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 }

@@ -1,8 +1,17 @@
-import { CartItem } from "../CartItem/CartItem";
 import styles from "./Cart.module.scss";
 import cartEmpty from "../../../public/img/cart-is-empty.png";
 import { useCart } from "../../utils/useCart";
+
+import { ModalCart } from "./ModalCart/ModalCart";
+import { useState } from "react";
+import { CartItem } from "./CartItem/CartItem";
+
 export const Cart = () => {
+  const [openModalCart, setOpenModalCart] = useState(false);
+
+  const toggleModal = () => {
+    setOpenModalCart((prev) => !prev);
+  };
   const {
     products,
     totalPrice,
@@ -35,8 +44,11 @@ export const Cart = () => {
           <p className={styles.price}>{totalPrice}</p>
           <span>Total for {totalQuantity} items</span>
         </div>
-        <button className={styles.button}>Checkout</button>
+        <button className={styles.button} onClick={toggleModal}>
+          Checkout
+        </button>
       </div>
+      {openModalCart && <ModalCart closeModal={toggleModal} />}
     </div>
   ) : (
     <div className={styles.cartEmpty}>

@@ -2,20 +2,25 @@ import { useEffect, useState } from "react";
 import { ProductList } from "../components/ProductList/ProductList";
 import { Product } from "../types/Product";
 import { Pagination } from "../components/Pagination/Pagination.tsx";
-
-const URL = "/api/phones.json";
+import { fetchProducts } from "../services/phoneService.ts";
+import "../styles/pages.scss";
+import { CurrentLocation } from "../components/CurrentLocation/CurrentLocation.tsx";
 export const PhonePage = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 16;
 
   useEffect(() => {
-    fetch(URL)
-      .then((response) => response.json())
-      .then((phones) => setProducts(phones))
-      .catch(() => {
-        "some error";
-      });
+    const fetchData = async () => {
+      try {
+        const phones = await fetchProducts();
+        setProducts(phones);
+      } catch (error) {
+        console.error("Failed to fetch phones:", error);
+      }
+    };
+
+    fetchData();
   }, []);
 
   const lastProductIndex = currentPage * productsPerPage;
@@ -38,6 +43,7 @@ export const PhonePage = () => {
 
   return (
     <>
+      <CurrentLocation />
       <h1>Mobile phones</h1>
       <ProductList products={currentProduct} />
       <Pagination

@@ -39,7 +39,7 @@ export const Navbar = () => {
             <li>
               <NavLink
                 className={styles.nav__link}
-                to="phone"
+                to="phones"
                 onClick={() => toggleMenuWhenActive()}
               >
                 Phones

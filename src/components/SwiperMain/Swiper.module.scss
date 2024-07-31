@@ -1,4 +1,36 @@
 @import "../../styles/utils/mixins";
+
+.swiper__prev,
+.swiper__next {
+  display: none;
+}
+
+.swiper__pagination {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+  transform: translateZ(0);
+  transition: opacity 0.3s;
+  z-index: 10;
+  bottom: -25px !important;
+  // border: 1px solid red;
+}
+
+.swiper-pagination-bullet {
+  // position: absolute;
+  cursor: pointer;
+  width: 14px;
+  height: 4px;
+  background: gray; /* default color for inactive bullets */
+  opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+  background: #e5e5ea; /* color for active bullet */
+}
+
 .swiper {
   max-width: 320px;
   max-height: 320px;
@@ -6,15 +38,69 @@
   position: relative;
   margin-bottom: 50px;
 
-
   @include on-tablet {
-    max-width: 490px;
+    max-width: 590px;
     max-height: 190px;
+
+    .overlayImage {
+      width: 25px;
+      height: 25px;
+      transform: translate(0%, 13vh);
+      padding-top: 8px;
+    }
+
+    .swiper__prev {
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      display: flex;
+      left: -50px;
+      background-color: #323542;
+      width: 25px;
+      height: 100%;
+    }
+
+    .swiper__next {
+      cursor: pointer;
+      background-color: #323542;
+      position: absolute;
+      top: 0;
+      display: flex;
+      width: 25px;
+      height: 100%;
+      right: -50px;
+    }
   }
 
   @include on-desktop {
     max-width: 1040px;
     max-height: 400px;
+
+    .overlayImage {
+      width: 25px;
+      height: 25px;
+      transform: translate(0%, 30vh);
+    }
+
+    .swiper__prev {
+      position: absolute;
+      top: 0;
+      display: flex;
+      left: -50px;
+      background-color: #323542;
+      width: 25px;
+      height: 100%;
+    }
+
+    .swiper__next {
+      background-color: #323542;
+      position: absolute;
+      top: 0;
+      display: flex;
+      width: 25px;
+      height: 100%;
+      right: -50px;
+    }
   }
 
   &__slide {
