@@ -4,11 +4,11 @@ import cartEmpty from "../../../public/img/cart-is-empty.png";
 import { useFavourits } from "../../utils/useFavourites";
 
 export const Favourites = () => {
-  const { favouritsProducts } = useFavourits();
+  const { favouritesProducts } = useFavourits();
 
   return (
     <div className={styles.container}>
-      {favouritsProducts.length ? (
+      {favouritesProducts.length ? (
         <>
           <div className={styles.favourite__block}>
             <div className={styles.favourite__links}>
@@ -27,11 +27,11 @@ export const Favourites = () => {
             </div>
             <h2 className={styles.favourite_title}>Favourites</h2>
             <div className={styles.favourite_score_items}>
-              {favouritsProducts.length} items
+              {favouritesProducts.length} items
             </div>
           </div>
           <div className={styles.productsList}>
-            <ProductList products={favouritsProducts} />
+            <ProductList products={favouritesProducts} />
           </div>
         </>
       ) : (

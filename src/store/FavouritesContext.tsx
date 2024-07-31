@@ -1,9 +1,9 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect} from "react";
 import { Product } from "../types/Product";
 
 type FavouritesContext = {
-  favouritsProducts: Product[];
-  toggleFavoutiteProduct: (product: Product) => void;
+  favouritesProducts: Product[];
+  toggleFavouriteProduct: (product: Product) => void;
 };
 
 type Props = {
@@ -11,36 +11,46 @@ type Props = {
 };
 
 export const FavouritesContext = createContext<FavouritesContext>({
-  favouritsProducts: [],
-  toggleFavoutiteProduct: () => {},
+  favouritesProducts: [],
+  toggleFavouriteProduct: () => {},
 });
 
 export const FvouritesContextProvider: React.FC<Props> = ({ children }) => {
-  const [favouritsProducts, setProducts] = useState<Product[]>([]);
+  const getFavouritesFromLocalStorage = () => {
+    const savedFavourites = localStorage.getItem("favourites");
+    return savedFavourites ? JSON.parse(savedFavourites) : [];
+  };
 
-  const toggleFavoutiteProduct = (product: Product) => {
+  const [favouritesProducts, setProducts] = useState<Product[]>(getFavouritesFromLocalStorage);
+
+  const saveFavouritesToLocalStorage = (favourites: Product[]) => {
+    localStorage.setItem("favourites", JSON.stringify(favourites));
+  };
+
+  const toggleFavouriteProduct = (product: Product) => {
     setProducts((prevProducts) => {
       const productExists = prevProducts.some((p) => p.id === product.id);
 
-      if (productExists) {
-        return prevProducts.filter((p) => p.id !== product.id);
-      } else {
-        return [...prevProducts, product];
-      }
+      const updatedProducts = productExists
+        ? prevProducts.filter((p) => p.id !== product.id)
+        : [...prevProducts, product];
+
+      saveFavouritesToLocalStorage(updatedProducts);
+
+      return updatedProducts;
     });
   };
 
-  // const deleteProduct = (productId: string) => {
-  //   setProducts((prevProducts) =>
-  //     prevProducts.filter((product) => product.id !== productId)
-  //   );
-  // };
+  // Persist favourites to localStorage whenever it changes
+  useEffect(() => {
+    saveFavouritesToLocalStorage(favouritesProducts);
+  }, [favouritesProducts]);
 
   return (
     <FavouritesContext.Provider
       value={{
-        favouritsProducts,
-        toggleFavoutiteProduct,
+        favouritesProducts,
+        toggleFavouriteProduct,
       }}
     >
       {children}

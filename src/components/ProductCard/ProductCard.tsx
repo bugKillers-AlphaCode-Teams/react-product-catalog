@@ -13,7 +13,7 @@ interface ProductCardProps {
   ram: string;
   addProducts?: () => void;
   productQuontity?: number;
-  toggleFavoutiteProduct: () => void;
+  toggleFavouriteProduct: () => void;
   isFavourite: boolean;
 }
 
@@ -28,7 +28,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   oldPrice,
   addProducts,
   productQuontity,
-  toggleFavoutiteProduct,
+  toggleFavouriteProduct,
   isFavourite,
 }) => {
   const buttonStyle =
@@ -76,7 +76,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             className={styles.productCardAddToFavorite}
             src={isFavourite ? isFvoutites : addToFavorites}
             alt="add to favorites"
-            onClick={toggleFavoutiteProduct}
+            onClick={toggleFavouriteProduct}
           />
         </div>
       </div>

@@ -3,10 +3,12 @@ import styles from "./Navbar.module.scss";
 import { useState } from "react";
 import { ThemeButton } from "../ThemeButton/ThemeButton";
 import { useCart } from "../../utils/useCart";
+import { useFavourits } from "../../utils/useFavourites";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { totalQuantity } = useCart();
+  const { favouritesProducts } = useFavourits();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -69,10 +71,21 @@ export const Navbar = () => {
           <ThemeButton />
         </div>
         <div className={styles.icons}>
-          <NavLink to="favourites" className={`${styles.icon} icon--favourit`} onClick={() => toggleMenuWhenActive()}>
+          <NavLink
+            to="favourites"
+            className={`${styles.icon} icon--favourit`}
+            onClick={() => toggleMenuWhenActive()}
+          >
             <img src="/img/favourit.svg" alt="favourit" />
+            <span className={`${styles.iconCount} ${styles.favourit}`}>
+              {favouritesProducts.length}
+            </span>
           </NavLink>
-          <NavLink to="cart" className={`${styles.icon} icon--shoping`} onClick={() => toggleMenuWhenActive()}>
+          <NavLink
+            to="cart"
+            className={`${styles.icon} icon--shoping`}
+            onClick={() => toggleMenuWhenActive()}
+          >
             <img src="/img/shoping.svg" alt="shoping" />
             <span className={styles.iconCount}>{totalQuantity}</span>
           </NavLink>
