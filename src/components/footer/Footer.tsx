@@ -50,7 +50,7 @@ export const Footer: React.FC = () => {
 
         <div className={styles.goUp} onClick={scrollToTop}>
           <span className={styles.goUpText}>
-            Back to top button
+            Back to top
             <div className={styles.chevron}>
               <div className={styles.wrapperChevron}>
                 <img src={chevron} alt="chevron" />
