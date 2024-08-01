@@ -16,7 +16,10 @@ import { ProductItem } from "../../types/ProductItem";
 import data from "../../../public/api/products.json";
 
 function preparedNewPhones(data: ProductItem[]) {
-  const phones = data.filter(item => item.category === 'phones' && item.name.startsWith('Apple iPhone 14'));
+  const phones = data.filter(
+    (item) =>
+      item.category === "phones" && item.name.startsWith("Apple iPhone 14")
+  );
   const sortedPhones = phones.sort((a, b) => b.price - a.price);
 
   return sortedPhones.slice(0, 20);
@@ -50,7 +53,8 @@ export const NewModels = () => {
         </div>
 
         <div className={styles.productsList}>
-          <Swiper className={styles.swiper}
+          <Swiper
+            className={styles.swiper}
             onSwiper={(swiper) => {
               swiperRef.current = swiper;
             }}
@@ -58,23 +62,25 @@ export const NewModels = () => {
             spaceBetween={16}
             modules={[Navigation]}
           >
-            {preparedPhones.map(phone => {
-              const { image, name, fullPrice, screen, capacity, ram, id } = phone;
+            {preparedPhones.map((phone) => {
+              const { image, name, fullPrice, screen, capacity, ram, id } =
+                phone;
 
               return (
-              <SwiperSlide className={styles.swiperSlide} key={id}>
-                <ProductCard
-                  imgSrc={image}
-                  imgAlt={name}
-                  title={name}
-                  price={fullPrice}
-                  screen={screen}
-                  capacity={capacity}
-                  ram={ram}
-                />
-              </SwiperSlide>
-              )
-            })};
+                <SwiperSlide className={styles.swiperSlide} key={id}>
+                  <ProductCard
+                    imgSrc={image}
+                    imgAlt={name}
+                    title={name}
+                    price={fullPrice}
+                    screen={screen}
+                    capacity={capacity}
+                    ram={ram}
+                  />
+                </SwiperSlide>
+              );
+            })}
+            ;
           </Swiper>
         </div>
       </section>
