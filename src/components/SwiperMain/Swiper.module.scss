@@ -15,7 +15,6 @@
   transition: opacity 0.3s;
   z-index: 10;
   bottom: -25px !important;
-  // border: 1px solid red;
 }
 
 .swiper-pagination-bullet {
@@ -23,24 +22,27 @@
   cursor: pointer;
   width: 14px;
   height: 4px;
-  background: gray; /* default color for inactive bullets */
+  background: gray;
   opacity: 1;
 }
 
 .swiper-pagination-bullet-active {
-  background: #e5e5ea; /* color for active bullet */
+  background: #e5e5ea;
 }
 
 .swiper {
-  max-width: 320px;
-  max-height: 320px;
-  margin: 0 auto;
+  padding-inline: 25px;
   position: relative;
   margin-bottom: 50px;
 
   @include on-tablet {
-    max-width: 590px;
-    max-height: 190px;
+    // max-width: 590px;
+    max-height: 220px;
+    height: 220px;
+    
+  .swiper__main {
+    height: 100%;
+  }
 
     .overlayImage {
       width: 25px;
@@ -54,7 +56,7 @@
       position: absolute;
       top: 0;
       display: flex;
-      left: -50px;
+      left: 0;
       background-color: #323542;
       width: 25px;
       height: 100%;
@@ -68,57 +70,27 @@
       display: flex;
       width: 25px;
       height: 100%;
-      right: -50px;
+      right: 0;
     }
   }
 
   @include on-desktop {
-    max-width: 1040px;
-    max-height: 400px;
+    
+    max-height: 432px;
+    width: 100%;
+    height: 100%;
+    
 
     .overlayImage {
       width: 25px;
       height: 25px;
-      transform: translate(0%, 30vh);
-    }
-
-    .swiper__prev {
-      position: absolute;
-      top: 0;
-      display: flex;
-      left: -50px;
-      background-color: #323542;
-      width: 25px;
-      height: 100%;
-    }
-
-    .swiper__next {
-      background-color: #323542;
-      position: absolute;
-      top: 0;
-      display: flex;
-      width: 25px;
-      height: 100%;
-      right: -50px;
     }
   }
 
   &__slide {
-    width: 320px;
-    height: 320px;
-    display: grid;
-    display: flex;
-    border-radius: 15px;
-
-    @include on-tablet {
-      width: 490px;
-      height: 190px;
-    }
-
-    @include on-desktop {
-      width: 1040px;
-      height: 400px;
-    }
+     width: 100% !important;
+     height: 320px;
+     display: flex;
   }
 
   &__wrapper {
@@ -157,7 +129,8 @@
         background-image: url("../../images/icons/Banner.png");
         background-position: right;
         background-size: cover;
-        width: 50%;
+        // width: 45%;
+        height: 100%;
         border-radius: 0 8px 8px 0;
       }
     }

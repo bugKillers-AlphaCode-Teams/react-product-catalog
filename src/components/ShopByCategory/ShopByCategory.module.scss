@@ -1,8 +1,7 @@
 @import "../../styles/utils/mixins";
 
 .section {
-  @include content-padding-inlain();
-
+  // @include content-padding-inlain();
   &__title {
     font-size: 32px;
     margin-bottom: 24px;
@@ -15,11 +14,13 @@
   grid-template-columns: 1fr 1fr 1fr;
   gap: 16px;
 
-  @media (max-width: 640px) {
+  @media on-tablet {
     grid-template-columns: 1fr;
+    max-width: 592px;
+    margin-bottom: 50px;
   }
 
-  @media (min-width: 1200px) {
+  @media on-desktop {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 16px;
