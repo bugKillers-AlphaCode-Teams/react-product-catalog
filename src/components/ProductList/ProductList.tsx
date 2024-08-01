@@ -13,7 +13,6 @@ export const ProductList: React.FC<Props> = ({ products }) => {
 
   const { toggleFavouriteProduct, favouritesProducts} = useFavourits();
 
-  console.log(addProducts);
   return (
     <section className={styles.productList}>
       {products.map((product) => (
