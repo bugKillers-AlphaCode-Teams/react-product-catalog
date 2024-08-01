@@ -2,7 +2,7 @@ import { useRef } from "react";
 
 import sliderRight from "../../images/icons/buttonSlider-right.png";
 import sliderLeft from "../../images/icons/buttonSlider-left.png";
-import styles from "./NewModels.module.scss";
+import styles from "./YouMayAlsoLike.module.scss";
 
 import { ProductCard } from "../ProductCard";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -15,26 +15,23 @@ import { ProductItem } from "../../types/ProductItem";
 
 import data from "../../../public/api/products.json";
 
-function preparedNewPhones(data: ProductItem[]) {
-  const phones = data.filter(
-    (item) =>
-      item.category === "phones" && item.name.startsWith("Apple iPhone 14")
-  );
+function preparedAlsoLikePhones(data: ProductItem[]) {
+  const phones = data.filter(item => item.category === 'phones' && item.name.startsWith('Apple iPhone 13'));
   const sortedPhones = phones.sort((a, b) => b.price - a.price);
 
   return sortedPhones.slice(0, 20);
 }
 
-const preparedPhones = preparedNewPhones(data);
+const preparedLikePhones = preparedAlsoLikePhones(data);
 
-export const NewModels = () => {
+export const YouMayAlsoLike = () => {
   const swiperRef = useRef<SwiperCore | null>(null);
 
   return (
     <>
-      <section className={styles.newModels}>
-        <div className={styles.newModelsBrand}>
-          <h2 className={styles.newModelsBrandTitle}>Brand new models</h2>
+      <section className={styles.youMayAlsoLike}>
+        <div className={styles.youMayAlsoLikeBrand}>
+          <h2 className={styles.youMayAlsoLikeTitle}>You may also like</h2>
 
           <div className={styles.buttonsSlider}>
             <button
@@ -53,8 +50,7 @@ export const NewModels = () => {
         </div>
 
         <div className={styles.productsList}>
-          <Swiper
-            className={styles.swiper}
+          <Swiper className={styles.swiper}
             onSwiper={(swiper) => {
               swiperRef.current = swiper;
             }}
@@ -62,25 +58,23 @@ export const NewModels = () => {
             spaceBetween={16}
             modules={[Navigation]}
           >
-            {preparedPhones.map((phone) => {
-              const { image, name, fullPrice, screen, capacity, ram, id } =
-                phone;
+            {preparedLikePhones.map(phone => {
+              const { image, name, fullPrice, screen, capacity, ram, id } = phone;
 
               return (
-                <SwiperSlide className={styles.swiperSlide} key={id}>
-                  <ProductCard
-                    imgSrc={image}
-                    imgAlt={name}
-                    title={name}
-                    price={fullPrice}
-                    screen={screen}
-                    capacity={capacity}
-                    ram={ram}
-                  />
-                </SwiperSlide>
-              );
-            })}
-            ;
+              <SwiperSlide className={styles.swiperSlide} key={id}>
+                <ProductCard
+                  imgSrc={image}
+                  imgAlt={name}
+                  title={name}
+                  price={fullPrice}
+                  screen={screen}
+                  capacity={capacity}
+                  ram={ram}
+                />
+              </SwiperSlide>
+              )
+            })};
           </Swiper>
         </div>
       </section>

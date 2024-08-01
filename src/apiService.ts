@@ -4,7 +4,7 @@ const DEFAULT_HEADER = {
 
 export const fetchData = async <T>(
   url: string,
-  headers= DEFAULT_HEADER
+  headers = DEFAULT_HEADER
 ): Promise<T> => {
   try {
     const response = await fetch(url, { headers });
@@ -14,6 +14,6 @@ export const fetchData = async <T>(
     return await response.json();
   } catch (error) {
     console.error("Fetch error:", error);
-    throw error; 
+    throw error;
   }
 };

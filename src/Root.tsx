@@ -7,12 +7,11 @@ import { TabletsPage } from "./pages/TabletsPage";
 import { AccessoriesPage } from "./pages/AccessoriesPage";
 import { FavouritesPage } from "./pages/FavouritesPage";
 import { ThemeContextProvider } from "./store/ThemeContext";
-import { Cart } from "./components/cart/Cart";
+
 import { CartContextProvider } from "./store/CartContext";
 import { FvouritesContextProvider } from "./store/FavouritesContext";
-
-
-
+import { Cart } from "./components/cart/Cart";
+import { ThankYouPage } from "./components/cart/ThankYou/ThankYou";
 
 export const Root = () => (
   <BrowserRouter>
@@ -43,6 +42,7 @@ export const Root = () => (
               <Route path="cart">
                 <Route index element={<Cart />} />
               </Route>
+              <Route path="thank-you" element={<ThankYouPage />} />
             </Route>
             <Route path="*" element={<NotFoundPage />} />
           </Routes>

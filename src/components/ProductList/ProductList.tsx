@@ -11,7 +11,7 @@ type Props = {
 export const ProductList: React.FC<Props> = ({ products }) => {
   const { addProducts, getProductQuontity } = useCart();
 
-  const { toggleFavouriteProduct, favouritesProducts} = useFavourits();
+  const { toggleFavouriteProduct, favouritesProducts } = useFavourits();
 
   return (
     <section className={styles.productList}>
@@ -29,7 +29,9 @@ export const ProductList: React.FC<Props> = ({ products }) => {
           addProducts={() => addProducts(product)}
           productQuontity={getProductQuontity(product.id)}
           toggleFavouriteProduct={() => toggleFavouriteProduct(product)}
-          isFavourite={favouritesProducts.some((favProduct) => favProduct.id === product.id)}
+          isFavourite={favouritesProducts.some(
+            (favProduct) => favProduct.id === product.id
+          )}
         />
       ))}
     </section>

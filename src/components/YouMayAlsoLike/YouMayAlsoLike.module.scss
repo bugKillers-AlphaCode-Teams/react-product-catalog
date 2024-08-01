@@ -1,6 +1,6 @@
 @import "../../styles/utils/mixins";
 
-.newModels {
+.youMayAlsoLike {
 
   max-width: 100vw;
 
@@ -9,13 +9,13 @@
 }
 }
 
-.newModelsBrand {
+.youMayAlsoLikeBrand {
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
 
-  .newModelsBrandTitle {
+  .youMayAlsoLikeTitle {
     font-family: "Mont", sans-serif;
     font-size: 32px;
     font-weight: 800;
