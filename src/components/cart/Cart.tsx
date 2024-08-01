@@ -2,7 +2,7 @@ import styles from "./Cart.module.scss";
 import cartEmpty from "../../../public/img/cart-is-empty.png";
 import { useCart } from "../../utils/useCart";
 
-import { ModalCart } from "./ModalCart/ModalCart";
+ import { ModalCart } from "./ModalCart/ModalCart";
 import { useState } from "react";
 import { CartItem } from "./CartItem/CartItem";
 
@@ -20,8 +20,12 @@ export const Cart = () => {
     decrementProduct,
     totalQuantity,
   } = useCart();
-  console.log(products);
 
+  console.log(products);
+  const cartOrder = products.map((item) => ({
+    id: item.product.id,
+    quantity: item.quantity,
+  }));
   return products.length > 0 ? (
     <div className={styles.cart}>
       <h1>Cart</h1>
@@ -48,7 +52,9 @@ export const Cart = () => {
           Checkout
         </button>
       </div>
-      {openModalCart && <ModalCart closeModal={toggleModal} />}
+      {openModalCart && (
+        <ModalCart closeModal={toggleModal} cartOrder={cartOrder} amount={totalPrice} />
+      )}
     </div>
   ) : (
     <div className={styles.cartEmpty}>
