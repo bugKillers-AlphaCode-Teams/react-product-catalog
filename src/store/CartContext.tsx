@@ -49,12 +49,14 @@ export const CartContextProvider: React.FC<Props> = ({ children }) => {
   const saveCartToLocalStorage = (cart: CartItem[]) => {
     localStorage.setItem("cart", JSON.stringify(cart));
   };
+
   const addProducts = (product: Product) => {
     setProducts((prevProducts) => {
       const existingProduct = prevProducts.find(
         (p) => p.product.id === product.id
       );
       let updatedProducts;
+
       if (existingProduct) {
         updatedProducts = prevProducts.map((p) =>
           p.product.id === product.id ? { ...p, quantity: p.quantity + 1 } : p
@@ -78,6 +80,7 @@ export const CartContextProvider: React.FC<Props> = ({ children }) => {
       return updatedProducts;
     });
   };
+
   const decrementProduct = (productId: string) => {
     setProducts((prevProducts) => {
       const existingProduct = prevProducts.find(
@@ -98,10 +101,12 @@ export const CartContextProvider: React.FC<Props> = ({ children }) => {
       return updatedProducts;
     });
   };
+
   const getProductQuontity = (prductId: string) => {
     const item = products.find((p) => p.product.id === prductId);
     return item ? item.quantity : 0;
   };
+  
   return (
     <CartContext.Provider
       value={{

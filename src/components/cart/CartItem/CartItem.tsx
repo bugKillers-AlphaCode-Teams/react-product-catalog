@@ -19,7 +19,7 @@ export const CartItem: React.FC<CartItemType> = ({
   decrementProduct,
 }) => {
   const { images, name, priceDiscount } = product;
-
+  
   return (
     <>
       <article className={styles.cartitem}>

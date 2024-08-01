@@ -8,12 +8,12 @@ import { useFavourits } from "../../utils/useFavourites";
 type Props = {
   products: Product[];
 };
+
 export const ProductList: React.FC<Props> = ({ products }) => {
   const { addProducts, getProductQuontity } = useCart();
 
-  const { toggleFavouriteProduct, favouritesProducts} = useFavourits();
+  const { toggleFavouriteProduct, favouritesProducts } = useFavourits();
 
-  console.log(addProducts);
   return (
     <section className={styles.productList}>
       {products.map((product) => (
@@ -30,7 +30,9 @@ export const ProductList: React.FC<Props> = ({ products }) => {
           addProducts={() => addProducts(product)}
           productQuontity={getProductQuontity(product.id)}
           toggleFavouriteProduct={() => toggleFavouriteProduct(product)}
-          isFavourite={favouritesProducts.some((favProduct) => favProduct.id === product.id)}
+          isFavourite={favouritesProducts.some(
+            (favProduct) => favProduct.id === product.id
+          )}
         />
       ))}
     </section>
