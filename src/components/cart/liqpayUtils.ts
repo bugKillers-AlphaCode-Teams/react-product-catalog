@@ -18,6 +18,7 @@ export type Params = {
   server_url?: string;
   public_key: string;
   language: string;
+  result_url: string;
 };
 
 export const createParams = (params: Partial<Params>): Params => {
@@ -51,9 +52,13 @@ export const createParams = (params: Partial<Params>): Params => {
     "description",
     "language",
   ];
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const newParams = { ...params } as any;
+
   for (const param of stringParams) {
     if (params[param] && typeof params[param] !== "string") {
-      params[param] = String(params[param]);
+      newParams[param] = String(newParams[param]);
     } else if (!params[param] && param !== "language") {
       throw new Error(`${param} is null or not provided`);
     }
@@ -68,6 +73,7 @@ export const createParams = (params: Partial<Params>): Params => {
     version: numericVersion,
     amount: numericAmount,
     language: params.language || "uk",
+    result_url: ""
   };
 
   return { ...defaultParams, ...params } as Params;

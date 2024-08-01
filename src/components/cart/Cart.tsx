@@ -2,16 +2,10 @@ import styles from "./Cart.module.scss";
 import cartEmpty from "../../../public/img/cart-is-empty.png";
 import { useCart } from "../../utils/useCart";
 
- import { ModalCart } from "./ModalCart/ModalCart";
-import { useState } from "react";
 import { CartItem } from "./CartItem/CartItem";
+import { createForm, publicKey, Params } from "./liqpayUtils";
 
 export const Cart = () => {
-  const [openModalCart, setOpenModalCart] = useState(false);
-
-  const toggleModal = () => {
-    setOpenModalCart((prev) => !prev);
-  };
   const {
     products,
     totalPrice,
@@ -21,11 +15,50 @@ export const Cart = () => {
     totalQuantity,
   } = useCart();
 
-  console.log(products);
   const cartOrder = products.map((item) => ({
-    id: item.product.id,
+    name: item.product.name,
     quantity: item.quantity,
   }));
+
+  const formatOrderDescription = (
+    cartOrder: { name: string; quantity: number }[]
+  ) => {
+    return cartOrder.map(
+      (item) => `Name: ${item.name} Quantity: ${item.quantity}`
+    );
+  };
+
+  const handleConfirm = () => {
+    const description = formatOrderDescription(cartOrder);
+
+    const data: Params = {
+      action: "pay",
+      amount: totalPrice,
+      currency: "UAH",
+      description: `${description}`,
+      order_id: new Date().getTime().toString(),
+      version: 3,
+      server_url: "http://localhost:5173",
+      public_key: publicKey,
+      language: "uk",
+      result_url: "http://localhost:5173/thank-you",
+    };
+
+    const formHtml = createForm(data);
+
+    const existingForm = document.getElementById("liqpay-form");
+    if (existingForm) {
+      existingForm.remove();
+    }
+
+    document.body.insertAdjacentHTML("beforeend", formHtml);
+
+    const form = document.getElementById("liqpay-form");
+    if (form !== null) {
+      (form as HTMLFormElement).submit();
+    }
+  };
+
   return products.length > 0 ? (
     <div className={styles.cart}>
       <h1>Cart</h1>
@@ -48,13 +81,10 @@ export const Cart = () => {
           <p className={styles.price}>{totalPrice}</p>
           <span>Total for {totalQuantity} items</span>
         </div>
-        <button className={styles.button} onClick={toggleModal}>
+        <button className={styles.button} onClick={handleConfirm}>
           Checkout
         </button>
       </div>
-      {openModalCart && (
-        <ModalCart closeModal={toggleModal} cartOrder={cartOrder} amount={totalPrice} />
-      )}
     </div>
   ) : (
     <div className={styles.cartEmpty}>

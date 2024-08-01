@@ -11,6 +11,7 @@ import { ThemeContextProvider } from "./store/ThemeContext";
 import { CartContextProvider } from "./store/CartContext";
 import { FvouritesContextProvider } from "./store/FavouritesContext";
 import { Cart } from "./components/Cart/Cart";
+import { ThankYouPage } from "./components/Cart/ThankYou/ThankYou";
 
 export const Root = () => (
   <BrowserRouter>
@@ -25,7 +26,6 @@ export const Root = () => (
 
               <Route path="phones">
                 <Route index element={<PhonePage />} />
-              
               </Route>
 
               <Route path="tablets">
@@ -42,6 +42,7 @@ export const Root = () => (
               <Route path="cart">
                 <Route index element={<Cart />} />
               </Route>
+              <Route path="thank-you" element={<ThankYouPage />} />
             </Route>
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
