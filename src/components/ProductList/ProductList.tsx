@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./ProductList.module.scss";
 import { Product } from "../../types/Product";
-import { ProductCard } from "../ProductCard";
+import { ProductCard, ProducType } from "../ProductCard";
 import { useCart } from "../../utils/useCart";
 import { useFavourits } from "../../utils/useFavourites";
 
@@ -12,7 +12,7 @@ export const ProductList: React.FC<Props> = ({ products }) => {
   const { addProducts, getProductQuontity } = useCart();
 
   const { toggleFavouriteProduct, favouritesProducts } = useFavourits();
-
+  console.log(products);
   return (
     <section className={styles.productList}>
       {products.map((product) => (
@@ -31,8 +31,7 @@ export const ProductList: React.FC<Props> = ({ products }) => {
           toggleFavouriteProduct={() => toggleFavouriteProduct(product)}
           isFavourite={favouritesProducts.some(
             (favProduct) => favProduct.id === product.id
-          )}
-        />
+          )} id={product.id} productType={product.category as ProducType}        />
       ))}
     </section>
   );
