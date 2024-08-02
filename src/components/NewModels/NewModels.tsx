@@ -22,7 +22,7 @@ function preparedNewPhones(data: Product[]) {
     (item) =>
       item.category === "phones" && item.name.startsWith("Apple iPhone 14")
   );
-
+  
   const sortedPhones = phones.sort((a, b) => b.priceRegular - a.priceRegular);
 
   return sortedPhones.slice(0, 20);
@@ -70,6 +70,7 @@ export const NewModels = () => {
             modules={[Navigation]}
           >
             {preparedPhones.map((phone) => {
+
               const { images, name, priceRegular, screen, capacity, ram, id } =
                 phone;
 
@@ -96,6 +97,7 @@ export const NewModels = () => {
                 </SwiperSlide>
               );
             })}
+            ;
           </Swiper>
         </div>
       </section>

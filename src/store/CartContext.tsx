@@ -14,6 +14,7 @@ type CartContext = {
   deleteProduct: (productId: string) => void;
   decrementProduct: (productId: string) => void;
   totalQuantity: number;
+  clearCart: () => void;
 };
 type Props = {
   children: React.ReactNode;
@@ -27,6 +28,7 @@ export const CartContext = createContext<CartContext>({
   deleteProduct: () => {},
   decrementProduct: () => {},
   totalQuantity: 0,
+  clearCart: () => {},
 });
 
 export const CartContextProvider: React.FC<Props> = ({ children }) => {
@@ -106,6 +108,11 @@ export const CartContextProvider: React.FC<Props> = ({ children }) => {
     const item = products.find((p) => p.product.id === prductId);
     return item ? item.quantity : 0;
   };
+
+  const clearCart = () => {
+    saveCartToLocalStorage([]);
+    setProducts([]);
+  };
   
   return (
     <CartContext.Provider
@@ -117,6 +124,7 @@ export const CartContextProvider: React.FC<Props> = ({ children }) => {
         deleteProduct,
         decrementProduct,
         totalQuantity,
+        clearCart,
       }}
     >
       {children}

@@ -39,6 +39,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   return (
     <div className={styles.productCard}>
       <div className={styles.wrapper}>
+     
         <img src={imgSrc} alt={imgAlt} className={styles.productImage} />
         <p className={styles.productCardTitle}>{title}</p>
 
