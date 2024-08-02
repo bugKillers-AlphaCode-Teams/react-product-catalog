@@ -12,11 +12,12 @@
 
 .category {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 16px;
 
-  @media (max-width: 640px) {
-    grid-template-columns: 1fr;
+  @media (min-width: 640px) {
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-bottom: 64px;
   }
 
   @media (min-width: 1200px) {
@@ -34,7 +35,7 @@
     object-fit: cover;
 
     &--tablets {
-      transform: scale(1.1);
+      @include my-hover(transform, scale(1.1));
     }
   }
 
@@ -44,7 +45,7 @@
     overflow: hidden;
 
     &:hover > .category__image {
-      scale: 1.1;
+      @include my-hover(transform, scale(1.1));
     }
 
     &--phones {
