@@ -20,7 +20,8 @@ interface ProductCardProps {
   toggleFavouriteProduct?: () => void;
   isFavourite?: boolean;
   id: string; // Added an ID prop to navigate to specific product pages
-  productType:  ProducType; // Added a productType prop
+  productType: ProducType; // Added a productType prop
+  loading?: boolean; // New loading prop
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({

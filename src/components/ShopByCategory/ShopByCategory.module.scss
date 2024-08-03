@@ -1,12 +1,27 @@
 @import "../../styles/utils/mixins";
+@import "../../styles/fonts.scss";
+
 
 .section {
-  @include content-padding-inlain();
+  // @include content-padding-inlain();
 
   &__title {
+    font-family: "Mont", sans-serif;
+    line-height: 41px;
+    font-weight: 800;
     font-size: 32px;
     margin-bottom: 24px;
     color: #f1f2f9;
+  }
+
+  margin: 80px 0;
+
+  @media (min-width: 640px) {
+    margin: 64px 0;
+  }
+
+  @media (min-width: 1200px) {
+    margin: 80px 0;
   }
 }
 
@@ -14,10 +29,10 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 16px;
+  margin: 80px 0;
 
   @media (min-width: 640px) {
     grid-template-columns: 1fr 1fr 1fr;
-    margin-bottom: 64px;
   }
 
   @media (min-width: 1200px) {
