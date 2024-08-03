@@ -1,5 +1,5 @@
 @import "../../styles/utils/mixins";
-@import "../../styles/fonts.scss";
+
 .swiper__prev,
 .swiper__next {
   display: none;
@@ -32,22 +32,20 @@
 }
 
 .swiper {
-  // max-width: 320px;
-  // max-height: 320px;
+  max-width: 320px;
+  max-height: 320px;
   margin: 0 auto;
   position: relative;
-  // padding-inline: 25px;
   margin-bottom: 50px;
-   @include content-padding-inlain();
 
   @include on-tablet {
-    // max-width: 690px;
-    // max-height: 190px;
+    max-width: 590px;
+    max-height: 190px;
 
     .overlayImage {
       width: 25px;
       height: 25px;
-      transform: translate(0%, 8vh);
+      transform: translate(0%, 13vh);
       padding-top: 8px;
     }
 
@@ -56,14 +54,10 @@
       position: absolute;
       top: 0;
       display: flex;
-      left: 0px;
+      left: -50px;
       background-color: #323542;
       width: 25px;
       height: 100%;
-
-      @include on-tablet {
-        left: 0;
-      }
     }
 
     .swiper__next {
@@ -74,28 +68,25 @@
       display: flex;
       width: 25px;
       height: 100%;
-      right: 0px;
-      @include on-tablet {
-        right: 0px;
-      }
+      right: -50px;
     }
   }
 
   @include on-desktop {
-    max-width: 1136px;
+    max-width: 1040px;
     max-height: 400px;
 
     .overlayImage {
       width: 25px;
       height: 25px;
-      transform: translate(0%, 200px);
+      transform: translate(0%, 30vh);
     }
 
     .swiper__prev {
       position: absolute;
       top: 0;
       display: flex;
-       left: 0px;
+      left: -50px;
       background-color: #323542;
       width: 25px;
       height: 100%;
@@ -108,30 +99,26 @@
       display: flex;
       width: 25px;
       height: 100%;
-      right: 0px;
+      right: -50px;
     }
   }
 
   &__slide {
-    width: 100% !important;
+    width: 320px;
     height: 320px;
     display: grid;
     display: flex;
     border-radius: 15px;
 
     @include on-tablet {
-      // width: 490px;
+      width: 490px;
       height: 190px;
     }
 
     @include on-desktop {
-      // width: 1040px;
+      width: 1040px;
       height: 400px;
     }
-
-    // @media(min-width:700px) and (max-width:1199px) {
-    //   height: 189px;
-    // }
   }
 
   &__wrapper {
@@ -167,8 +154,7 @@
       background-image: url("../../images/icons/firstSlide.png");
 
       @include on-tablet {
-        background-color: #323542;
-        background-image: url("../../images/icons/BannerOnlyIphone.png");
+        background-image: url("../../images/icons/Banner.png");
         background-position: right;
         background-size: cover;
         width: 50%;
@@ -194,7 +180,6 @@
   gap: 24px;
 
   &__title {
-    font-family: "Mont", sans-serif;
     color: #f1f2f9;
     font-size: 32px;
     font-weight: 700;
