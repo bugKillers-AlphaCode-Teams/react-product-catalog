@@ -30,9 +30,9 @@ export const Sort: FC<Props> = ({
   const sortProducts = (criteria: Sorting) => {
     const sortedProducts = [...products];
     switch (criteria) {
-      // case Sorting.BY_YEAR:
-      //   sortedProducts.sort((a, b) => b.year - a.year);
-      //   break;
+      case Sorting.BY_YEAR:
+        sortedProducts.sort((a, b) => b.year - a.year);
+        break;
       case Sorting.BY_NAME:
         sortedProducts.sort((a, b) => a.name.localeCompare(b.name));
         break;
@@ -86,7 +86,7 @@ export const Sort: FC<Props> = ({
             isSortActive && styles.active
           }`}
         >
-          {/* <li
+          <li
             className={styles.dropdown__options__option}
             data-value={Sorting.BY_YEAR}
             onClick={() => {
@@ -94,7 +94,7 @@ export const Sort: FC<Props> = ({
             }}
           >
             Newest
-          </li> */}
+          </li>
           <li
             className={styles.dropdown__options__option}
             data-value={Sorting.BY_NAME}

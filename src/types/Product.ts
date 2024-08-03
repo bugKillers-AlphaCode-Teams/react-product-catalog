@@ -16,6 +16,7 @@ export type Product = {
   processor: string;
   ram: string;
   cell: string[];
+  year: number
 };
 
 export type ProductDescription = {
