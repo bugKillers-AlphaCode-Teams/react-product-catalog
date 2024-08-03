@@ -1,13 +1,13 @@
 export type Product = {
   id: string;
   category: string;
-  namespaceId: string;
+  namespaceId?: string;
   name: string;
   capacityAvailable: string[];
   capacity: string;
   priceRegular: number;
   priceDiscount: number;
-  colorsAvailable: string[];
+  colorsAvailable?: string[];
   color: string;
   images: string[];
   description: ProductDescription[];
@@ -16,6 +16,7 @@ export type Product = {
   processor: string;
   ram: string;
   cell: string[];
+  year: number
 };
 
 export type ProductDescription = {

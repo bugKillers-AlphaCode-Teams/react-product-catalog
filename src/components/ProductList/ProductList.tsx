@@ -8,6 +8,7 @@ import { useFavourits } from "../../utils/useFavourites";
 type Props = {
   products: Product[];
 };
+
 export const ProductList: React.FC<Props> = ({ products }) => {
   const { addProducts, getProductQuontity } = useCart();
 

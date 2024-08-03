@@ -10,8 +10,10 @@ import { ThemeContextProvider } from "./store/ThemeContext";
 
 import { CartContextProvider } from "./store/CartContext";
 import { FvouritesContextProvider } from "./store/FavouritesContext";
+
 import { ThankYouPage } from "./components/cart/ThankYou/ThankYou";
 import { Cart } from "./components/cart/Cart";
+
 
 export const Root = () => (
   <BrowserRouter>

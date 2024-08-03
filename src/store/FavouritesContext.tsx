@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect} from "react";
+import React, { createContext, useState, useEffect } from "react";
 import { Product } from "../types/Product";
 
 type FavouritesContext = {
@@ -12,7 +12,7 @@ type Props = {
 
 export const FavouritesContext = createContext<FavouritesContext>({
   favouritesProducts: [],
-  toggleFavouriteProduct: () => {},
+  toggleFavouriteProduct: () => { },
 });
 
 export const FvouritesContextProvider: React.FC<Props> = ({ children }) => {
@@ -21,14 +21,16 @@ export const FvouritesContextProvider: React.FC<Props> = ({ children }) => {
     return savedFavourites ? JSON.parse(savedFavourites) : [];
   };
 
-  const [favouritesProducts, setProducts] = useState<Product[]>(getFavouritesFromLocalStorage);
+  const [favouritesProducts, setFavouritesProducts] = useState<Product[]>(
+    getFavouritesFromLocalStorage
+  );
 
   const saveFavouritesToLocalStorage = (favourites: Product[]) => {
     localStorage.setItem("favourites", JSON.stringify(favourites));
   };
 
   const toggleFavouriteProduct = (product: Product) => {
-    setProducts((prevProducts) => {
+    setFavouritesProducts((prevProducts) => {
       const productExists = prevProducts.some((p) => p.id === product.id);
 
       const updatedProducts = productExists
