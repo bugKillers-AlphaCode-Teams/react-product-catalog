@@ -34,7 +34,7 @@ export const HotPrices = () => {
 
   const { addProducts, getProductQuontity } = useCart();
 
-  const { toggleFavouriteProduct, favouritesProducts} = useFavourits();
+  const { toggleFavouriteProduct, favouritesProducts } = useFavourits();
 
   return (
     <>
@@ -82,7 +82,10 @@ export const HotPrices = () => {
 
               return (
                 <SwiperSlide className={styles.swiperSlide} key={id}>
-                  <ProductCard key={id}
+                  <ProductCard
+                    key={id}
+                    id={id}
+                    productType='phones'
                     imgSrc={images[0]}
                     imgAlt={name}
                     title={name}
@@ -92,11 +95,8 @@ export const HotPrices = () => {
                     capacity={capacity}
                     ram={ram}
                     addProducts={() => addProducts(phone)}
-                  
                     productQuontity={getProductQuontity(id)}
-
                     toggleFavouriteProduct={() => toggleFavouriteProduct(phone)}
-
                     isFavourite={favouritesProducts.some(
                       (favProduct) => favProduct.id === phone.id
                     )}

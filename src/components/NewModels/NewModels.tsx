@@ -76,7 +76,10 @@ export const NewModels = () => {
 
               return (
                 <SwiperSlide className={styles.swiperSlide} key={id}>
-                  <ProductCard key={id}
+                  <ProductCard
+                    key={id}
+                    id={id}
+                    productType="phones"
                     imgSrc={images[0]}
                     imgAlt={name}
                     title={name}
@@ -85,11 +88,8 @@ export const NewModels = () => {
                     capacity={capacity}
                     ram={ram}
                     addProducts={() => addProducts(phone)}
-                  
                     productQuontity={getProductQuontity(id)}
-
                     toggleFavouriteProduct={() => toggleFavouriteProduct(phone)}
-
                     isFavourite={favouritesProducts.some(
                       (favProduct) => favProduct.id === phone.id
                     )}
