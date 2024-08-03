@@ -53,6 +53,7 @@
       border-bottom: 1px solid rgba(59, 62, 74, 1);
       .price {
         font-size: 32px;
+        padding-bottom: 10px;
       }
 
       span {
@@ -63,6 +64,7 @@
     }
 
     .button {
+      @include my-hover(transform, scale((1.04)));
       margin-top: 16px;
       color: rgba(241, 242, 249, 1);
       border: none;
@@ -73,7 +75,6 @@
 }
 
 .cartEmpty {
-
   font-family: "Mont";
   position: absolute;
   top: 50%;

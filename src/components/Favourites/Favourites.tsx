@@ -2,10 +2,11 @@ import { ProductList } from "../ProductList/ProductList";
 import styles from "./Favourites.module.scss";
 import cartEmpty from "../../../public/img/cart-is-empty.png";
 import { useFavourits } from "../../utils/useFavourites";
+import { useTranslation } from "react-i18next";
 
 export const Favourites = () => {
   const { favouritesProducts } = useFavourits();
-
+  const { t } = useTranslation();
   return (
     <div className={styles.container}>
       {favouritesProducts.length ? (
@@ -22,12 +23,13 @@ export const Favourites = () => {
                 href="/"
                 className={`${styles.favourite__link} ${styles.favourite__link_text}`}
               >
-                Favourites
+                {t("favourites.title")}
               </a>
             </div>
-            <h2 className={styles.favourite_title}>Favourites</h2>
+            <h2 className={styles.favourite_title}> {t("favourites.title")}</h2>
             <div className={styles.favourite_score_items}>
-              {favouritesProducts.length} items
+              {favouritesProducts.length}{" "}
+              {t("favourites.items", { count: favouritesProducts.length })}
             </div>
           </div>
           <div className={styles.productsList}>
@@ -36,7 +38,7 @@ export const Favourites = () => {
         </>
       ) : (
         <div className={styles.cartEmpty}>
-          <h2>Favourites are empty</h2>
+          <h2>{t("favourites.empty")}</h2>
           <img
             className={styles.cartEmptyImg}
             src={cartEmpty}

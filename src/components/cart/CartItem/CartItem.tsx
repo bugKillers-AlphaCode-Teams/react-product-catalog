@@ -1,5 +1,5 @@
 import styles from "./CartItem.module.scss";
-import closeWhiteIcon from "../../../images/icons/CloseWhiteIcon.png";
+import closeWhiteIcon from "../../../../public/img/closer-menu.svg";
 import minusWhiteIcon from "../../../images/icons/MinusWhite.png";
 import plusWhiteIcon from "../../../images/icons/PlusWhite.png";
 import { Product } from "../../../types/Product";

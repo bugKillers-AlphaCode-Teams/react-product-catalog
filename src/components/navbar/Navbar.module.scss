@@ -183,13 +183,22 @@ h6 {
   @media (max-width: 639px) {
     display: none;
   }
-  &:first-child {
+  &:nth-child(2) {
     border-left: 1px solid #323542;
     border-right: 1px solid #323542;
   }
   &:hover {
     border-bottom: 2px solid white;
   }
+}
+.language {
+  font-family: "Mont";
+  font-weight: 600;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  border-left: 1px solid #323542;
+  border-top: 1px solid #323542;
 }
 .burger__menu {
   display: none;
@@ -241,7 +250,6 @@ h6 {
   position: absolute;
   right: 15px;
   top: 15px;
-
 }
 
 .favourit {

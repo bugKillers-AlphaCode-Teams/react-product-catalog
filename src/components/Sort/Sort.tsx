@@ -1,12 +1,14 @@
 import { FC, useState } from "react";
 import styles from "./Sort.module.scss";
 import { Product } from "../../types/Product";
+import { useTranslation } from "react-i18next";
 
 export enum Sorting {
   BY_YEAR = "newest",
   BY_NAME = "alphabetically",
   BY_PRICE = "cheapest",
 }
+
 
 interface Props {
   products: Product[];
@@ -26,7 +28,22 @@ export const Sort: FC<Props> = ({
   const [isSortActive, setIsSortActive] = useState(false);
   const [isSortNumberActive, setIsSortNumberActive] = useState(false);
   const [sortCriteria, setSortCriteria] = useState(Sorting.BY_NAME);
+  const { t } = useTranslation();
 
+
+
+   const getSortOptionLabel = (sortOption: Sorting): string => {
+    switch (sortOption) {
+      case Sorting.BY_YEAR:
+        return t("sortBy.newest");
+      case Sorting.BY_NAME:
+        return t("sortBy.alphabetically");
+      case Sorting.BY_PRICE:
+        return t("sortBy.cheapest");
+      default:
+        return "";
+    }
+  };
   const sortProducts = (criteria: Sorting) => {
     const sortedProducts = [...products];
     switch (criteria) {
@@ -65,10 +82,14 @@ export const Sort: FC<Props> = ({
   return (
     <div className={styles.sort__container}>
       <div className={styles.dropdown}>
-        <p className={styles.dropdown__label}>Sort by</p>
+        <p className={styles.dropdown__label}>{t("sortBy.title")}</p>
 
         <div className={styles.dropdown__box}>
-          <span className={`${styles.dropdown__box__text} ${styles.Alphabetically}`}>{sortCriteria}</span>
+          <span
+            className={`${styles.dropdown__box__text} ${styles.Alphabetically}`}
+          >
+            {getSortOptionLabel(sortCriteria)}
+          </span>
           <button
             className={styles.dropdown__box__trigger}
             onClick={onSortTrigger}
@@ -93,31 +114,31 @@ export const Sort: FC<Props> = ({
               handleSortOptionClick(Sorting.BY_YEAR);
             }}
           >
-            Newest
+            {t("sortBy.newest")}
           </li>
           <li
             className={styles.dropdown__options__option}
             data-value={Sorting.BY_NAME}
             onClick={() => handleSortOptionClick(Sorting.BY_NAME)}
           >
-            Alphabetically
+            {t("sortBy.alphabetically")}
           </li>
           <li
             className={styles.dropdown__options__option}
             data-value={Sorting.BY_PRICE}
             onClick={() => handleSortOptionClick(Sorting.BY_PRICE)}
           >
-            Cheapest
+            {t("sortBy.cheapest")}
           </li>
         </ul>
       </div>
 
       <div className={styles.dropdown}>
-        <p className={styles.dropdown__label}>Items on page</p>
+        <p className={styles.dropdown__label}>{t("sortBy.items")}</p>
 
         <div className={`${styles.dropdown__box} ${styles.sort__number}`}>
           <span className={styles.dropdown__box__text}>
-            {productsPerPage > 16 ? "All" : productsPerPage}
+            {productsPerPage > 16 ? t("sortBy.all") : productsPerPage}
           </span>
           <button
             className={styles.dropdown__box__trigger}
@@ -162,7 +183,7 @@ export const Sort: FC<Props> = ({
             data-value={Sorting.BY_PRICE}
             onClick={() => handleSortByNumberClick(products.length)}
           >
-            All
+            {t("sortBy.all")}
           </li>
         </ul>
       </div>
