@@ -32,7 +32,10 @@ export const ProductList: React.FC<Props> = ({ products }) => {
           toggleFavouriteProduct={() => toggleFavouriteProduct(product)}
           isFavourite={favouritesProducts.some(
             (favProduct) => favProduct.id === product.id
-          )} id={product.id} productType={product.category as ProducType}        />
+          )}
+          id={product.id}
+          productType={product.category as ProducType}
+        />
       ))}
     </section>
   );

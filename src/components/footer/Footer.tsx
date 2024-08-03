@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Footer.module.scss";
 import logo from "../../images/icons/Logo.svg";
 import chevron from "../../images/icons/Chevron (Arrow Right).svg";
+import { useTranslation } from "react-i18next";
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -23,10 +24,9 @@ export const Footer: React.FC = () => {
     requestAnimationFrame(step);
   };
 
+  const { t } = useTranslation();
   return (
     <div className={styles.footer}>
-
-
       <div className={styles.wrapper}>
         <a href="/" className={styles.logo}>
           <img src={logo} className={styles.logoImage} alt="logo" />
@@ -35,29 +35,32 @@ export const Footer: React.FC = () => {
         <div className={styles.items}>
           <ul className={styles.links}>
             <li>
-              <a href="#" className={styles.link}>Github</a>
+              <a href="#" className={styles.link}>
+                {t("footer.github.text")}
+              </a>
             </li>
             <li>
-              <a href="#" className={styles.link}>Contacts</a>
+              <a href="#" className={styles.link}>
+                {t("footer.contacts.text")}
+              </a>
             </li>
             <li>
-              <a href="#" className={styles.link}>Rights</a>
-
+              <a href="#" className={styles.link}>
+                {t("footer.rights.text")}
+              </a>
             </li>
           </ul>
         </div>
 
-
         <div className={styles.goUp} onClick={scrollToTop}>
           <span className={styles.goUpText}>
-            Back to top button
+            {t("footer.back.text")}
             <div className={styles.chevron}>
               <div className={styles.wrapperChevron}>
                 <img src={chevron} alt="chevron" />
               </div>
             </div>
           </span>
-
         </div>
       </div>
     </div>

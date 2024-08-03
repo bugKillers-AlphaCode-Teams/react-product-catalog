@@ -1,10 +1,11 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./ProductCard.module.scss";
 import addToFavorites from "../../images/icons/add-to-favorite.png";
 import isFvoutites from "/public/img/favourite-red.svg";
+import { useTranslation } from "react-i18next";
 
-export type ProducType = 'phones' | 'tablets' | 'accessories';
+export type ProducType = "phones" | "tablets" | "accessories";
 
 interface ProductCardProps {
   imgSrc: string;
@@ -21,7 +22,6 @@ interface ProductCardProps {
   isFavourite?: boolean;
   id: string; // Added an ID prop to navigate to specific product pages
   productType: ProducType; // Added a productType prop
-  loading?: boolean; // New loading prop
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({
@@ -41,16 +41,17 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   productType,
 }) => {
   const navigate = useNavigate();
-  
+
   const navigateToProduct = () => {
-    if (productType === 'phones') {
+    if (productType === "phones") {
       navigate(`/phones/${id}`);
-    } else if (productType === 'tablets') {
+    } else if (productType === "tablets") {
       navigate(`/tablets/${id}`);
-    } else if (productType === 'accessories') {
+    } else if (productType === "accessories") {
       navigate(`/accessories/${id}`);
     }
   };
+  const { t } = useTranslation();
 
   const buttonStyle =
     productQuontity && productQuontity > 0
@@ -60,7 +61,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   return (
     <div className={styles.productCard}>
       <div className={styles.wrapper}>
-        <img src={imgSrc} alt={imgAlt} className={styles.productImage} onClick={navigateToProduct} />
+        <img
+          src={imgSrc}
+          alt={imgAlt}
+          className={styles.productImage}
+          onClick={navigateToProduct}
+        />
         <p className={styles.productCardTitle}>{title}</p>
 
         <div className={styles.priceWrapper}>
@@ -72,26 +78,38 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
         <div className={styles.productCardSpecs}>
           <div className={styles.productCardSpec}>
-            <span className={styles.productCardLabel}>Screen</span>
+            <span className={styles.productCardLabel}>
+              {" "}
+              {t("productCard.screen")}
+            </span>
             <span className={styles.productCardValue}>{screen}</span>
           </div>
 
           <div className={styles.productCardSpec}>
-            <span className={styles.productCardLabel}>Capacity</span>
+            <span className={styles.productCardLabel}>
+              {t("productCard.capacity")}
+            </span>
             <span className={styles.productCardValue}>{capacity}</span>
           </div>
 
           <div className={styles.productCardSpec}>
-            <span className={styles.productCardLabel}>RAM</span>
+            <span className={styles.productCardLabel}>
+              {" "}
+              {t("productCard.ram")}
+            </span>
             <span className={styles.productCardValue}>{ram}</span>
           </div>
         </div>
 
         <div className={styles.productCardButtons}>
-          <button onClick={addProducts} className={buttonStyle}>
+          <button
+            onClick={addProducts}
+            className={buttonStyle}
+            disabled={!!productQuontity && productQuontity > 0}
+          >
             {productQuontity && productQuontity > 0
-              ? "Added to cart"
-              : "Add to cart"}
+              ? t("productCard.button.added")
+              : t("productCard.button.add")}
           </button>
           <button className={styles.toFavorite}>
             <img

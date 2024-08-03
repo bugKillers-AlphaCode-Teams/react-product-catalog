@@ -4,6 +4,8 @@ import { useCart } from "../../utils/useCart";
 
 import { CartItem } from "./CartItem/CartItem";
 import { createForm, publicKey, Params } from "./liqpayUtils";
+import { useTranslation } from "react-i18next";
+import { getItemForm } from "../../utils/getItemForm";
 
 export const Cart = () => {
   const {
@@ -14,7 +16,8 @@ export const Cart = () => {
     decrementProduct,
     totalQuantity,
   } = useCart();
-
+  const { t } = useTranslation();
+  const itemForm = getItemForm(totalQuantity, t);
   const cartOrder = products.map((item) => ({
     name: item.product.name,
     quantity: item.quantity,
@@ -61,7 +64,7 @@ export const Cart = () => {
 
   return products.length > 0 ? (
     <div className={styles.cart}>
-      <h1>Cart</h1>
+      <h1>{t("cart.cart")}</h1>
       <div className={styles.cartList}>
         {products.map((product) => (
           <CartItem
@@ -79,16 +82,19 @@ export const Cart = () => {
       <div className={styles.checkout}>
         <div className={styles.totalPrice}>
           <p className={styles.price}>{totalPrice}</p>
-          <span>Total for {totalQuantity} items</span>
+          <span>
+            {" "}
+            {t("cart.totalItems", { count: totalQuantity, item: itemForm })}
+          </span>
         </div>
         <button className={styles.button} onClick={handleConfirm}>
-          Checkout
+          {t("cart.checkout")}
         </button>
       </div>
     </div>
   ) : (
     <div className={styles.cartEmpty}>
-      <h2>Cart is empty</h2>
+      <h2>{t("cart.text")}</h2>
       <img
         className={styles.cartEmptyImg}
         src={cartEmpty}
