@@ -11,7 +11,7 @@ export const Order: React.FC = () => {
           </h1>
           <p className={styles.banner__text}>Be the first!</p>
         </div>
-        <a href="/phone" className={styles.banner__button}>
+        <a href="/phones" className={styles.banner__button}>
           Order now
         </a>
       </div>
