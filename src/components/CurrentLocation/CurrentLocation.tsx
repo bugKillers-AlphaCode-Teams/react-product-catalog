@@ -1,11 +1,13 @@
 import { Link, useLocation } from "react-router-dom";
 import styles from "./CurrentLocation.module.scss";
 import homeIcon from "../../../public/img/House.svg";
+import { useTranslation } from "react-i18next";
 
 export const CurrentLocation = () => {
   const { pathname } = useLocation();
   const currentLocation = pathname.slice(1);
-
+   const { t } = useTranslation();
+  const translatedLocation = t(`location.${currentLocation}`);
   return (
     <div className={styles.currentLocation}>
       <Link to="/">
@@ -26,7 +28,7 @@ export const CurrentLocation = () => {
         />
       </svg>
 
-      <p className={styles.currentLocationName}>{currentLocation}</p>
+      <p className={styles.currentLocationName}>{translatedLocation}</p>
     </div>
   );
 };

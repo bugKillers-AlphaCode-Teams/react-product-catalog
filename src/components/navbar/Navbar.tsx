@@ -4,11 +4,19 @@ import { useState } from "react";
 import { ThemeButton } from "../ThemeButton/ThemeButton";
 import { useCart } from "../../utils/useCart";
 import { useFavourits } from "../../utils/useFavourites";
+import { useTranslation } from "react-i18next";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { totalQuantity } = useCart();
   const { favouritesProducts } = useFavourits();
+  const { t, i18n } = useTranslation();
+  const currentLanguage = i18n.language;
+
+  const toggleLanguage = () => {
+    const newLanguage = currentLanguage === "en" ? "uk" : "en";
+    i18n.changeLanguage(newLanguage);
+  };
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -35,7 +43,7 @@ export const Navbar = () => {
                 className={styles.nav__link}
                 onClick={() => toggleMenuWhenActive()}
               >
-                Home
+                {i18n.t("nav.home.text")}
               </NavLink>
             </li>
             <li>
@@ -44,7 +52,7 @@ export const Navbar = () => {
                 to="phones"
                 onClick={() => toggleMenuWhenActive()}
               >
-                Phones
+                {i18n.t("nav.phones.text")}
               </NavLink>
             </li>
             <li>
@@ -53,7 +61,7 @@ export const Navbar = () => {
                 to="tablets"
                 onClick={() => toggleMenuWhenActive()}
               >
-                Tablets
+                {i18n.t("nav.tablets.text")}
               </NavLink>
             </li>
             <li>
@@ -62,7 +70,7 @@ export const Navbar = () => {
                 to="accessories"
                 onClick={() => toggleMenuWhenActive()}
               >
-                accessories
+                {t("nav.accessories.text")}
               </NavLink>
             </li>
           </ul>
@@ -70,7 +78,13 @@ export const Navbar = () => {
         <div className={styles.themeButton}>
           <ThemeButton />
         </div>
+
         <div className={styles.icons}>
+          <button onClick={toggleLanguage} className={`${styles.language}`}>
+            {currentLanguage === "en"
+              ? i18n.t("header.lang.text")
+              : i18n.t("header.lang.text")}
+          </button>
           <NavLink
             to="favourites"
             className={`${styles.icon} icon--favourit`}

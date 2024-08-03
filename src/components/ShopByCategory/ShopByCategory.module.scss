@@ -2,11 +2,12 @@
 
 .section {
   @include content-padding-inlain();
-
+  font-family: "Mont";
   &__title {
     font-size: 32px;
     margin-bottom: 24px;
     color: #f1f2f9;
+    font-family: "Mont";
   }
 }
 

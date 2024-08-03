@@ -16,6 +16,7 @@ import { Product } from "../../types/Product";
 import data from "../../../public/api/phones.json";
 import { useCart } from "../../utils/useCart";
 import { useFavourits } from "../../utils/useFavourites";
+import { useTranslation } from "react-i18next";
 
 function preparedHotPricesPhones(data: Product[]) {
   const phones = data.filter(
@@ -30,6 +31,7 @@ function preparedHotPricesPhones(data: Product[]) {
 const preparedHotPhones = preparedHotPricesPhones(data);
 
 export const HotPrices = () => {
+  const { t } = useTranslation();
   const swiperRef = useRef<SwiperCore | null>(null);
 
   const { addProducts, getProductQuontity } = useCart();
@@ -40,7 +42,7 @@ export const HotPrices = () => {
     <>
       <section className={styles.hotPrices}>
         <div className={styles.hotPricesBrand}>
-          <h2 className={styles.hotPricesBrandTitle}>Hot prices</h2>
+          <h2 className={styles.hotPricesBrandTitle}>{t("hotPrice.title")}</h2>
 
           <div className={styles.buttonsSlider}>
             <button
@@ -85,7 +87,7 @@ export const HotPrices = () => {
                   <ProductCard
                     key={id}
                     id={id}
-                    productType='phones'
+                    productType="phones"
                     imgSrc={images[0]}
                     imgAlt={name}
                     title={name}
