@@ -10,10 +10,8 @@ import { ThemeContextProvider } from "./store/ThemeContext";
 
 import { CartContextProvider } from "./store/CartContext";
 import { FvouritesContextProvider } from "./store/FavouritesContext";
-
-import { ThankYouPage } from "./components/cart/ThankYou/ThankYou";
 import { Cart } from "./components/cart/Cart";
-
+import { ThankYouPage } from "./components/cart/ThankYou/ThankYou";
 
 export const Root = () => (
   <BrowserRouter>
@@ -25,28 +23,23 @@ export const Root = () => (
               <Route index element={<HomePage />} />
 
               <Route path="home" element={<Navigate to="/" replace />} />
-              <Route path="phones/:phoneId" element={<PhonePage />} />
+
               <Route path="phones">
                 <Route index element={<PhonePage />} />
               </Route>
-              <Route path="tablets/:tabletId" element={<TabletsPage />} />
+
               <Route path="tablets">
                 <Route index element={<TabletsPage />} />
               </Route>
-              <Route
-                path="accessories/:accessoriesId"
-                element={<AccessoriesPage />}
-              />
+
               <Route path="accessories">
                 <Route index element={<AccessoriesPage />} />
               </Route>
 
               <Route path="favourites">
-                <Route path="/favourites" element={<FavouritesPage />} />
                 <Route index element={<FavouritesPage />} />
               </Route>
               <Route path="cart">
-                <Route path="/cart" element={<Cart />} />
                 <Route index element={<Cart />} />
               </Route>
               <Route path="thank-you" element={<ThankYouPage />} />

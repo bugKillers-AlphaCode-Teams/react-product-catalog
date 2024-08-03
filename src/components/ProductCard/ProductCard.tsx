@@ -1,10 +1,6 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import styles from "./ProductCard.module.scss";
 import addToFavorites from "../../images/icons/add-to-favorite.png";
 import isFvoutites from "/public/img/favourite-red.svg";
-
-export type ProducType = 'phones' | 'tablets' | 'accessories';
 
 interface ProductCardProps {
   imgSrc: string;
@@ -19,8 +15,6 @@ interface ProductCardProps {
   productQuontity?: number;
   toggleFavouriteProduct?: () => void;
   isFavourite?: boolean;
-  id: string; // Added an ID prop to navigate to specific product pages
-  productType:  ProducType; // Added a productType prop
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({
@@ -36,21 +30,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   productQuontity,
   toggleFavouriteProduct,
   isFavourite,
-  id,
-  productType,
 }) => {
-  const navigate = useNavigate();
-  
-  const navigateToProduct = () => {
-    if (productType === 'phones') {
-      navigate(`/phones/${id}`);
-    } else if (productType === 'tablets') {
-      navigate(`/tablets/${id}`);
-    } else if (productType === 'accessories') {
-      navigate(`/accessories/${id}`);
-    }
-  };
-
   const buttonStyle =
     productQuontity && productQuontity > 0
       ? styles.productCardButtonsDisabled
@@ -59,7 +39,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   return (
     <div className={styles.productCard}>
       <div className={styles.wrapper}>
-        <img src={imgSrc} alt={imgAlt} className={styles.productImage} onClick={navigateToProduct} />
+     
+        <img src={imgSrc} alt={imgAlt} className={styles.productImage} />
         <p className={styles.productCardTitle}>{title}</p>
 
         <div className={styles.priceWrapper}>
@@ -93,12 +74,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               : "Add to cart"}
           </button>
           <button className={styles.toFavorite}>
-            <img
-              className={styles.productCardAddToFavorite}
-              src={isFavourite ? isFvoutites : addToFavorites}
-              alt="add to favorites"
-              onClick={toggleFavouriteProduct}
-            />
+          <img
+            className={styles.productCardAddToFavorite}
+            src={isFavourite ? isFvoutites : addToFavorites}
+            alt="add to favorites"
+            onClick={toggleFavouriteProduct}
+          />
           </button>
         </div>
       </div>
