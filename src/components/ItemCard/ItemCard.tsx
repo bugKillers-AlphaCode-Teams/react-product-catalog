@@ -14,29 +14,14 @@ import WhiteColor from "../../images/icons/WhiteColor.svg";
 import newPrice from "../../images/icons/$799.svg";
 import oldPrice from "../../images/icons/$1199.svg";
 import addToFavorites from "../../images/icons/add-to-favorite.png";
-import isFvoutites from "/public/img/favourite-red.svg";
 import { YouMayAlsoLike } from "../YouMayAlsoLike";
 
-interface ProductPage {
-  addProducts?: () => void;
-  productQuontity?: number;
-  toggleFavouriteProduct: () => void;
-  isFavourite: boolean;
-}
 
-export const ProductPage: React.FC<ProductPage> = ({
-  addProducts,
-  productQuontity,
-  toggleFavouriteProduct,
-  isFavourite,
-}) => {
-  const buttonStyle =
-    productQuontity && productQuontity > 0
-      ? styles.productCardButtonsDisabled
-      : styles.productCardButtonsAdd;
+export const ProductPage: React.FC = () => {
+  const buttonStyle = styles.productCardButtonsAdd;
 
   return (
-  <>
+  <div>
     <button className={styles.backButton}>
     <img src={ChevronArrowLeft} alt="Back" className={styles.icon} />
     <span className={styles.backText}>Back</span>
@@ -143,20 +128,18 @@ export const ProductPage: React.FC<ProductPage> = ({
               </div>
 
               <div className={styles.productCardButtons}>
-                <button onClick={addProducts} className={buttonStyle}>
-                  {productQuontity && productQuontity > 0
-                    ? "Added to cart"
-                    : "Add to cart"}
+                <button className={buttonStyle}>
+                  Add to cart
                 </button>
                 <img
                   className={styles.productCardAddToFavorite}
-                  src={isFavourite ? isFvoutites : addToFavorites}
+                  src={addToFavorites}
                   alt="add to favorites"
-                  onClick={toggleFavouriteProduct}
                 />
               </div>
             </div>
-  </div>                   
+  </div>         
+            
             <div className={styles.shortInfo}>
               <ul className={styles.shortInfoText}>
                 <li className={styles.shortInfoTextItem}>
@@ -269,6 +252,6 @@ export const ProductPage: React.FC<ProductPage> = ({
         </div>   
     </div>
     <YouMayAlsoLike />
-  </>  
+  </div>  
   );
 };
