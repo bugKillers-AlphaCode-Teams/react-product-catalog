@@ -5,13 +5,13 @@ import { Pagination } from "../components/Pagination/Pagination.tsx";
 import { fetchProducts } from "../services/tabletsService.ts";
 import { CurrentLocation } from "../components/CurrentLocation/CurrentLocation.tsx";
 import { Sort } from "../components/Sort/Sort.tsx";
-
+import { useTranslation } from "react-i18next";
 
 export const TabletsPage = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage, setProductsPerPage] = useState(16);
-
+  const { t } = useTranslation();
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -46,7 +46,7 @@ export const TabletsPage = () => {
   return (
     <>
       <CurrentLocation />
-      <h1>Tablets</h1>
+      <h1>{t("pageTablets.title")}</h1>
       <Sort
         setProducts={setProducts}
         products={products}

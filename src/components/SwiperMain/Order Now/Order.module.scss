@@ -37,7 +37,7 @@
       margin: 15px;
       border-radius: 25px;
       gap: 75px;
-      padding: 50px;
+      // padding: 50px;
     }
   }
 
@@ -57,6 +57,9 @@
   }
 
   &__text {
+    text-align: left;
+    font-family: "Mont", sans-serif;
+    font-size: bold;
     color: rgb(180, 189, 196);
     font-size: 9px;
 

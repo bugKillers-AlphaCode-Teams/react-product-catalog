@@ -7,12 +7,14 @@ import styles from "./Swiper.module.scss";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Order } from "./Order Now/Order";
 import classNames from "classnames";
+import { useTranslation } from "react-i18next";
 
 export const Slider: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <div>
       <section className={`${styles.page__main} ${styles.main}`}>
-        <h1 className={styles.main__title}>Welcome to Nice Gadgets store!</h1>
+        <h1 className={styles.main__title}>{t("slider.text")}</h1>
       </section>
 
       <div className={`main__swiper ${styles.swiper}`}>
@@ -21,10 +23,10 @@ export const Slider: React.FC = () => {
           spaceBetween={0}
           slidesPerView={1}
           loop={true}
-          autoplay={{
-            delay: 5000,
-            disableOnInteraction: false,
-          }}
+          // autoplay={{
+          //   delay: 5000,
+          //   disableOnInteraction: false,
+          // }}
           navigation={{
             nextEl: `.${styles.swiper__next}`,
             prevEl: `.${styles.swiper__prev}`,
@@ -33,7 +35,7 @@ export const Slider: React.FC = () => {
             el: `.${styles.swiper__pagination}`,
             clickable: true,
             bulletClass: `${styles["swiper-pagination-bullet"]}`,
-            bulletActiveClass: `${styles["swiper-pagination-bullet-active"]}`
+            bulletActiveClass: `${styles["swiper-pagination-bullet-active"]}`,
           }}
           scrollbar={{ draggable: true }}
         >
@@ -68,21 +70,27 @@ export const Slider: React.FC = () => {
             </div>
           </SwiperSlide>
         </Swiper>
-        <div className={classNames(styles.swiper__prev, "swiper__Button__Prev")}>
+        <div
+          className={classNames(styles.swiper__prev, "swiper__Button__Prev")}
+        >
           <img
             src="src/images/icons/Chevron (Arrow Left).png"
             alt="Prev"
             className={styles.overlayImage}
           />
         </div>
-        <div className={classNames(styles.swiper__next, "swiper__Button__Next")}>
+        <div
+          className={classNames(styles.swiper__next, "swiper__Button__Next")}
+        >
           <img
             src="src/images/icons/Chevron (Arrow Right).png"
             alt="Next"
             className={styles.overlayImage}
           />
         </div>
-        <div className={classNames(styles.swiper__pagination, "swiper-pagination")}></div>
+        <div
+          className={classNames(styles.swiper__pagination, "swiper-pagination")}
+        ></div>
       </div>
     </div>
   );

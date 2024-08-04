@@ -1,4 +1,3 @@
-
 import { useRef } from "react";
 
 import sliderRight from "../../images/icons/buttonSlider-right.png";
@@ -13,16 +12,17 @@ import "swiper/scss/navigation";
 import "swiper/scss";
 
 import { Product } from "../../types/Product";
-import data from "../../../public/api/phones.json"
+import data from "../../../public/api/phones.json";
 import { useCart } from "../../utils/useCart";
 import { useFavourits } from "../../utils/useFavourites";
+import { useTranslation } from "react-i18next";
 
 function preparedNewPhones(data: Product[]) {
   const phones = data.filter(
     (item) =>
       item.category === "phones" && item.name.startsWith("Apple iPhone 14")
   );
-  
+
   const sortedPhones = phones.sort((a, b) => b.priceRegular - a.priceRegular);
 
   return sortedPhones.slice(0, 20);
@@ -31,6 +31,8 @@ function preparedNewPhones(data: Product[]) {
 const preparedPhones = preparedNewPhones(data);
 
 export const NewModels = () => {
+  const { t } = useTranslation();
+
   const swiperRef = useRef<SwiperCore | null>(null);
 
   const { addProducts, getProductQuontity } = useCart();
@@ -41,7 +43,7 @@ export const NewModels = () => {
     <>
       <section className={styles.newModels}>
         <div className={styles.newModelsBrand}>
-          <h2 className={styles.newModelsBrandTitle}>Brand new models</h2>
+          <h2 className={styles.newModelsBrandTitle}>{t("newModels.text")}</h2>
 
           <div className={styles.buttonsSlider}>
             <button
@@ -70,13 +72,15 @@ export const NewModels = () => {
             modules={[Navigation]}
           >
             {preparedPhones.map((phone) => {
-
               const { images, name, priceRegular, screen, capacity, ram, id } =
                 phone;
 
               return (
                 <SwiperSlide className={styles.swiperSlide} key={id}>
-                  <ProductCard key={id}
+                  <ProductCard
+                    key={id}
+                    id={id}
+                    productType="phones"
                     imgSrc={images[0]}
                     imgAlt={name}
                     title={name}
@@ -85,11 +89,8 @@ export const NewModels = () => {
                     capacity={capacity}
                     ram={ram}
                     addProducts={() => addProducts(phone)}
-                  
                     productQuontity={getProductQuontity(id)}
-
                     toggleFavouriteProduct={() => toggleFavouriteProduct(phone)}
-
                     isFavourite={favouritesProducts.some(
                       (favProduct) => favProduct.id === phone.id
                     )}

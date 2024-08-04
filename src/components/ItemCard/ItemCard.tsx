@@ -1,8 +1,6 @@
 import React from "react";
 import styles from "./ItemCard.module.scss";
-import ChevronArrowRight from "../../images/icons/Chevron (Arrow Right).png";
 import ChevronArrowLeft from "../../images/icons/Chevron (Arrow Left).png";
-import home from "../../../public/img/House.svg";
 import iphoneMask from "../../images/icons/Photo mask.svg";
 import SliderPhoto1 from "../../images/icons/Slider photo 1.svg";
 import SliderPhoto2 from "../../images/icons/Slider photo 2.svg";
@@ -51,8 +49,6 @@ export const ProductPage: React.FC<ProductPage> = ({
 <div className={styles.productPage}>
 
   <div className={styles.top}>     
-      {/* <div className={styles.wrapperIMG}>
-        <div className={styles.wrapperIMG1}> */}
           <div className={styles.productImageWrapper}>
             <img
               src={iphoneMask}
@@ -135,8 +131,6 @@ export const ProductPage: React.FC<ProductPage> = ({
                     </div>
                   </div>
                 </div>
-               {/* </div>
-            </div> */}
 
             <div className={styles.AddToAndPrice}>
               <div className={styles.price}>

@@ -17,7 +17,10 @@ import { useCart } from "../../utils/useCart";
 import { useFavourits } from "../../utils/useFavourites";
 
 function preparedAlsoLikePhones(data: Product[]) {
-  const phones = data.filter(item => item.category === 'phones' && item.name.startsWith('Apple iPhone 13'));
+  const phones = data.filter(
+    (item) =>
+      item.category === "phones" && item.name.startsWith("Apple iPhone 13")
+  );
   const sortedPhones = phones.sort((a, b) => b.priceRegular - a.priceRegular);
 
   return sortedPhones.slice(0, 20);
@@ -55,7 +58,8 @@ export const YouMayAlsoLike = () => {
         </div>
 
         <div className={styles.productsList}>
-          <Swiper className={styles.swiper}
+          <Swiper
+            className={styles.swiper}
             onSwiper={(swiper) => {
               swiperRef.current = swiper;
             }}
@@ -63,32 +67,33 @@ export const YouMayAlsoLike = () => {
             spaceBetween={16}
             modules={[Navigation]}
           >
-            {preparedLikePhones.map(phone => {
-              const { images, name, priceRegular, screen, capacity, ram, id } = phone;
+            {preparedLikePhones.map((phone) => {
+              const { images, name, priceRegular, screen, capacity, ram, id } =
+                phone;
 
               return (
-              <SwiperSlide className={styles.swiperSlide} key={id}>
-                <ProductCard
-                  imgSrc={images[0]}
-                  imgAlt={name}
-                  title={name}
-                  price={priceRegular}
-                  screen={screen}
-                  capacity={capacity}
+                <SwiperSlide className={styles.swiperSlide} key={id}>
+                  <ProductCard
+                    id={phone.id}
+                    productType="phones"
+                    imgSrc={images[0]}
+                    imgAlt={name}
+                    title={name}
+                    price={priceRegular}
+                    screen={screen}
+                    capacity={capacity}
                     ram={ram}
                     addProducts={() => addProducts(phone)}
-                  
                     productQuontity={getProductQuontity(id)}
-
                     toggleFavouriteProduct={() => toggleFavouriteProduct(phone)}
-
                     isFavourite={favouritesProducts.some(
                       (favProduct) => favProduct.id === phone.id
                     )}
-                />
-              </SwiperSlide>
-              )
-            })};
+                  />
+                </SwiperSlide>
+              );
+            })}
+            ;
           </Swiper>
         </div>
       </section>
