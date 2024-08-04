@@ -1,0 +1,335 @@
+@import "../../styles/utils/mixins";
+
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  width: 66px;
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  .icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .backText {
+    
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    color: #F1F2F9;
+    font-family: "Mont", sans-serif;
+  }
+}
+
+.productPage {
+  display: flex;
+  flex-direction: column;
+  @include content-padding-inlain();
+  font-family: "Mont", sans-serif;
+  @include on-tablet {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  };
+
+
+  .top {
+    align-items: center;
+    margin: 0 auto;
+
+    @include on-tablet {
+      display: flex;
+      margin: 0;
+    }
+
+
+    .productImageWrapper {
+      padding-bottom: 16px;
+      order: 2;
+    }
+
+    .gallery {
+      display: flex;
+
+      @include on-tablet {
+        display: flex;
+        flex-direction: column;
+      }
+
+    }
+  }
+
+  .mainControls {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 40px;
+    @include on-tablet {
+      min-width: 540px;
+    }
+
+    .colorsText {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-family: "Mont", sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 15px;
+      color: #75767F;
+    }
+
+    .colors {
+      display: flex;
+      gap: 9px;
+      border-bottom: 1px solid #3B3E4A;
+      padding-bottom: 24px;
+      margin-bottom: 24px;
+    }
+
+    .capacity {
+      
+      .selectCapacity {
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 15.34px;
+        color: #75767F;
+        margin-bottom: 8px;
+      }
+
+      .capacityText {
+        display: flex;
+        gap: 8px;
+        padding-bottom: 24px;
+        margin-bottom: 24px;
+        border-bottom: 1px solid #3B3E4A;
+      }
+
+      .capacity1 {
+        border: 1px solid #3B3E4A;
+        padding: 7px;
+      }
+    }
+
+    .price {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .productCardButtons {
+          display: flex;
+          padding-top: 8px;
+          margin-top: auto;
+          margin-bottom: 24px;
+      
+          .productCardButtonsAdd {
+            width: 160px;
+            height: 40px;
+            background: #905bff;
+            border: none;
+            font-family: "Mont", sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 21px;
+            text-align: center;
+            color: #f1f2f9;
+            margin-right: 8px;
+            transition: transform 0.5s, background 1s ease, color 1s ease;
+      
+            &:hover {
+              background: #f1f2f9;
+              color: #905bff;
+            }
+      
+            @include on-tablet-medium {
+              min-width: 115px;
+            }
+      
+            @include on-desktop {
+              width: 160px;
+            }
+          }
+      
+          .toFavorite {
+            transition: transform 0.3s ease;
+      
+            &:hover {
+              transform: scale(1.2);
+              background-color: #f1f2f9;
+            }
+          }
+      
+          .productCardButtonsDisabled {
+            width: 160px;
+            height: 40px;
+            background: #905bff;
+            border: none;
+            font-family: "Mont", sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 21px;
+            text-align: center;
+            background: rgba(50, 53, 66, 1);
+            color: #f1f2f9;
+            margin-right: 8px;
+      
+            @include on-tablet-medium {
+              min-width: 115px;
+            }
+      
+            @include on-desktop {
+              width: 160px;
+            }
+          }
+        }
+
+    .shortInfo {
+
+      .shortInfoText {
+              list-style-type: none;
+              padding: 0;
+              margin: 0;
+            }
+        
+              .shortInfoTextItem {
+                display: grid; 
+                grid-template-columns: auto 1fr; 
+                gap: 8px;
+                padding: 8px 0;
+                align-items: center; 
+              }
+                .shortInfoTextItem1 {
+                  font-family: "Mont", sans-serif;
+                  align-items: center;
+                  font-weight: 700;
+                  font-size: 12px;
+                  line-height: 15.34px;
+                  color: #75767F;
+                }
+        
+                .shortInfoTextItem2 {
+                  font-family: "Mont", sans-serif;
+                  align-items: center;
+                  font-weight: 700;
+                  font-size: 12px;
+                  line-height: 15.34px;
+                  color: #F1F2F9;
+                  justify-self: end;
+                }
+    }    
+  }
+}
+
+.infoWrapper {
+  display: flex;
+  flex-direction: column;
+  @include on-desktop {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+
+  .techInfo {
+    display: flex;
+    flex-direction: column;
+    margin-top: 56px;
+    padding: 32px;
+    border-radius: 8px;
+    @include on-desktop {
+      min-width: 30%;
+    }
+    
+    .techSpecs {
+      font-family: "Mont", sans-serif;
+      align-items: center;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 25.56px;
+      color: #F1F2F9;
+      border-bottom: 1px solid #3B3E4A;
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+    }
+
+    .inlineGroup {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0; 
+      align-items: center; 
+    }
+
+    .shortInfoTextItem3{
+      font-family: "Mont", sans-serif;
+      align-items: center;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 15.34px;
+      color: #75767F;
+    }
+
+    .shortInfoTextItem4{
+      font-family: "Mont", sans-serif;
+      align-items: center;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 15.34px;
+      color: #F1F2F9;
+    }
+  }
+
+
+
+.productDetails {
+  margin-top: 56px;
+  padding: 32px;
+  border-radius: 8px;
+  @include on-desktop {
+    max-width: 60%;
+  }
+
+  .section {
+    font-family: "Mont", sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 15px;
+    color: #4A4D58;
+
+      .sectionAbout {
+        font-family: "Mont", sans-serif;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 25.56px;
+        color: #F1F2F9;
+        padding-bottom: 16px;
+        margin-bottom: 32px;
+        border-bottom: 1px solid #3B3E4A;
+        
+      }
+
+      .sectionTitle {
+        font-family: "Mont", sans-serif;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 20.45px;
+        color: #F1F2F9;
+        margin-bottom: 16px;
+      }
+
+      .sectionText {
+        font-family: "Mont", sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 21px;
+        color: #89939A;
+        margin-bottom: 16px;
+      }
+
+    }
+  }
+}

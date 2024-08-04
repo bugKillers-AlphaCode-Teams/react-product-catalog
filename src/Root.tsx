@@ -44,10 +44,14 @@ export const Root = () => (
                 <Route path="/favourites" element={<FavouritesPage />} />
                 <Route index element={<FavouritesPage />} />
               </Route>
+<<<<<<< HEAD
+              {/* <Route path="cart">
+=======
               <Route path="cart">
                 <Route path="/cart" element={<Cart />} />
+>>>>>>> df39b317ff00ae30cbaf3e0fbd7989926d3cb971
                 <Route index element={<Cart />} />
-              </Route>
+              </Route> */}
               <Route path="thank-you" element={<ThankYouPage />} />
             </Route>
             <Route path="*" element={<NotFoundPage />} />
