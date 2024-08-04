@@ -54,11 +54,8 @@ export const Footer: React.FC = () => {
 
         <div className={styles.goUp} onClick={scrollToTop}>
           <span className={styles.goUpText}>
-<<<<<<< HEAD
-            Back to top
-=======
             {t("footer.back.text")}
->>>>>>> df39b317ff00ae30cbaf3e0fbd7989926d3cb971
+
             <div className={styles.chevron}>
               <div className={styles.wrapperChevron}>
                 <img src={chevron} alt="chevron" />
