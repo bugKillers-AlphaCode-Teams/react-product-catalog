@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 import styles from "./ShopByCategory.module.scss";
 import { useTranslation } from "react-i18next";
+import MobPhones from "../../images/icons/Phones for  banner.png";
+import Tablet from "../../images/icons/IpadPhotoBanner.png";
+import Accessories from "../../images/icons/AccessoriesforIphoneBanner.png";
+
 
 export const ShopByCategory = () => {
   const { t } = useTranslation();
@@ -15,7 +19,7 @@ export const ShopByCategory = () => {
               className={`${styles.category__photo} ${styles["category__photo--phones"]}`}
             >
               <img
-                src="src\images\icons\Phones for  banner.png"
+                src = {MobPhones}
                 alt="phones category"
                 className={`${styles.category__image} ${styles["category__image--phones"]}`}
               />
@@ -38,7 +42,7 @@ export const ShopByCategory = () => {
               className={`${styles.category__photo} ${styles["category__photo--tablets"]}`}
             >
               <img
-                src="\img\IpadPhoto Banner.png"
+                src= {Tablet}
                 alt="tablets category"
                 className={`${styles.category__image} ${styles["category__image--tablets"]}`}
               />
@@ -61,7 +65,7 @@ export const ShopByCategory = () => {
               className={`${styles.category__photo} ${styles["category__photo--accessories"]}`}
             >
               <img
-                src="src\images\icons\Accessories for Iphone  banner.png"
+                src= {Accessories}
                 alt="accessories category"
                 className={`${styles.category__image} ${styles["category__image--accessories"]}`}
               />
