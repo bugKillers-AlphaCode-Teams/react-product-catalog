@@ -1,13 +1,15 @@
 @import "../../styles/utils/mixins";
+@import "../../styles/fonts.scss";
+
 
 .section {
-  @include content-padding-inlain();
-  font-family: "Mont";
   &__title {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
     font-size: 32px;
+    margin-top: 80px;
     margin-bottom: 24px;
     color: #f1f2f9;
-    font-family: "Mont";
   }
 }
 
@@ -15,6 +17,7 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 16px;
+  margin-bottom: 56px;
 
   @media (min-width: 640px) {
     grid-template-columns: 1fr 1fr 1fr;
