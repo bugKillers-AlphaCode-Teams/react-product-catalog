@@ -36,7 +36,7 @@ export const ProductPage: React.FC<ProductPage> = ({
       : styles.productCardButtonsAdd;
 
   return (
-  <>
+  <div>
     <button className={styles.backButton}>
     <img src={ChevronArrowLeft} alt="Back" className={styles.icon} />
     <span className={styles.backText}>Back</span>
@@ -156,7 +156,8 @@ export const ProductPage: React.FC<ProductPage> = ({
                 />
               </div>
             </div>
-  </div>                   
+  </div>         
+            
             <div className={styles.shortInfo}>
               <ul className={styles.shortInfoText}>
                 <li className={styles.shortInfoTextItem}>
@@ -269,6 +270,6 @@ export const ProductPage: React.FC<ProductPage> = ({
         </div>   
     </div>
     <YouMayAlsoLike />
-  </>  
+  </div>  
   );
 };
