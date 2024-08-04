@@ -68,23 +68,13 @@ export const YouMayAlsoLike = () => {
             modules={[Navigation]}
           >
             {preparedLikePhones.map((phone) => {
-              const { images, name, priceRegular, screen, capacity, ram, id } =
-                phone;
-
               return (
-                <SwiperSlide className={styles.swiperSlide} key={id}>
+                <SwiperSlide className={styles.swiperSlide} key={phone.id}>
                   <ProductCard
-                    id={phone.id}
-                    productType="phones"
-                    imgSrc={images[0]}
-                    imgAlt={name}
-                    title={name}
-                    price={priceRegular}
-                    screen={screen}
-                    capacity={capacity}
-                    ram={ram}
+                    key={phone.id}
+                    product={phone}
                     addProducts={() => addProducts(phone)}
-                    productQuontity={getProductQuontity(id)}
+                    productQuontity={getProductQuontity(phone.id)}
                     toggleFavouriteProduct={() => toggleFavouriteProduct(phone)}
                     isFavourite={favouritesProducts.some(
                       (favProduct) => favProduct.id === phone.id
