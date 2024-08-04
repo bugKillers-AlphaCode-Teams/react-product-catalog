@@ -1,11 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,800;1,800&display=swap");
 
-@mixin my-hover($property, $value) {
-  &:hover {
-    #{$property}: $value;
-  }
-}
-
 .footer {
   display: flex;
   justify-content: center;
@@ -62,8 +56,6 @@
   gap: 8px;
   align-self: center;
   cursor: pointer;
-
-  @include my-hover(transform, scale(1.1)); 
 }
 
 .goUpText {
