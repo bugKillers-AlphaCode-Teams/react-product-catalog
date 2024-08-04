@@ -17,6 +17,7 @@ import newPrice from "../../images/icons/$799.svg";
 import oldPrice from "../../images/icons/$1199.svg";
 import addToFavorites from "../../images/icons/add-to-favorite.png";
 import isFvoutites from "/public/img/favourite-red.svg";
+import { YouMayAlsoLike } from "../YouMayAlsoLike";
 
 interface ProductPage {
   addProducts?: () => void;
@@ -37,25 +38,21 @@ export const ProductPage: React.FC<ProductPage> = ({
       : styles.productCardButtonsAdd;
 
   return (
-    <div className={styles.productPage}>
-      {/* <div className={styles.breadcrumbs}>
-        <img src={home} alt="Home" className={styles.icon} />
-        <img src={ChevronArrowRight} alt="Arrow" className={styles.icon} />
-        <span className={styles.breadcrumbItem}>Phones</span>
-        <img src={ChevronArrowRight} alt="Arrow" className={styles.icon} />
-        <span className={styles.breadcrumbItem}>Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)</span>
-      </div> */}
+  <>
+    <button className={styles.backButton}>
+    <img src={ChevronArrowLeft} alt="Back" className={styles.icon} />
+    <span className={styles.backText}>Back</span>
+  </button>
 
-      <button className={styles.backButton}>
-        <img src={ChevronArrowLeft} alt="Back" className={styles.icon} />
-        <span className={styles.backText}>Back</span>
-      </button>
+  <h1 className={styles.productTitle}>
+    Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)
+  </h1>
+    
+<div className={styles.productPage}>
 
-      <h1 className={styles.productTitle}>
-        Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)
-      </h1>
-      <div style={{ display: "flex" }}>
-        <div style={{ width: "50%" }}>
+  <div className={styles.top}>     
+      {/* <div className={styles.wrapperIMG}>
+        <div className={styles.wrapperIMG1}> */}
           <div className={styles.productImageWrapper}>
             <img
               src={iphoneMask}
@@ -91,15 +88,15 @@ export const ProductPage: React.FC<ProductPage> = ({
               className={styles.galleryImage}
             />
           </div>
-
-          
-        </div>
-        
-        <div style={{ width: "50%" }} className={styles.mainControls}>
+    </div>  
+ 
+        <div className={styles.mainControls}>
             <div className={styles.productElements}>
               <div className={styles.colorsGroup}>
-                <div className={styles.colorsText}>Available colors</div>
+              <div className={styles.colorsText}>                
+                <div className={styles.Aviable}>Available colors</div>
                 <div className={styles.ProdId}>ID: 802390</div>
+              </div>    
                 <ul className={styles.colors}>
                   <li className={styles.color1}>
                     <a href="PinkPhone">
@@ -123,31 +120,23 @@ export const ProductPage: React.FC<ProductPage> = ({
                 </ul>
               </div>
 
-              <div className={styles.line}> </div>
-
               <div className={styles.capacity}>
                 <div className={styles.selectCapacity}>Select capacity</div>
                 <div className={styles.capacityWrapper}>
-                  <div>
+                  <div className={styles.capacityText}>
                     <div className={styles.capacity1}>
                       <a href="/">64 GB</a>
                     </div>
-                  </div>
-                  <div>
-                    <div className={styles.capacity2}>
+                    <div className={styles.capacity1}>
                       <a href="/">256 GB</a>
                     </div>
-                  </div>
-                  <div>
-                    <div className={styles.capacity3}>
+                    <div className={styles.capacity1}>
                       <a href="/">512 GB</a>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-
-            <div className={styles.line}> </div>
+               {/* </div>
+            </div> */}
 
             <div className={styles.AddToAndPrice}>
               <div className={styles.price}>
@@ -173,7 +162,7 @@ export const ProductPage: React.FC<ProductPage> = ({
                 />
               </div>
             </div>
-
+  </div>                   
             <div className={styles.shortInfo}>
               <ul className={styles.shortInfoText}>
                 <li className={styles.shortInfoTextItem}>
@@ -199,16 +188,19 @@ export const ProductPage: React.FC<ProductPage> = ({
           </div>
       </div>
 
+    
+</div>
+<div className={styles.infoWrapper}>
+
       <div className={styles.productDetails}>
           <div className={styles.section}>
             <div className={styles.sectionAbout}>About</div>
           </div>
-          <div className={styles.line}> </div>
           <div className={styles.section}>
             <div className={styles.sectionTitle}>And then there was Pro</div>
             <div className={styles.sectionText}>
               A transformative triple‑camera system that adds tons of capability
-              without complexity. An unprecedented leap in battery life. And a
+              without complexity. <br /> An unprecedented leap in battery life. And a
               mind‑blowing chip that doubles down on machine learning and pushes
               the boundaries of what a smartphone can do. Welcome to the first
               iPhone powerful enough to be called Pro.
@@ -240,6 +232,7 @@ export const ProductPage: React.FC<ProductPage> = ({
             </div>
           </div>
         </div>
+
 
         <div className={styles.techInfo}>
           <div className={styles.techSpecs}>Tech specs</div>
@@ -279,7 +272,9 @@ export const ProductPage: React.FC<ProductPage> = ({
             <div className={styles.shortInfoTextItem3}>Cell</div>
             <div className={styles.shortInfoTextItem4}>GSM, LTE, UMTS</div>
           </div>
-        </div>
+        </div>   
     </div>
+    <YouMayAlsoLike />
+  </>  
   );
 };

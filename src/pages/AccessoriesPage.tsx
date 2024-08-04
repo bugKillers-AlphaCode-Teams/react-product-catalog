@@ -4,11 +4,12 @@ import { Product } from "../types/Product";
 import { Pagination } from "../components/Pagination/Pagination.tsx";
 import { fetchProducts } from "../services/accessoriesService.ts";
 import { CurrentLocation } from "../components/CurrentLocation/CurrentLocation.tsx";
+import { Sort } from "../components/Sort/Sort.tsx";
 
 export const AccessoriesPage = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = 16;
+  const [productsPerPage, setProductsPerPage] = useState(16);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -45,6 +46,13 @@ export const AccessoriesPage = () => {
     <>
       <CurrentLocation />
       <h1>Accessories</h1>
+      <Sort
+        setProducts={setProducts}
+        products={products}
+        setProductsPerPage={setProductsPerPage}
+        productsPerPage={productsPerPage}
+        setCurrentPage={setCurrentPage}
+      />
       <ProductList products={currentProduct} />
       <Pagination
         productsPerPage={productsPerPage}

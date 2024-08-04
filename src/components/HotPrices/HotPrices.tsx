@@ -12,13 +12,17 @@ import SwiperCore from "swiper";
 import "swiper/scss/navigation";
 import "swiper/scss";
 
-import { ProductItem } from "../../types/ProductItem";
+import { Product } from "../../types/Product";
+import data from "../../../public/api/phones.json";
+import { useCart } from "../../utils/useCart";
+import { useFavourits } from "../../utils/useFavourites";
 
-import data from "../../../public/api/products.json";
-
-function preparedHotPricesPhones(data: ProductItem[]) {
-  const phones = data.filter(item => item.category === 'phones' && item.name.startsWith('Apple iPhone 11 Pro'));
-  const sortedPhones = phones.sort((a, b) => b.price - a.price);
+function preparedHotPricesPhones(data: Product[]) {
+  const phones = data.filter(
+    (item) =>
+      item.category === "phones" && item.name.startsWith("Apple iPhone 11 Pro")
+  );
+  const sortedPhones = phones.sort((a, b) => b.priceRegular - a.priceRegular);
 
   return sortedPhones.slice(0, 20);
 }
@@ -27,6 +31,10 @@ const preparedHotPhones = preparedHotPricesPhones(data);
 
 export const HotPrices = () => {
   const swiperRef = useRef<SwiperCore | null>(null);
+
+  const { addProducts, getProductQuontity } = useCart();
+
+  const { toggleFavouriteProduct, favouritesProducts} = useFavourits();
 
   return (
     <>
@@ -60,23 +68,41 @@ export const HotPrices = () => {
             spaceBetween={16}
             modules={[Navigation]}
           >
-            {preparedHotPhones.map(phone => {
-              const { image, name, fullPrice, price, screen, capacity, ram, id } = phone;
+            {preparedHotPhones.map((phone) => {
+              const {
+                images,
+                name,
+                priceRegular,
+                priceDiscount,
+                screen,
+                capacity,
+                ram,
+                id,
+              } = phone;
 
               return (
-            <SwiperSlide className={styles.swiperSlide} key={id}>
-              <ProductCard
-                imgSrc={image}
-                imgAlt={name}
-                title={name}
-                price={fullPrice}
-                oldPrice={price}
-                screen={screen}
-                capacity={capacity}
-                ram={ram}
-              />
-            </SwiperSlide>
-              )
+                <SwiperSlide className={styles.swiperSlide} key={id}>
+                  <ProductCard key={id}
+                    imgSrc={images[0]}
+                    imgAlt={name}
+                    title={name}
+                    price={priceDiscount}
+                    oldPrice={priceRegular}
+                    screen={screen}
+                    capacity={capacity}
+                    ram={ram}
+                    addProducts={() => addProducts(phone)}
+                  
+                    productQuontity={getProductQuontity(id)}
+
+                    toggleFavouriteProduct={() => toggleFavouriteProduct(phone)}
+
+                    isFavourite={favouritesProducts.some(
+                      (favProduct) => favProduct.id === phone.id
+                    )}
+                  />
+                </SwiperSlide>
+              );
             })}
           </Swiper>
         </div>
