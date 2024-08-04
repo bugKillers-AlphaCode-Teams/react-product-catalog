@@ -4,54 +4,81 @@ import styles from "./ProductCard.module.scss";
 import addToFavorites from "../../images/icons/add-to-favorite.png";
 import isFvoutites from "/public/img/favourite-red.svg";
 import { useTranslation } from "react-i18next";
+import { Product } from "../../types/Product";
 
 export type ProducType = "phones" | "tablets" | "accessories";
 
 interface ProductCardProps {
-  imgSrc: string;
-  imgAlt: string;
-  title: string;
-  price: number;
-  oldPrice?: number;
-  screen: string;
-  capacity: string;
-  ram: string;
+  product: Product;
   addProducts?: () => void;
   productQuontity?: number;
   toggleFavouriteProduct?: () => void;
   isFavourite?: boolean;
-  id: string; // Added an ID prop to navigate to specific product pages
-  productType: ProducType; // Added a productType prop
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({
-  imgSrc,
-  imgAlt,
-  title,
-  price,
-  screen,
-  capacity,
-  ram,
-  oldPrice,
+  product,
   addProducts,
   productQuontity,
   toggleFavouriteProduct,
   isFavourite,
-  id,
-  productType,
 }) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
+  if (!product) {
+    return <div>No product available</div>;
+  }
+  const {
+    images,
+    name,
+    priceDiscount,
+    screen,
+    capacity,
+    ram,
+    priceRegular,
+    id,
+    category,
+    capacityAvailable,
+    namespaceId,
+    colorsAvailable,
+    color,
+    description,
+    resolution,
+    processor,
+    cell,
+    year,
+  } = product;
 
   const navigateToProduct = () => {
-    if (productType === "phones") {
-      navigate(`/phones/${id}`);
-    } else if (productType === "tablets") {
-      navigate(`/tablets/${id}`);
-    } else if (productType === "accessories") {
-      navigate(`/accessories/${id}`);
+    const productData = {
+      id,
+      category,
+      namespaceId,
+      name,
+      capacityAvailable,
+      capacity,
+      priceRegular,
+      priceDiscount,
+      colorsAvailable,
+      color,
+      images,
+      description,
+      screen,
+      resolution,
+      processor,
+      ram,
+      cell,
+      year,
+    };
+
+    if (category === "phones") {
+      navigate(`/phones/${id}`, { state: { product: productData } });
+    } else if (category === "tablets") {
+      navigate(`/tablets/${id}`, { state: { product: productData } });
+    } else if (category === "accessories") {
+      navigate(`/accessories/${id}`, { state: { product: productData } });
     }
   };
-  const { t } = useTranslation();
 
   const buttonStyle =
     productQuontity && productQuontity > 0
@@ -62,16 +89,16 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     <div className={styles.productCard}>
       <div className={styles.wrapper}>
         <img
-          src={imgSrc}
-          alt={imgAlt}
+          src={`/${images[0]}`}
+          alt={"images"}
           className={styles.productImage}
           onClick={navigateToProduct}
         />
-        <p className={styles.productCardTitle}>{title}</p>
+        <p className={styles.productCardTitle}>{name}</p>
 
         <div className={styles.priceWrapper}>
-          <p className={styles.productCardPrice}>${price}</p>
-          {oldPrice && <p className={styles.oldPrice}>${oldPrice}</p>}
+          <p className={styles.productCardPrice}>${priceDiscount}</p>
+          {priceRegular && <p className={styles.oldPrice}>${priceRegular}</p>}
         </div>
 
         <p className={styles.productCardUnderscore}></p>
@@ -122,4 +149,5 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         </div>
       </div>
     </div>
-)};
+  );
+};

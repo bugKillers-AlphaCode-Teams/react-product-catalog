@@ -62,6 +62,8 @@ export const Cart = () => {
     }
   };
 
+  console.log(products);
+
   return products.length > 0 ? (
     <div className={styles.cart}>
       <h1>{t("cart.cart")}</h1>

@@ -113,7 +113,7 @@ export const CartContextProvider: React.FC<Props> = ({ children }) => {
     saveCartToLocalStorage([]);
     setProducts([]);
   };
-  
+
   return (
     <CartContext.Provider
       value={{

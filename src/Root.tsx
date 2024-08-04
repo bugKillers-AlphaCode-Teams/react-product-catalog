@@ -14,6 +14,8 @@ import { FvouritesContextProvider } from "./store/FavouritesContext";
 import { ThankYouPage } from "./components/cart/ThankYou/ThankYou";
 import { Cart } from "./components/cart/Cart";
 
+import { ProductPage } from "./components/ItemCard/ItemCard";
+
 export const Root = () => (
   <BrowserRouter>
     <ThemeContextProvider>
@@ -24,17 +26,17 @@ export const Root = () => (
               <Route index element={<HomePage />} />
 
               <Route path="home" element={<Navigate to="/" replace />} />
-              <Route path="phones/:phoneId" element={<PhonePage />} />
+              <Route path="phones/:phoneId" element={<ProductPage />} />
               <Route path="phones">
                 <Route index element={<PhonePage />} />
               </Route>
-              <Route path="tablets/:tabletId" element={<TabletsPage />} />
+              <Route path="tablets/:tabletId" element={<ProductPage />} />
               <Route path="tablets">
                 <Route index element={<TabletsPage />} />
               </Route>
               <Route
                 path="accessories/:accessoriesId"
-                element={<AccessoriesPage />}
+                element={<ProductPage />}
               />
               <Route path="accessories">
                 <Route index element={<AccessoriesPage />} />
