@@ -16,7 +16,7 @@ import addToFavorites from "../../images/icons/add-to-favorite.png";
 import isFvoutites from "/public/img/favourite-red.svg";
 import { Product, ProductDescription } from "../../types/Product";
 import { CurrentLocation } from "../CurrentLocation/CurrentLocation";
-import stylesButton from "./ProductSlide.module.scss"
+// import stylesButton from "./ProductSlide.module.scss"
 
 export const ProductPage: React.FC = () => {
   const { t } = useTranslation();
@@ -89,13 +89,13 @@ export const ProductPage: React.FC = () => {
     }
   }, [product?.images]);
 
-  const handlePrevClick = () => {
-    setCurrentIndex(prevIndex => (prevIndex - 1 + product.images.length) % product.images.length);
-  };
+  // const handlePrevClick = () => {
+  //   setCurrentIndex(prevIndex => (prevIndex - 1 + product.images.length) % product.images.length);
+  // };
 
-  const handleNextClick = () => {
-    setCurrentIndex(prevIndex => (prevIndex + 1) % product.images.length);
-  };
+  // const handleNextClick = () => {
+  //   setCurrentIndex(prevIndex => (prevIndex + 1) % product.images.length);
+  // };
 
   return (
     <div>
@@ -117,12 +117,12 @@ export const ProductPage: React.FC = () => {
               alt="Apple iPhone 11 Pro Max"
               className={styles.productImage}
             />
-             <button className={stylesButton.prevButton} onClick={handlePrevClick}>
+             {/* <button className={stylesButton.prevButton} onClick={handlePrevClick}>
               &lt;
             </button>
             <button className={stylesButton.nextButton} onClick={handleNextClick}>
               &gt;
-            </button>
+            </button> */}
           </div>
 
           <div className={styles.gallery}>
