@@ -3,6 +3,6 @@ import { Product } from "../types/Product";
 
 const TABLETS_URL = "/api/tablets.json";
 
-export const fetchProducts = async (): Promise<Product[]> => {
+export const fetchTablets = async (): Promise<Product[]> => {
   return fetchData<Product[]>(TABLETS_URL);
 };
