@@ -44,7 +44,7 @@ export const Cart = () => {
       server_url: "https://react-product-catalog-74o7.vercel.app",
       public_key: publicKey,
       language: "uk",
-      result_url: "https://react-product-catalog-74o7.vercel.app/thank-you",
+      result_url: "https://react-product-catalog-74o7.vercel.app/#/thank-you",
     };
 
     const formHtml = createForm(data);
