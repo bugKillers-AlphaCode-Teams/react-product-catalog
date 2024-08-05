@@ -41,10 +41,10 @@ export const Cart = () => {
       description: `${description}`,
       order_id: new Date().getTime().toString(),
       version: 3,
-      server_url: "http://localhost:5173",
+      server_url: "https://react-product-catalog-74o7.vercel.app",
       public_key: publicKey,
       language: "uk",
-      result_url: "http://localhost:5173/thank-you",
+      result_url: "https://react-product-catalog-74o7.vercel.app/thank-you",
     };
 
     const formHtml = createForm(data);
