@@ -134,6 +134,10 @@
       cursor: pointer;
       object-fit: contain;
 
+      &:hover {
+        @include my-hover(transform, scale(1.1));
+      }
+
       @include on-tablet {
         width: 32px;
         height: 32px;
@@ -221,10 +225,18 @@
         min-width: 56px;
         max-width: 63px;
 
+
         &:hover {
           background-color: #3b3e4a;
           @include my-hover(transform, scale(1.1));
         }
+
+        // .capacity {
+        //   &:active {
+        //     color: #0F1121;
+        //     background-color: #fff;
+        //   }
+        // }
       }
     }
 
