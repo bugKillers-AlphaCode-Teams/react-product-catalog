@@ -9,13 +9,14 @@ import GreyColor from "../../images/icons/GreyColor.svg";
 import WhiteColor from "../../images/icons/WhiteColor.svg";
 import { YouMayAlsoLike } from "../YouMayAlsoLike";
 import { useCart } from "../../utils/useCart";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useFavourits } from "../../utils/useFavourites";
 import addToFavorites from "../../images/icons/add-to-favorite.png";
 import isFvoutites from "/public/img/favourite-red.svg";
 import { Product, ProductDescription } from "../../types/Product";
 import { CurrentLocation } from "../CurrentLocation/CurrentLocation";
+import { fetchProducts } from "../../services/accessoriesService";
 // import stylesButton from "./ProductSlide.module.scss"
 
 export const ProductPage: React.FC = () => {
@@ -24,6 +25,9 @@ export const ProductPage: React.FC = () => {
   const { toggleFavouriteProduct, favouritesProducts } = useFavourits();
   const location = useLocation();
   const product = location.state?.product as Product;
+  const navigate = useNavigate();
+
+  const [allData, setAllData] = useState<Product[]>([]);
 
   console.log(product);
 
@@ -33,7 +37,9 @@ export const ProductPage: React.FC = () => {
     priceDiscount,
     screen,
     capacity,
+    category,
     ram,
+    color,
     priceRegular,
     id,
     // category,
@@ -47,9 +53,10 @@ export const ProductPage: React.FC = () => {
     resolution,
     processor,
     cell,
+    namespaceId,
+    colorsAvailable,
     // year,
   } = product;
-  
 
   const productQuontity = getProductQuontity(id);
   const buttonStyle =
@@ -65,7 +72,9 @@ export const ProductPage: React.FC = () => {
   );
 
   //Клікабельна картинка і стрілки перемикання
-  const [activeImageSrc, setActiveImageSrc] = useState<string>(product?.images[0] || '');
+  const [activeImageSrc, setActiveImageSrc] = useState<string>(
+    product?.images[0] || ""
+  );
   const [currentIndex, setCurrentIndex] = useState<number>(0);
 
   useEffect(() => {
@@ -78,7 +87,7 @@ export const ProductPage: React.FC = () => {
     let index = 0;
     if (product?.images.length > 0) {
       const intervalId = setInterval(() => {
-        setCurrentIndex(prevIndex => {
+        setCurrentIndex((prevIndex) => {
           index = (prevIndex + 1) % product.images.length;
           return index;
         });
@@ -88,6 +97,24 @@ export const ProductPage: React.FC = () => {
       return () => clearInterval(intervalId);
     }
   }, [product?.images]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // let allProducts
+
+        // if (category === 'phones') {
+
+        const tablets = await fetchProducts();
+        // } else if ()
+        setAllData(tablets);
+      } catch (error) {
+        console.error("Failed to fetch tablets:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   // const handlePrevClick = () => {
   //   setCurrentIndex(prevIndex => (prevIndex - 1 + product.images.length) % product.images.length);
@@ -117,7 +144,7 @@ export const ProductPage: React.FC = () => {
               alt="Apple iPhone 11 Pro Max"
               className={styles.productImage}
             />
-             {/* <button className={stylesButton.prevButton} onClick={handlePrevClick}>
+            {/* <button className={stylesButton.prevButton} onClick={handlePrevClick}>
               &lt;
             </button>
             <button className={stylesButton.nextButton} onClick={handleNextClick}>
@@ -146,10 +173,56 @@ export const ProductPage: React.FC = () => {
                 <div className={styles.ProdId}>ID: 802390</div>
               </div>
               <ul className={styles.colors}>
-                <li className={styles.color1}>
-                  <a href="PinkPhone">
+                {colorsAvailable?.map((currentColor) => (
+                  <li className={styles.color1}>
+                    <button
+                      onClick={() => {
+                        if (color === currentColor) return;
+
+                        const newProductId = `${namespaceId}-${capacity}-${currentColor}`;
+
+                        const newProduct = allData.find(
+                          ({ id }) => id === newProductId
+                        );
+
+                        navigate(`/${category}/${newProduct!.namespaceId}`, {
+                          state: { product: newProduct },
+                        });
+                      }}
+                    >
+                      {currentColor === "pink" && (
+                        <img src={PinkColor} alt="Pink" />
+                      )}
+                      {currentColor === "silver" && (
+                        <img src={LightGreyColor} alt="Pink" />
+                      )}
+                      {currentColor === "space gray" && (
+                        <img src={GreyColor} alt="Pink" />
+                      )}
+                      {currentColor === "gold" && (
+                        <img src={WhiteColor} alt="Pink" />
+                      )}
+                    </button>
+                  </li>
+                ))}
+                {/* <li className={styles.color1}>
+                  <button
+                    onClick={() => {
+                      const color = "pink";
+
+                      const newProductId = `${namespaceId}-${color}-${capacity}`;
+
+                      const newProduct = allData.find(
+                        ({ id }) => id === newProductId
+                      );
+
+                      navigate(`/${category}/${newProductId}`, {
+                        state: { product: newProduct },
+                      });
+                    }}
+                  >
                     <img src={PinkColor} alt="Pink" />
-                  </a>
+                  </button>
                 </li>
                 <li className={styles.color1}>
                   <a href="LightGreyPhone">
@@ -165,7 +238,7 @@ export const ProductPage: React.FC = () => {
                   <a href="WhitePhone">
                     <img src={WhiteColor} alt="White" />
                   </a>
-                </li>
+                </li> */}
               </ul>
             </div>
 
@@ -299,5 +372,3 @@ export const ProductPage: React.FC = () => {
     </div>
   );
 };
-
-
