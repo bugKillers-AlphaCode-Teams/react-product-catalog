@@ -1,4 +1,4 @@
-import { AboutDevelopers } from "../components/AboutDevelopers";
+
 import { HotPrices } from "../components/HotPrices";
 
 import { NewModels } from "../components/NewModels";
@@ -12,7 +12,6 @@ export const HomePage = () => {
       <NewModels />
       <ShopByCategory />
       <HotPrices />
-      <AboutDevelopers />
     </div>
   );
 };
