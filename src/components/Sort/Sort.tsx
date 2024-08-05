@@ -1,14 +1,14 @@
-import { FC, useState } from "react";
+import { FC, useState, useContext } from "react";
 import styles from "./Sort.module.scss";
 import { Product } from "../../types/Product";
 import { useTranslation } from "react-i18next";
+import { themeContext } from "../../store/ThemeContext";
 
 export enum Sorting {
   BY_YEAR = "newest",
   BY_NAME = "alphabetically",
   BY_PRICE = "cheapest",
 }
-
 
 interface Props {
   products: Product[];
@@ -28,11 +28,10 @@ export const Sort: FC<Props> = ({
   const [isSortActive, setIsSortActive] = useState(false);
   const [isSortNumberActive, setIsSortNumberActive] = useState(false);
   const [sortCriteria, setSortCriteria] = useState(Sorting.BY_NAME);
+  const { theme } = useContext(themeContext);
   const { t } = useTranslation();
 
-
-
-   const getSortOptionLabel = (sortOption: Sorting): string => {
+  const getSortOptionLabel = (sortOption: Sorting): string => {
     switch (sortOption) {
       case Sorting.BY_YEAR:
         return t("sortBy.newest");
@@ -84,16 +83,23 @@ export const Sort: FC<Props> = ({
       <div className={styles.dropdown}>
         <p className={styles.dropdown__label}>{t("sortBy.title")}</p>
 
-        <div className={styles.dropdown__box}>
+        <div
+          className={`${styles.dropdown__box} ${
+            theme === "light" && styles.lightBox
+          }`}
+          onClick={() => {
+            onSortTrigger();
+            if (isSortNumberActive) {
+              setIsSortNumberActive((current) => !current);
+            }
+          }}
+        >
           <span
             className={`${styles.dropdown__box__text} ${styles.Alphabetically}`}
           >
             {getSortOptionLabel(sortCriteria)}
           </span>
-          <button
-            className={styles.dropdown__box__trigger}
-            onClick={onSortTrigger}
-          >
+          <button className={styles.dropdown__box__trigger}>
             {isSortActive ? (
               <img src="/img/arrow-upp.svg" alt="" />
             ) : (
@@ -105,7 +111,7 @@ export const Sort: FC<Props> = ({
         <ul
           className={`${styles.dropdown__options} ${
             isSortActive && styles.active
-          }`}
+          } ${theme === "light" && styles.lightBox}`}
         >
           <li
             className={styles.dropdown__options__option}
@@ -136,14 +142,21 @@ export const Sort: FC<Props> = ({
       <div className={styles.dropdown}>
         <p className={styles.dropdown__label}>{t("sortBy.items")}</p>
 
-        <div className={`${styles.dropdown__box} ${styles.sort__number}`}>
+        <div
+          className={`${styles.dropdown__box} ${styles.sort__number} ${
+            theme === "light" && styles.lightBox
+          }`}
+          onClick={() => {
+            setIsSortNumberActive((current) => !current);
+            if (isSortActive) {
+              onSortTrigger();
+            }
+          }}
+        >
           <span className={styles.dropdown__box__text}>
             {productsPerPage > 16 ? t("sortBy.all") : productsPerPage}
           </span>
-          <button
-            className={styles.dropdown__box__trigger}
-            onClick={() => setIsSortNumberActive((current) => !current)}
-          >
+          <button className={styles.dropdown__box__trigger}>
             {isSortNumberActive ? (
               <img src="/img/arrow-upp.svg" alt="" />
             ) : (
@@ -155,7 +168,7 @@ export const Sort: FC<Props> = ({
         <ul
           className={`${styles.dropdown__options} ${styles.sort__number} ${
             isSortNumberActive && styles.active
-          }`}
+          } ${theme === "light" && styles.lightBox}`}
         >
           <li
             className={styles.dropdown__options__option}

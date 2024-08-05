@@ -1,10 +1,13 @@
-import React from "react";
+import React,{useContext} from "react";
 import styles from "./Footer.module.scss";
 import logo from "../../images/icons/Logo.svg";
+import logoLight from "/img/Logo-light.svg";
 import chevron from "../../images/icons/Chevron (Arrow Right).svg";
 import { useTranslation } from "react-i18next";
+import { themeContext } from "../../store/ThemeContext";
 
 export const Footer: React.FC = () => {
+  const { theme } = useContext(themeContext);
   const scrollToTop = () => {
     const startPosition = window.pageYOffset;
     const duration = 500;
@@ -26,26 +29,26 @@ export const Footer: React.FC = () => {
 
   const { t } = useTranslation();
   return (
-    <div className={styles.footer}>
+    <div className={`${styles.footer} ${theme === 'light' && styles.light}`}>
       <div className={styles.wrapper}>
         <a href="/" className={styles.logo}>
-          <img src={logo} className={styles.logoImage} alt="logo" />
+          <img src={theme === 'light' ? logoLight : logo} className={styles.logoImage} alt="logo" />
         </a>
 
         <div className={styles.items}>
           <ul className={styles.links}>
             <li>
-              <a href="#" className={styles.link}>
+              <a href="#" className={theme === 'light' ? styles.lightLink : styles.link}>
                 {t("footer.github.text")}
               </a>
             </li>
             <li>
-              <a href="#" className={styles.link}>
+              <a href="#" className={theme === 'light' ? styles.lightLink : styles.link}>
                 {t("footer.contacts.text")}
               </a>
             </li>
             <li>
-              <a href="#" className={styles.link}>
+              <a href="#" className={theme === 'light' ? styles.lightLink : styles.link}>
                 {t("footer.rights.text")}
               </a>
             </li>

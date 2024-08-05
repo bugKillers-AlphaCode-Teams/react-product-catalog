@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./ProductCard.module.scss";
 import addToFavorites from "../../images/icons/add-to-favorite.png";
 import isFvoutites from "/public/img/favourite-red.svg";
 import { useTranslation } from "react-i18next";
 import { Product } from "../../types/Product";
+import { themeContext } from "../../store/ThemeContext";
 
 export type ProducType = "phones" | "tablets" | "accessories";
 
@@ -24,6 +25,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   isFavourite,
 }) => {
   const navigate = useNavigate();
+  const { theme } = useContext(themeContext);
   const { t } = useTranslation();
   if (!product) {
     return <div>No product available</div>;
@@ -86,25 +88,32 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     productQuontity && productQuontity > 0
       ? styles.productCardButtonsDisabled
       : styles.productCardButtonsAdd;
-
+  styles.productCardTitle;
   return (
-    <div className={styles.productCard}>
-      <div className={styles.wrapper}>
-        <div className={styles.details} onClick={navigateToProduct}>
-          <img
-            src={`/${images[0]}`}
-            alt={"images"}
-            className={styles.productImage}
-          />
-          <p className={styles.productCardTitle}>{name}</p>
-        </div>
+    <div
+      className={`${styles.productCard} ${
+        theme === "light" && styles.light_Product
+      }`}
+    >
+      <div
+        className={`${styles.wrapper} ${
+          theme === "light" && styles.lightTitle
+        }`}
+      >
+        <img
+          src={`/${images[0]}`}
+          alt={"images"}
+          className={styles.productImage}
+          onClick={navigateToProduct}
+        />
+        <p className={`${styles.productCardTitle} `}>{name}</p>
 
         <div className={styles.priceWrapper}>
           <p className={styles.productCardPrice}>${priceDiscount}</p>
           {priceRegular && <p className={styles.oldPrice}>${priceRegular}</p>}
         </div>
 
-        <p className={styles.productCardUnderscore}></p>
+        <p className={`${styles.productCardUnderscore} `}></p>
 
         <div className={styles.productCardSpecs}>
           <div className={styles.productCardSpec}>
@@ -112,14 +121,26 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               {" "}
               {t("productCard.screen")}
             </span>
-            <span className={styles.productCardValue}>{screen}</span>
+            <span
+              className={`${styles.productCardValue} ${
+                theme === "light" ? styles.lightValue : ""
+              }`}
+            >
+              {screen}
+            </span>
           </div>
 
           <div className={styles.productCardSpec}>
             <span className={styles.productCardLabel}>
               {t("productCard.capacity")}
             </span>
-            <span className={styles.productCardValue}>{capacity}</span>
+            <span
+              className={`${styles.productCardValue} ${
+                theme === "light" ? styles.lightValue : ""
+              }`}
+            >
+              {capacity}
+            </span>
           </div>
 
           <div className={styles.productCardSpec}>
@@ -127,14 +148,22 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               {" "}
               {t("productCard.ram")}
             </span>
-            <span className={styles.productCardValue}>{ram}</span>
+            <span
+              className={`${styles.productCardValue} ${
+                theme === "light" ? styles.lightValue : ""
+              }`}
+            >
+              {ram}
+            </span>
           </div>
         </div>
 
         <div className={styles.productCardButtons}>
           <button
             onClick={addProducts}
-            className={buttonStyle}
+            className={`${buttonStyle} ${
+              theme === "light" && styles.lightProduct
+            }`}
             disabled={!!productQuontity && productQuontity > 0}
           >
             {productQuontity && productQuontity > 0
@@ -144,7 +173,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           <button className={styles.toFavorite}>
             <img
               className={styles.productCardAddToFavorite}
-              src={isFavourite ? isFvoutites : addToFavorites}
+              src={
+                isFavourite
+                  ? isFvoutites
+                  : theme === "light"
+                  ? "/img/favourit-lightTem.svg"
+                  : addToFavorites
+              }
               alt="add to favorites"
               onClick={toggleFavouriteProduct}
             />

@@ -30,6 +30,9 @@
 .swiper-pagination-bullet-active {
   background: #e5e5ea; /* color for active bullet */
 }
+.lightActive {
+  background: black
+}
 
 .swiper {
   // max-width: 320px;
@@ -210,4 +213,12 @@
       letter-spacing: 0.01em;
     }
   }
+}
+
+.light {
+  color: #313237;
+}
+
+.lightArrow {
+  background-color: white;
 }

@@ -1,6 +1,3 @@
-@import "../../styles/utils/mixins";
-@import "../../styles/fonts.scss";
-
 .section {
   font-family: "Mont", sans-serif;
   &__title {
@@ -25,7 +22,6 @@
   margin-bottom: 56px;
 
   @media (min-width: 640px) {
-
     padding-inline: 24px;
     grid-template-columns: 1fr 1fr 1fr;
     margin-bottom: 64px;
@@ -39,45 +35,45 @@
     width: 1136px;
     height: 508px;
   }
+}
 
-  &__image {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-
-    &--tablets {
-      @include my-hover(transform, scale(1.1));
-    }
+.category__wrapper {
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  cursor: pointer;
+  border-radius: 5px;
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
   }
 
-  &__photo {
+  & > .category__photo {
     margin-bottom: 24px;
     aspect-ratio: 1 / 1;
     overflow: hidden;
-
-    &:hover > .category__image {
-      @include my-hover(transform, scale(1.1));
-    }
-
-    &--phones {
-      background-color: bisque;
-    }
-
-    &--tablets {
-      background: #8b8b90;
-    }
-
-    &--accessories {
-      background: #973d5f;
-    }
+    transition: transform 0.3s ease-in-out;
   }
 
-  &__title {
-    font-size: 20px;
+  &:hover > .category__photo {
+    transform: scale(1.1);
   }
+}
 
-  &__text {
-    color: gray;
-  }
+.category__image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.category__title {
+  font-size: 20px;
+  margin-top: 24px;
+  margin-bottom: 4px;
+  padding-left: 2px;
+}
+
+.category__text {
+  color: gray;
+  margin-bottom: 4px;
+  padding-left: 2px;
 }

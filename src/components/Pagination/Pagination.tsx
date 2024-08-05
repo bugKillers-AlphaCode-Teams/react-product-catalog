@@ -1,5 +1,6 @@
-import React from "react";
+import React,{useContext} from "react";
 import styles from "./Pagination.module.scss";
+import { themeContext } from "../../store/ThemeContext";
 
 interface Props {
   productsPerPage: number;
@@ -21,6 +22,8 @@ export const Pagination: React.FC<Props> = ({
   const pageNumber: number[] = [];
 
   const totalPages = Math.ceil(totalProducts / productsPerPage);
+
+  const { theme } = useContext(themeContext);
 
   for (let i = 1; i <= totalPages; i++) {
     pageNumber.push(i);
@@ -48,7 +51,7 @@ export const Pagination: React.FC<Props> = ({
       <ul className={styles.pagination}>
         <a
           href="#/"
-          className={`${styles.pageLink} ${styles.arrow}`}
+          className={`${styles.pageLink} ${styles.arrow} ${theme === 'light' && styles.light}`}
           onClick={() => prevPage(currentPage)}
         >
           <img src="./img/arrow-left-pagination.svg" alt="arrow-left" />
@@ -59,8 +62,8 @@ export const Pagination: React.FC<Props> = ({
               href="#/"
               className={
                 currentPage === number
-                  ? `${styles.pageLink} ${styles.active}`
-                  : styles.pageLink
+                  ? `${styles.pageLink} ${theme === 'light' ? styles.lightActive : styles.active} `
+                  : `${styles.pageLink} ${theme === 'light' && styles.light}`
               }
               onClick={() => paginate(number)}
             >
@@ -70,7 +73,7 @@ export const Pagination: React.FC<Props> = ({
         ))}
         <a
           href="#/"
-          className={`${styles.pageLink} ${styles.arrow}`}
+          className={`${styles.pageLink} ${styles.arrow} ${theme === 'light' && styles.light}`}
           onClick={() => nextPage(currentPage)}
         >
           <img src="./img/arrow-right-pagination.svg" alt="arrow-right" />
