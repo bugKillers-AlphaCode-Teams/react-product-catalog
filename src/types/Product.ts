@@ -17,6 +17,8 @@ export type Product = {
   ram: string;
   cell: string[];
   year: number
+  camera: string;
+  zoom: string;
 };
 
 export type ProductDescription = {

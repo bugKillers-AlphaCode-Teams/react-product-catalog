@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./ItemCard.module.scss";
 
-import SliderPhoto2 from "../../images/icons/Slider photo 2.svg";
-import SliderPhoto5 from "../../images/icons/Slider photo 5.svg";
+// import SliderPhoto2 from "../../images/icons/Slider photo 2.svg";
+// import SliderPhoto5 from "../../images/icons/Slider photo 5.svg";
 import PinkColor from "../../images/icons/LightPinkColor.svg";
 import LightGreyColor from "../../images/icons/LightGreyColor.svg";
 import GreyColor from "../../images/icons/GreyColor.svg";
@@ -14,15 +14,16 @@ import { useTranslation } from "react-i18next";
 import { useFavourits } from "../../utils/useFavourites";
 import addToFavorites from "../../images/icons/add-to-favorite.png";
 import isFvoutites from "/public/img/favourite-red.svg";
-import { ProductDescription } from "../../types/Product";
+import { Product, ProductDescription } from "../../types/Product";
 import { CurrentLocation } from "../CurrentLocation/CurrentLocation";
+// import stylesButton from "./ProductSlide.module.scss"
 
 export const ProductPage: React.FC = () => {
   const { t } = useTranslation();
   const { addProducts, getProductQuontity } = useCart();
   const { toggleFavouriteProduct, favouritesProducts } = useFavourits();
   const location = useLocation();
-  const product = location.state?.product;
+  const product = location.state?.product as Product;
 
   console.log(product);
 
@@ -48,6 +49,7 @@ export const ProductPage: React.FC = () => {
     cell,
     // year,
   } = product;
+  
 
   const productQuontity = getProductQuontity(id);
   const buttonStyle =
@@ -61,6 +63,16 @@ export const ProductPage: React.FC = () => {
   const isFavourite = favouritesProducts.some(
     (favProduct: { id: unknown }) => favProduct.id === product.id
   );
+
+  const [activeImageSrc, setActiveImageSrc] = useState(
+    product?.images[0] || ""
+  );
+
+  useEffect(() => {
+    if (product?.images.length > 0) {
+      setActiveImageSrc(product.images[0]);
+    }
+  }, [product]);
 
   return (
     <div>
@@ -78,38 +90,28 @@ export const ProductPage: React.FC = () => {
           {/* стилі картинкам */}
           <div className={styles.productImageWrapper}>
             <img
-              src={`/${images[0]}`}
+              src={`/${activeImageSrc}`}
               alt="Apple iPhone 11 Pro Max"
               className={styles.productImage}
             />
+             {/* <button className={stylesButton.prevButton} onClick={handlePrevClick}>
+              &lt;
+            </button>
+            <button className={stylesButton.nextButton} onClick={handleNextClick}>
+              &gt;
+            </button> */}
           </div>
 
           <div className={styles.gallery}>
-            <img
-              src={images[1]}
-              alt="Gallery 3"
-              className={styles.galleryImage}
-            />
-            <img
-              src={images[2]}
-              alt="Gallery 1"
-              className={styles.galleryImage}
-            />
-            <img
-              src={images[3]}
-              alt="Gallery 4"
-              className={styles.galleryImage}
-            />
-            <img
-              src={SliderPhoto2}
-              alt="Gallery 2"
-              className={styles.galleryImage}
-            />
-            <img
-              src={SliderPhoto5}
-              alt="Gallery 5"
-              className={styles.galleryImage}
-            />
+            {images.map((img, index) => (
+              <img
+                key={index}
+                src={`/${img}`}
+                alt={`Gallery ${index + 1}`}
+                className={styles.galleryImage}
+                onClick={() => setActiveImageSrc(img)}
+              />
+            ))}
           </div>
         </div>
 
@@ -274,3 +276,5 @@ export const ProductPage: React.FC = () => {
     </div>
   );
 };
+
+

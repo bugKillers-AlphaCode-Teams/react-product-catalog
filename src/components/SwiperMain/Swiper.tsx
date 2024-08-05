@@ -8,6 +8,8 @@ import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Order } from "./Order Now/Order";
 import classNames from "classnames";
 import { useTranslation } from "react-i18next";
+import swiperPrevButton from "../../images/icons/Chevron(Arrow Left).png";
+import swiperNextButton from "../../images/icons/Chevron(Arrow Right).png";
 
 export const Slider: React.FC = () => {
   const { t } = useTranslation();
@@ -23,10 +25,10 @@ export const Slider: React.FC = () => {
           spaceBetween={0}
           slidesPerView={1}
           loop={true}
-          // autoplay={{
-          //   delay: 5000,
-          //   disableOnInteraction: false,
-          // }}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+          }}
           navigation={{
             nextEl: `.${styles.swiper__next}`,
             prevEl: `.${styles.swiper__prev}`,
@@ -74,7 +76,7 @@ export const Slider: React.FC = () => {
           className={classNames(styles.swiper__prev, "swiper__Button__Prev")}
         >
           <img
-            src="src/images/icons/Chevron (Arrow Left).png"
+            src= {swiperPrevButton}
             alt="Prev"
             className={styles.overlayImage}
           />
@@ -83,7 +85,7 @@ export const Slider: React.FC = () => {
           className={classNames(styles.swiper__next, "swiper__Button__Next")}
         >
           <img
-            src="src/images/icons/Chevron (Arrow Right).png"
+            src={swiperNextButton}
             alt="Next"
             className={styles.overlayImage}
           />
