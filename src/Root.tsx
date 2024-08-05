@@ -1,4 +1,4 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 import { App } from "./App";
 import { NotFoundPage } from "./pages/NotFoundPage";
 import { HomePage } from "./pages/HomePage";
@@ -17,7 +17,7 @@ import { Cart } from "./components/cart/Cart";
 import { ProductPage } from "./components/ItemCard/ItemCard";
 
 export const Root = () => (
-  <BrowserRouter>
+  <HashRouter>
     <ThemeContextProvider>
       <FvouritesContextProvider>
         <CartContextProvider>
@@ -52,5 +52,5 @@ export const Root = () => (
         </CartContextProvider>
       </FvouritesContextProvider>
     </ThemeContextProvider>
-  </BrowserRouter>
+  </HashRouter>
 );
