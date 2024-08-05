@@ -72,11 +72,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     };
 
     if (category === "phones") {
-      navigate(`/phones/${id}`, { state: { product: productData } });
+      navigate(`/phones/${namespaceId}`, { state: { product: productData } });
     } else if (category === "tablets") {
-      navigate(`/tablets/${id}`, { state: { product: productData } });
+      navigate(`/tablets/${namespaceId}`, { state: { product: productData } });
     } else if (category === "accessories") {
-      navigate(`/accessories/${id}`, { state: { product: productData } });
+      navigate(`/accessories/${namespaceId}`, {
+        state: { product: productData },
+      });
     }
   };
 
@@ -88,13 +90,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   return (
     <div className={styles.productCard}>
       <div className={styles.wrapper}>
-        <img
-          src={`/${images[0]}`}
-          alt={"images"}
-          className={styles.productImage}
-          onClick={navigateToProduct}
-        />
-        <p className={styles.productCardTitle}>{name}</p>
+        <div className={styles.details} onClick={navigateToProduct}>
+          <img
+            src={`/${images[0]}`}
+            alt={"images"}
+            className={styles.productImage}
+          />
+          <p className={styles.productCardTitle}>{name}</p>
+        </div>
 
         <div className={styles.priceWrapper}>
           <p className={styles.productCardPrice}>${priceDiscount}</p>
