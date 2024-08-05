@@ -16,7 +16,7 @@ import addToFavorites from "../../images/icons/add-to-favorite.png";
 import isFvoutites from "/public/img/favourite-red.svg";
 import { Product, ProductDescription } from "../../types/Product";
 import { CurrentLocation } from "../CurrentLocation/CurrentLocation";
-// import stylesButton from "./ProductSlide.module.scss"
+import stylesButton from "./ProductSlide.module.scss"
 
 export const ProductPage: React.FC = () => {
   const { t } = useTranslation();
@@ -64,15 +64,38 @@ export const ProductPage: React.FC = () => {
     (favProduct: { id: unknown }) => favProduct.id === product.id
   );
 
-  const [activeImageSrc, setActiveImageSrc] = useState(
-    product?.images[0] || ""
-  );
+  //Клікабельна картинка і стрілки перемикання
+  const [activeImageSrc, setActiveImageSrc] = useState<string>(product?.images[0] || '');
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
 
   useEffect(() => {
     if (product?.images.length > 0) {
-      setActiveImageSrc(product.images[0]);
+      setActiveImageSrc(product.images[currentIndex]);
     }
-  }, [product]);
+  }, [currentIndex, product?.images]);
+
+  useEffect(() => {
+    let index = 0;
+    if (product?.images.length > 0) {
+      const intervalId = setInterval(() => {
+        setCurrentIndex(prevIndex => {
+          index = (prevIndex + 1) % product.images.length;
+          return index;
+        });
+      }, 3000); // Зміна зображення кожні 3 секунди
+
+      // Очищення інтервалу при розмонтуванні компонента
+      return () => clearInterval(intervalId);
+    }
+  }, [product?.images]);
+
+  const handlePrevClick = () => {
+    setCurrentIndex(prevIndex => (prevIndex - 1 + product.images.length) % product.images.length);
+  };
+
+  const handleNextClick = () => {
+    setCurrentIndex(prevIndex => (prevIndex + 1) % product.images.length);
+  };
 
   return (
     <div>
@@ -94,12 +117,12 @@ export const ProductPage: React.FC = () => {
               alt="Apple iPhone 11 Pro Max"
               className={styles.productImage}
             />
-             {/* <button className={stylesButton.prevButton} onClick={handlePrevClick}>
+             <button className={stylesButton.prevButton} onClick={handlePrevClick}>
               &lt;
             </button>
             <button className={stylesButton.nextButton} onClick={handleNextClick}>
               &gt;
-            </button> */}
+            </button>
           </div>
 
           <div className={styles.gallery}>
