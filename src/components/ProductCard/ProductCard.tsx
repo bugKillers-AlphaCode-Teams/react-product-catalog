@@ -72,11 +72,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     };
 
     if (category === "phones") {
-      navigate(`/phones/${id}`, { state: { product: productData } });
+      navigate(`/phones/${namespaceId}`, { state: { product: productData } });
     } else if (category === "tablets") {
-      navigate(`/tablets/${id}`, { state: { product: productData } });
+      navigate(`/tablets/${namespaceId}`, { state: { product: productData } });
     } else if (category === "accessories") {
-      navigate(`/accessories/${id}`, { state: { product: productData } });
+      navigate(`/accessories/${namespaceId}`, {
+        state: { product: productData },
+      });
     }
   };
 
