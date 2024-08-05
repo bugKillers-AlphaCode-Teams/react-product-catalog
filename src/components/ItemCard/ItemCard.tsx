@@ -178,10 +178,10 @@ export const ProductPage: React.FC = () => {
                     <button> {capacity[0]} GB</button>
                   </div>
                   <div className={styles.capacity1}>
-                    <a href="/">256 GB</a>
+                    <button> 256 GB</button>
                   </div>
                   <div className={styles.capacity1}>
-                    <a href="/">512 GB</a>
+                    <button> 512 GB</button>
                   </div>
                 </div>
               </div>

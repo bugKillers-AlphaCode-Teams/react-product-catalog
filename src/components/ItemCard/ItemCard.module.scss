@@ -276,7 +276,7 @@
       
 
       .productCardButtonsDisabled {
-        width: 160px;
+        min-width: 231px;
         height: 40px;
         background: #905bff;
         border: none;
@@ -290,11 +290,11 @@
         margin-right: 8px;
 
         @include on-tablet-medium {
-          min-width: 115px;
+          min-width: 180px;
         }
 
         @include on-desktop {
-          width: 160px;
+          min-width: 263px;
           padding: 0;
         }
       }
