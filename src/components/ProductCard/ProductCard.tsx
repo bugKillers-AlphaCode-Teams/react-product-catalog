@@ -7,7 +7,6 @@ import { useTranslation } from "react-i18next";
 import { Product } from "../../types/Product";
 import { themeContext } from "../../store/ThemeContext";
 
-
 export type ProducType = "phones" | "tablets" | "accessories";
 
 interface ProductCardProps {
@@ -26,6 +25,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   isFavourite,
 }) => {
   const navigate = useNavigate();
+  const { theme } = useContext(themeContext);
   const { t } = useTranslation();
   if (!product) {
     return <div>No product available</div>;
@@ -50,8 +50,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     cell,
     year,
   } = product;
-
-  const { theme } = useContext(themeContext);
 
   const navigateToProduct = () => {
     const productData = {
@@ -90,10 +88,18 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     productQuontity && productQuontity > 0
       ? styles.productCardButtonsDisabled
       : styles.productCardButtonsAdd;
-      styles.productCardTitle
+  styles.productCardTitle;
   return (
-    <div className={`${styles.productCard} ${theme === 'light' && styles.light_Product}`}>
-      <div className={`${styles.wrapper} ${theme === 'light' && styles.lightTitle}`}>
+    <div
+      className={`${styles.productCard} ${
+        theme === "light" && styles.light_Product
+      }`}
+    >
+      <div
+        className={`${styles.wrapper} ${
+          theme === "light" && styles.lightTitle
+        }`}
+      >
         <img
           src={`/${images[0]}`}
           alt={"images"}
@@ -115,14 +121,26 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               {" "}
               {t("productCard.screen")}
             </span>
-            <span className={`${styles.productCardValue} ${theme === 'light' ? styles.lightValue : ''}`}>{screen}</span>
+            <span
+              className={`${styles.productCardValue} ${
+                theme === "light" ? styles.lightValue : ""
+              }`}
+            >
+              {screen}
+            </span>
           </div>
 
           <div className={styles.productCardSpec}>
             <span className={styles.productCardLabel}>
               {t("productCard.capacity")}
             </span>
-            <span className={`${styles.productCardValue} ${theme === 'light' ? styles.lightValue : ''}`}>{capacity}</span>
+            <span
+              className={`${styles.productCardValue} ${
+                theme === "light" ? styles.lightValue : ""
+              }`}
+            >
+              {capacity}
+            </span>
           </div>
 
           <div className={styles.productCardSpec}>
@@ -130,14 +148,22 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               {" "}
               {t("productCard.ram")}
             </span>
-            <span className={`${styles.productCardValue} ${theme === 'light' ? styles.lightValue : ''}`}>{ram}</span>
+            <span
+              className={`${styles.productCardValue} ${
+                theme === "light" ? styles.lightValue : ""
+              }`}
+            >
+              {ram}
+            </span>
           </div>
         </div>
 
         <div className={styles.productCardButtons}>
           <button
             onClick={addProducts}
-            className={`${buttonStyle} ${theme === 'light' && styles.lightProduct}`}
+            className={`${buttonStyle} ${
+              theme === "light" && styles.lightProduct
+            }`}
             disabled={!!productQuontity && productQuontity > 0}
           >
             {productQuontity && productQuontity > 0
@@ -147,7 +173,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           <button className={styles.toFavorite}>
             <img
               className={styles.productCardAddToFavorite}
-              src={ isFavourite ? isFvoutites : theme === 'light' ? '/img/favourit-lightTem.svg' : addToFavorites}
+              src={
+                isFavourite
+                  ? isFvoutites
+                  : theme === "light"
+                  ? "/img/favourit-lightTem.svg"
+                  : addToFavorites
+              }
               alt="add to favorites"
               onClick={toggleFavouriteProduct}
             />
