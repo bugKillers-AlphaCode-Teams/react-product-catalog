@@ -85,7 +85,7 @@ export const ProductPage: React.FC = () => {
           index = (prevIndex + 1) % product.images.length;
           return index;
         });
-      }, 33000);  //змінити інтервал
+      }, 3000); 
 
       return () => clearInterval(intervalId);
     }
