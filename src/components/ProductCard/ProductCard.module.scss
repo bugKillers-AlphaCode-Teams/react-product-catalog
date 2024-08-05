@@ -219,3 +219,38 @@
     }
   }
 }
+
+.light {
+  &_Product {
+    background-color: white;
+    border: 1px solid #d9dfe3;
+    transition: all 0.6s;
+    &:hover {
+      border: 1px solid #2d2e30;
+      transform: scale(1);
+    }
+  }
+}
+
+.lightTitle {
+  .productCardTitle {
+    color: #313237;
+  }
+  .productCardPrice {
+    color: black;
+  }
+}
+
+.lightValue {
+  color: black !important;
+}
+
+.lightProduct {
+  background: #313237 !important;
+  color: white !important;
+  &:hover {
+    transform: scale(1.04);
+    background: #5b5c63 !important;
+    color: white;
+  }
+}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext} from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -9,12 +9,16 @@ import { Order } from "./Order Now/Order";
 import classNames from "classnames";
 import { useTranslation } from "react-i18next";
 
+import { themeContext } from "../../store/ThemeContext";
+
 export const Slider: React.FC = () => {
   const { t } = useTranslation();
+  const { theme } = useContext(themeContext);
+
   return (
     <div>
       <section className={`${styles.page__main} ${styles.main}`}>
-        <h1 className={styles.main__title}>{t("slider.text")}</h1>
+        <h1 className={`${styles.main__title} ${theme === 'light' && styles.light}`}>{t("slider.text")}</h1>
       </section>
 
       <div className={`main__swiper ${styles.swiper}`}>
@@ -35,7 +39,7 @@ export const Slider: React.FC = () => {
             el: `.${styles.swiper__pagination}`,
             clickable: true,
             bulletClass: `${styles["swiper-pagination-bullet"]}`,
-            bulletActiveClass: `${styles["swiper-pagination-bullet-active"]}`,
+            bulletActiveClass: `${styles["swiper-pagination-bullet-active"]} ${theme === 'light' && styles.lightActive}`,
           }}
           scrollbar={{ draggable: true }}
         >
@@ -71,7 +75,7 @@ export const Slider: React.FC = () => {
           </SwiperSlide>
         </Swiper>
         <div
-          className={classNames(styles.swiper__prev, "swiper__Button__Prev")}
+          className={classNames(styles.swiper__prev, "swiper__Button__Prev", )}
         >
           <img
             src="src/images/icons/Chevron (Arrow Left).png"

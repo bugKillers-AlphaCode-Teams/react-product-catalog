@@ -15,6 +15,7 @@ import { ThankYouPage } from "./components/cart/ThankYou/ThankYou";
 import { Cart } from "./components/cart/Cart";
 
 import { ProductPage } from "./components/ItemCard/ItemCard";
+import { AboutDevelopersPage } from "./pages/AboutDevelopersPage";
 
 export const Root = () => (
   <BrowserRouter>
@@ -40,6 +41,10 @@ export const Root = () => (
               />
               <Route path="accessories">
                 <Route index element={<AccessoriesPage />} />
+              </Route>
+
+              <Route path="developers">
+                <Route index element={<AboutDevelopersPage />} />
               </Route>
 
               <Route path="favourites" element={<FavouritesPage />} />
