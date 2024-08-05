@@ -15,7 +15,11 @@
     padding-bottom: 40px;
   }
 }
-
+.color {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
 .backButton {
   display: flex;
   align-items: center;
@@ -77,8 +81,6 @@
       padding-bottom: 16px;
       order: 2;
 
-      
-
       @include on-tablet {
         min-width: 287px;
       }
@@ -128,7 +130,7 @@
       width: 51.2px;
       height: 49px;
       box-sizing: border-box;
-      border: solid 1px #C4C4C4;
+      border: solid 1px #c4c4c4;
       cursor: pointer;
       object-fit: contain;
 
@@ -186,9 +188,16 @@
       border-bottom: 1px solid #3b3e4a;
       padding-bottom: 24px;
       margin-bottom: 24px;
+
+      .color {
+        @include my-hover(transform, scale(1.1));
+      }
+
     }
 
     .capacity {
+      transition: background-color 0.3s ease;
+
       .selectCapacity {
         font-weight: 700;
         font-size: 12px;
@@ -201,13 +210,21 @@
         display: flex;
         gap: 8px;
         padding-bottom: 24px;
-        margin-bottom: 24px;
-        border-bottom: 1px solid #3b3e4a;
+        // border-bottom: 1px solid #3b3e4a;
       }
 
       .capacity1 {
         border: 1px solid #3b3e4a;
         padding: 7px;
+        display: flex;
+        justify-content: center;
+        min-width: 56px;
+        max-width: 63px;
+
+        &:hover {
+          background-color: #3b3e4a;
+          @include my-hover(transform, scale(1.1));
+        }
       }
     }
 
@@ -216,13 +233,15 @@
       flex-direction: row;
       gap: 8px;
       margin-bottom: 24px;
+      padding-top: 24px;
+      border-top: 1px solid #4a4d58;
 
       .newPrice {
         font-size: 32px;
         font-weight: 800;
         line-height: 41px;
         letter-spacing: -1%;
-        color: #F1F2F9;
+        color: #f1f2f9;
       }
 
       .oldPrice {
@@ -230,7 +249,7 @@
         font-size: 22px;
         line-height: 28.12px;
         text-decoration: line-through;
-        color: #89939A;
+        color: #89939a;
       }
     }
 
@@ -239,10 +258,11 @@
       padding-top: 8px;
       margin-top: auto;
       margin-bottom: 24px;
+      justify-content: center;
 
       .productCardButtonsAdd {
         min-width: 231px;
-        height: 40px;
+        height: 48px;
         background: #905bff;
         border: none;
         font-family: "Mont", sans-serif;
@@ -260,7 +280,7 @@
         }
 
         @include on-tablet {
-          min-width: 180px;
+          min-width: 237px;
         }
 
         @include on-desktop {
@@ -269,11 +289,17 @@
         }
       }
 
-    .toFavorite {
-      @include my-hover(transform, scale(1.1));
-    }
-      
-      
+      .toFavorite {
+        height: 48px;
+        width: 48px;
+
+        @include my-hover(transform, scale(1.1));
+
+        .productCardAddToFavorite {
+          height: 48px;
+          width: 48px;
+        }
+      }
 
       .productCardButtonsDisabled {
         min-width: 231px;

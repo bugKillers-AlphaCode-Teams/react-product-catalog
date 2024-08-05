@@ -1,22 +1,19 @@
 import React, { useEffect, useState } from "react";
 import styles from "./ItemCard.module.scss";
 
-// import SliderPhoto2 from "../../images/icons/Slider photo 2.svg";
-// import SliderPhoto5 from "../../images/icons/Slider photo 5.svg";
-import PinkColor from "../../images/icons/LightPinkColor.svg";
-import LightGreyColor from "../../images/icons/LightGreyColor.svg";
-import GreyColor from "../../images/icons/GreyColor.svg";
-import WhiteColor from "../../images/icons/WhiteColor.svg";
 import { YouMayAlsoLike } from "../YouMayAlsoLike";
 import { useCart } from "../../utils/useCart";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useFavourits } from "../../utils/useFavourites";
 import addToFavorites from "../../images/icons/add-to-favorite.png";
 import isFvoutites from "/public/img/favourite-red.svg";
 import { Product, ProductDescription } from "../../types/Product";
 import { CurrentLocation } from "../CurrentLocation/CurrentLocation";
-// import stylesButton from "./ProductSlide.module.scss"
+
+import { fetchaAccessories } from "../../services/accessoriesService";
+import { fetchPhones } from "../../services/phoneService";
+import { fetchTablets } from "../../services/tabletsService";
 
 export const ProductPage: React.FC = () => {
   const { t } = useTranslation();
@@ -24,8 +21,9 @@ export const ProductPage: React.FC = () => {
   const { toggleFavouriteProduct, favouritesProducts } = useFavourits();
   const location = useLocation();
   const product = location.state?.product as Product;
+  const navigate = useNavigate();
 
-  console.log(product);
+  const [allData, setAllData] = useState<Product[]>([]);
 
   const {
     images,
@@ -33,11 +31,13 @@ export const ProductPage: React.FC = () => {
     priceDiscount,
     screen,
     capacity,
+    category,
     ram,
+    color,
     priceRegular,
     id,
     // category,
-    // capacityAvailable,
+    capacityAvailable,
     // namespaceId,
     // colorsAvailable,
     // color,
@@ -47,9 +47,10 @@ export const ProductPage: React.FC = () => {
     resolution,
     processor,
     cell,
+    namespaceId,
+    colorsAvailable,
     // year,
   } = product;
-  
 
   const productQuontity = getProductQuontity(id);
   const buttonStyle =
@@ -65,7 +66,9 @@ export const ProductPage: React.FC = () => {
   );
 
   //Клікабельна картинка і стрілки перемикання
-  const [activeImageSrc, setActiveImageSrc] = useState<string>(product?.images[0] || '');
+  const [activeImageSrc, setActiveImageSrc] = useState<string>(
+    product?.images[0] || ""
+  );
   const [currentIndex, setCurrentIndex] = useState<number>(0);
 
   useEffect(() => {
@@ -78,32 +81,84 @@ export const ProductPage: React.FC = () => {
     let index = 0;
     if (product?.images.length > 0) {
       const intervalId = setInterval(() => {
-        setCurrentIndex(prevIndex => {
+        setCurrentIndex((prevIndex) => {
           index = (prevIndex + 1) % product.images.length;
           return index;
         });
-      }, 33000); // Зміна зображення кожні 3 секунди //були зміни інтервалу
+      }, 33000);  //змінити інтервал
 
-      // Очищення інтервалу при розмонтуванні компонента
       return () => clearInterval(intervalId);
     }
   }, [product?.images]);
 
-  // const handlePrevClick = () => {
-  //   setCurrentIndex(prevIndex => (prevIndex - 1 + product.images.length) % product.images.length);
-  // };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        if (category === "phones") {
+          const phones = await fetchPhones();
 
-  // const handleNextClick = () => {
-  //   setCurrentIndex(prevIndex => (prevIndex + 1) % product.images.length);
-  // };
+          setAllData(phones);
+        } else if (category === "tablets") {
+          const tablets = await fetchTablets();
 
+          setAllData(tablets);
+        } else if (category === "accessories") {
+          const accessories = await fetchaAccessories();
+
+          setAllData(accessories);
+        }
+      } catch (error) {
+        console.error("Failed to fetch tablets:", error);
+      }
+    };
+    fetchData();
+  }, []);
+  const colorMap = {
+    black: "#201D24",
+    blue: "#043458",
+    coral: "#FF7F50",
+    gold: "#F9E5C9",
+    graphite: "#5C5B57",
+    green: "#364935",
+    midnight: "#171E27",
+    midnightgreen: "#004953",
+    pink: "#FAE0D8",
+    purple: "#660099",
+    red: "#A50011",
+    rosegold: "#B76E79",
+    "rose gold": "#B76E79",
+    silver: "#F5F5F0",
+    sierrablue: "#9BB5CE",
+    "sky blue": "#87CEEB",
+    spaceblack: "#505150",
+    spacegray: "#535150",
+    "space gray": "#535150",
+
+    starlight: "#F9F3EE",
+    white: "#F9F6EF",
+    yellow: "#F3D060",
+  };
+
+  const handleCapacityClick = (selectedCapacity: string) => {
+    if (!color) return;
+    const capacityLowerCase = normalizeValue(selectedCapacity);
+    const normalizedColor = normalizeValue(color);
+
+    const newProductId = `${namespaceId}-${capacityLowerCase}-${normalizedColor}`;
+
+    const newProduct = allData.find(({ id }) => id === newProductId);
+
+    if (newProduct) {
+      navigate(`/${category}/${newProduct.namespaceId}`, {
+        state: { product: newProduct },
+      });
+    }
+  };
+  const normalizeValue = (value: string) => {
+    return value.toLowerCase().replace(/\s+/g, "-");
+  };
   return (
     <div>
-      {/* <button className={styles.backButton}>
-        <img src={ChevronArrowLeft} alt="Back" className={styles.icon} />
-        <span className={styles.backText}>Back</span>
-      </button> */}
-      {/* перекладу */}
       <CurrentLocation />
 
       <h1 className={styles.productTitle}>{name}</h1>
@@ -117,12 +172,6 @@ export const ProductPage: React.FC = () => {
               alt="Apple iPhone 11 Pro Max"
               className={styles.productImage}
             />
-             {/* <button className={stylesButton.prevButton} onClick={handlePrevClick}>
-              &lt;
-            </button>
-            <button className={stylesButton.nextButton} onClick={handleNextClick}>
-              &gt;
-            </button> */}
           </div>
 
           <div className={styles.gallery}>
@@ -146,26 +195,55 @@ export const ProductPage: React.FC = () => {
                 <div className={styles.ProdId}>ID: 802390</div>
               </div>
               <ul className={styles.colors}>
-                <li className={styles.color1}>
-                  <a href="PinkPhone">
-                    <img src={PinkColor} alt="Pink" />
-                  </a>
-                </li>
-                <li className={styles.color1}>
-                  <a href="LightGreyPhone">
-                    <img src={LightGreyColor} alt="LightGrey" />
-                  </a>
-                </li>
-                <li className={styles.color1}>
-                  <a href="GreyPhone">
-                    <img src={GreyColor} alt="Grey" />
-                  </a>
-                </li>
-                <li className={styles.color1}>
-                  <a href="WhitePhone">
-                    <img src={WhiteColor} alt="White" />
-                  </a>
-                </li>
+                {colorsAvailable?.map((currentColor, index) => (
+                  <li className={styles.color1} key={index}>
+                    <button
+                      onClick={() => {
+                        if (color === currentColor) return;
+                        const capacityLowerCase = capacity.toLowerCase();
+                        const normalizeColor = (currentColor: string) => {
+                          return currentColor
+                            .toLowerCase()
+                            .replace(/\s+/g, "-");
+                        };
+                        const normalizedCurrentColor =
+                          normalizeColor(currentColor);
+                        console.log(currentColor);
+
+                        const newProductId = `${namespaceId}-${capacityLowerCase}-${normalizedCurrentColor}`;
+
+                        const newProduct = allData.find(
+                          ({ id }) => id === newProductId
+                        );
+                        console.log("newProductId:", newProductId);
+                        navigate(`/${category}/${newProduct!.namespaceId}`, {
+                          state: { product: newProduct },
+                        });
+                      }}
+                    >
+                      {colorsAvailable?.map((color, index) => {
+                        const normalizedColor = color.trim().toLowerCase();
+
+                        return (
+                          <div key={index}>
+                            {currentColor.trim().toLowerCase() ===
+                              normalizedColor && (
+                              <p
+                                className={styles.color}
+                                style={{
+                                  backgroundColor:
+                                    colorMap[
+                                      normalizedColor as keyof typeof colorMap
+                                    ] || color,
+                                }}
+                              ></p>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </button>
+                  </li>
+                ))}
               </ul>
             </div>
 
@@ -174,22 +252,22 @@ export const ProductPage: React.FC = () => {
               <div className={styles.capacityWrapper}>
                 <div className={styles.capacityText}>
                   {/* перебрати мапом , додати стилі при натисканні*/}
-                  <div className={styles.capacity1}>
-                    <button> {capacity[0]} GB</button>
-                  </div>
-                  <div className={styles.capacity1}>
-                    <button> 256 GB</button>
-                  </div>
-                  <div className={styles.capacity1}>
-                    <button> 512 GB</button>
+                  <div className={styles.capacityText}>
+                    {capacityAvailable?.map((capacity, index) => (
+                      <div className={styles.capacity1} key={index}>
+                        <button onClick={() => handleCapacityClick(capacity)}>
+                          {capacity}
+                        </button>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
 
               <div className={styles.AddToAndPrice}>
                 <div className={styles.price}>
-                  <div className={styles.newPrice}>${priceRegular}</div>
-                  <div className={styles.oldPrice}>${priceDiscount}</div>
+                  <div className={styles.newPrice}>${priceDiscount}</div>
+                  <div className={styles.oldPrice}>${priceRegular}</div>
                 </div>
 
                 <div className={styles.productCardButtons}>
@@ -299,5 +377,3 @@ export const ProductPage: React.FC = () => {
     </div>
   );
 };
-
-
