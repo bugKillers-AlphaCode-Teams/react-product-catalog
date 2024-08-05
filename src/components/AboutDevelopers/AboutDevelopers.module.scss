@@ -6,8 +6,7 @@
 
   @include content-padding-inlain();
 
-  .teamTitle,
-  .languageTitle {
+  .teamTitle {
     margin-top: 20px;
     font-family: "Mont", sans-serif;
     font-size: 22px;
@@ -20,11 +19,26 @@
       font-size: 32px;
       line-height: 32px;
     }
+
+    animation: slideInLeft 1.5s ease forwards;
   }
 
   .languageTitle {
+    opacity: 0;
     margin-top: 10px;
+    font-family: "Mont", sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 22px;
+    text-align: left;
     color: #75767F;
+
+    @include on-tablet {
+      font-size: 32px;
+      line-height: 32px;
+    }
+
+    animation: slideInLeft 1.5s ease 1s forwards;
   }
 }
 
@@ -49,6 +63,7 @@
 }
 
 .teamMember {
+  opacity: 0;
   margin-top: 30px;
   width: 288px;
   height: 372px;
@@ -91,14 +106,17 @@
 
     .teamIconLinkEdin {
       width: 24px;
+
+      @include my-hover(transform, scale(1.5));
     }
 
     .teamIconGitHub {
       width: 20px;
       background-color: #f1f2f9;
       border-radius: 50%;
-    }
 
+      @include my-hover(transform, scale(1.5));
+    }
   }
 }
 
@@ -139,7 +157,7 @@
     rgba(0, 0, 0, 0) 40%,
     rgba(0, 0, 0, 0.8) 100%
   ),
-  url("../../images/icons/Iphone\ for\ banner14.PNG");
+  url("../../images/icons/devPhoto-4.jpg");
 }
 
 .teamMember5 {
@@ -147,12 +165,11 @@
     rgba(0, 0, 0, 0) 40%,
     rgba(0, 0, 0, 0.8) 100%
   ),
-  url("../../images/icons/Iphone\ for\ banner14.PNG");
+  url("../../images/icons/devPhoto-5.jpg");
 }
 
-.ambitiousTitle,
-.goalTitle {
-  margin-top: 20px;
+.ambitiousTitle {
+  margin-top: 25px;
   font-family: "Mont", sans-serif;
   font-size: 22px;
   font-weight: 800;
@@ -168,5 +185,66 @@
 
 .goalTitle {
   margin-top: 10px;
+  font-family: "Mont", sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 21px;
+  text-align: left;
   color: #f1f2f9;
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 32px;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInBottom {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.teamMember {
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+}
+
+
+.slideInLeft {
+  animation-name: slideInLeft;
+}
+
+.slideInRight {
+  animation-name: slideInRight;
+}
+
+.slideInBottom {
+  animation-name: slideInBottom;
 }
