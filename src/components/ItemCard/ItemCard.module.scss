@@ -3,10 +3,16 @@
 .productTitle {
   font-size: 22px;
   line-height: 30.8px;
+  margin-bottom: 32px;
 
   @include on-tablet {
     font-size: 32px;
     line-height: 41px;
+    padding-bottom: 40px;
+  }
+
+  @include on-desktop {
+    padding-bottom: 40px;
   }
 }
 
@@ -46,6 +52,9 @@
     // padding: 0;
     // justify-content: space-between;
   }
+  @include on-desktop {
+    padding: 0;
+  }
 
   .top {
     align-items: center;
@@ -64,8 +73,11 @@
     }
 
     .productImageWrapper {
+      display: flex;
       padding-bottom: 16px;
       order: 2;
+
+      
 
       @include on-tablet {
         min-width: 287px;
@@ -78,11 +90,16 @@
     }
 
     .productImage {
+      display: flex;
+      width: 288px;
+      aspect-ratio: 1/1;
+      object-fit: contain;
+
       @include on-tablet {
-        width: 100%;
+        width: 90%;
       }
       @include on-desktop {
-        width: 100%;
+        width: 90%;
         padding: 0;
       }
     }
@@ -90,6 +107,10 @@
     .gallery {
       display: flex;
       gap: 8px;
+
+      @media (max-width: 639px) {
+        justify-content: center;
+      }
 
       @include on-tablet {
         display: flex;
@@ -104,6 +125,13 @@
     }
 
     .galleryImage {
+      width: 51.2px;
+      height: 49px;
+      box-sizing: border-box;
+      border: solid 1px #C4C4C4;
+      cursor: pointer;
+      object-fit: contain;
+
       @include on-tablet {
         width: 32px;
         height: 32px;
@@ -131,6 +159,7 @@
     @include on-desktop {
       width: 320px;
       padding: 0;
+      margin-left: 7px;
     }
 
     .colorsText {
@@ -187,6 +216,22 @@
       flex-direction: row;
       gap: 8px;
       margin-bottom: 24px;
+
+      .newPrice {
+        font-size: 32px;
+        font-weight: 800;
+        line-height: 41px;
+        letter-spacing: -1%;
+        color: #F1F2F9;
+      }
+
+      .oldPrice {
+        font-weight: 600;
+        font-size: 22px;
+        line-height: 28.12px;
+        text-decoration: line-through;
+        color: #89939A;
+      }
     }
 
     .productCardButtons {
@@ -223,8 +268,6 @@
           padding: 0;
         }
       }
-
-
 
     .toFavorite {
       @include my-hover(transform, scale(1.1));

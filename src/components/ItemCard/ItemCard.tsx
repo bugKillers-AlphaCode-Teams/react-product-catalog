@@ -82,7 +82,7 @@ export const ProductPage: React.FC = () => {
           index = (prevIndex + 1) % product.images.length;
           return index;
         });
-      }, 3000); // Зміна зображення кожні 3 секунди
+      }, 33000); // Зміна зображення кожні 3 секунди //були зміни інтервалу
 
       // Очищення інтервалу при розмонтуванні компонента
       return () => clearInterval(intervalId);
@@ -188,8 +188,8 @@ export const ProductPage: React.FC = () => {
 
               <div className={styles.AddToAndPrice}>
                 <div className={styles.price}>
-                  <div className={styles.newPrice}>{priceRegular}</div>
-                  <div className={styles.oldPrice}>{priceDiscount}</div>
+                  <div className={styles.newPrice}>${priceRegular}</div>
+                  <div className={styles.oldPrice}>${priceDiscount}</div>
                 </div>
 
                 <div className={styles.productCardButtons}>
