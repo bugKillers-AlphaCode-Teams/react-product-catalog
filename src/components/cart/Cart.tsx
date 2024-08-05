@@ -34,19 +34,18 @@ export const Cart = () => {
   const handleConfirm = () => {
     const description = formatOrderDescription(cartOrder);
 
-    const data: Params = {
-      action: "pay",
-      amount: totalPrice,
-      currency: "UAH",
-      description: `${description}`,
-      order_id: new Date().getTime().toString(),
-      version: 3,
-      server_url: "http://localhost:5173",
-      public_key: publicKey,
-      language: "uk",
-      result_url: "http://localhost:5173/thank-you",
-    };
-
+ const data: Params = {
+   action: "pay",
+   amount: totalPrice,
+   currency: "UAH",
+   description: `${description}`,
+   order_id: new Date().getTime().toString(),
+   version: 3,
+   server_url: "https://react-product-catalog-74o7.vercel.app",
+   public_key: publicKey,
+   language: "uk",
+   result_url: "https://react-product-catalog-74o7.vercel.app/thank-you",
+ };
     const formHtml = createForm(data);
 
     const existingForm = document.getElementById("liqpay-form");
@@ -61,8 +60,6 @@ export const Cart = () => {
       (form as HTMLFormElement).submit();
     }
   };
-
-  console.log(products);
 
   return products.length > 0 ? (
     <div className={styles.cart}>
