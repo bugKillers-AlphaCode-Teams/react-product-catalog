@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { ProductList } from "../components/ProductList/ProductList";
 import { Product } from "../types/Product";
 import { Pagination } from "../components/Pagination/Pagination.tsx";
-import { fetchProducts } from "../services/accessoriesService.ts";
+import { fetchaAccessories } from "../services/accessoriesService.ts";
 import { CurrentLocation } from "../components/CurrentLocation/CurrentLocation.tsx";
 import { Sort } from "../components/Sort/Sort.tsx";
 import { useTranslation } from "react-i18next";
@@ -11,11 +11,11 @@ export const AccessoriesPage = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage, setProductsPerPage] = useState(16);
-const { t } = useTranslation();
+  const { t } = useTranslation();
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const tablets = await fetchProducts();
+        const tablets = await fetchaAccessories();
         setProducts(tablets);
       } catch (error) {
         console.error("Failed to fetch tablets:", error);

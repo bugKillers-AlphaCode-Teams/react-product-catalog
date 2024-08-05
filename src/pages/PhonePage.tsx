@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { ProductList } from "../components/ProductList/ProductList";
 import { Product } from "../types/Product";
 import { Pagination } from "../components/Pagination/Pagination.tsx";
-import { fetchProducts } from "../services/phoneService.ts";
+import { fetchPhones } from "../services/phoneService.ts";
 import "../styles/pages.scss";
 import { CurrentLocation } from "../components/CurrentLocation/CurrentLocation.tsx";
 import { Sort } from "../components/Sort/Sort.tsx";
@@ -17,7 +17,7 @@ export const PhonePage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const phones = await fetchProducts();
+        const phones = await fetchPhones();
         setProducts(phones);
       } catch (error) {
         console.error("Failed to fetch phones:", error);

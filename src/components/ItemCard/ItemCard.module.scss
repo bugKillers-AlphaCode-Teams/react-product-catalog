@@ -15,7 +15,11 @@
     padding-bottom: 40px;
   }
 }
-
+.color {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
 .backButton {
   display: flex;
   align-items: center;
@@ -77,8 +81,6 @@
       padding-bottom: 16px;
       order: 2;
 
-      
-
       @include on-tablet {
         min-width: 287px;
       }
@@ -128,7 +130,7 @@
       width: 51.2px;
       height: 49px;
       box-sizing: border-box;
-      border: solid 1px #C4C4C4;
+      border: solid 1px #c4c4c4;
       cursor: pointer;
       object-fit: contain;
 
@@ -222,7 +224,7 @@
         font-weight: 800;
         line-height: 41px;
         letter-spacing: -1%;
-        color: #F1F2F9;
+        color: #f1f2f9;
       }
 
       .oldPrice {
@@ -230,7 +232,7 @@
         font-size: 22px;
         line-height: 28.12px;
         text-decoration: line-through;
-        color: #89939A;
+        color: #89939a;
       }
     }
 
@@ -269,11 +271,9 @@
         }
       }
 
-    .toFavorite {
-      @include my-hover(transform, scale(1.1));
-    }
-      
-      
+      .toFavorite {
+        @include my-hover(transform, scale(1.1));
+      }
 
       .productCardButtonsDisabled {
         width: 160px;
