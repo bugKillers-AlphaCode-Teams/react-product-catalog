@@ -1,4 +1,4 @@
-import React,{useContext} from "react";
+import React, { useContext } from "react";
 import styles from "./Pagination.module.scss";
 import { themeContext } from "../../store/ThemeContext";
 
@@ -49,35 +49,38 @@ export const Pagination: React.FC<Props> = ({
   return (
     <div>
       <ul className={styles.pagination}>
-        <a
-          href="#/"
-          className={`${styles.pageLink} ${styles.arrow} ${theme === 'light' && styles.light}`}
+        <p
+          className={`${styles.pageLink} ${styles.arrow} ${
+            theme === "light" && styles.light
+          }`}
           onClick={() => prevPage(currentPage)}
         >
           <img src="./img/arrow-left-pagination.svg" alt="arrow-left" />
-        </a>
+        </p>
         {visiblePages.map((number) => (
           <li className="" key={number}>
-            <a
-              href="#/"
+            <p
               className={
                 currentPage === number
-                  ? `${styles.pageLink} ${theme === 'light' ? styles.lightActive : styles.active} `
-                  : `${styles.pageLink} ${theme === 'light' && styles.light}`
+                  ? `${styles.pageLink} ${
+                      theme === "light" ? styles.lightActive : styles.active
+                    } `
+                  : `${styles.pageLink} ${theme === "light" && styles.light}`
               }
               onClick={() => paginate(number)}
             >
               {number}
-            </a>
+            </p>
           </li>
         ))}
-        <a
-          href="#/"
-          className={`${styles.pageLink} ${styles.arrow} ${theme === 'light' && styles.light}`}
+        <p
+          className={`${styles.pageLink} ${styles.arrow} ${
+            theme === "light" && styles.light
+          }`}
           onClick={() => nextPage(currentPage)}
         >
           <img src="./img/arrow-right-pagination.svg" alt="arrow-right" />
-        </a>
+        </p>
       </ul>
     </div>
   );
