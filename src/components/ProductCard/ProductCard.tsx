@@ -100,14 +100,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           theme === "light" && styles.lightTitle
         }`}
       >
-        <img
-          src={`/${images[0]}`}
-          alt={"images"}
-          className={styles.productImage}
-          onClick={navigateToProduct}
-        />
-        <p className={`${styles.productCardTitle} `}>{name}</p>
-
+        <div onClick={navigateToProduct} className={styles.details}>
+          <img
+            src={`/${images[0]}`}
+            alt={"images"}
+            className={styles.productImage}
+          />
+          <p className={`${styles.productCardTitle} `}>{name}</p>
+        </div>
         <div className={styles.priceWrapper}>
           <p className={styles.productCardPrice}>${priceDiscount}</p>
           {priceRegular && <p className={styles.oldPrice}>${priceRegular}</p>}
