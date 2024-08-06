@@ -85,7 +85,7 @@ export const ProductPage: React.FC = () => {
           index = (prevIndex + 1) % product.images.length;
           return index;
         });
-      }, 33000);
+      }, 3000); 
 
       return () => clearInterval(intervalId);
     }
@@ -256,7 +256,7 @@ export const ProductPage: React.FC = () => {
                     {capacityAvailable?.map((capacity, index) => (
                       <div className={styles.capacity1} key={index}>
                         <button onClick={() => handleCapacityClick(capacity)}>
-                          {capacity} GB
+                          {capacity}
                         </button>
                       </div>
                     ))}
@@ -266,8 +266,8 @@ export const ProductPage: React.FC = () => {
 
               <div className={styles.AddToAndPrice}>
                 <div className={styles.price}>
-                  <div className={styles.newPrice}>${priceRegular}</div>
-                  <div className={styles.oldPrice}>${priceDiscount}</div>
+                  <div className={styles.newPrice}>${priceDiscount}</div>
+                  <div className={styles.oldPrice}>${priceRegular}</div>
                 </div>
 
                 <div className={styles.productCardButtons}>

@@ -134,6 +134,10 @@
       cursor: pointer;
       object-fit: contain;
 
+      &:hover {
+        @include my-hover(transform, scale(1.1));
+      }
+
       @include on-tablet {
         width: 32px;
         height: 32px;
@@ -188,9 +192,16 @@
       border-bottom: 1px solid #3b3e4a;
       padding-bottom: 24px;
       margin-bottom: 24px;
+
+      .color {
+        @include my-hover(transform, scale(1.1));
+      }
+
     }
 
     .capacity {
+      transition: background-color 0.3s ease;
+
       .selectCapacity {
         font-weight: 700;
         font-size: 12px;
@@ -203,13 +214,29 @@
         display: flex;
         gap: 8px;
         padding-bottom: 24px;
-        margin-bottom: 24px;
-        border-bottom: 1px solid #3b3e4a;
+        // border-bottom: 1px solid #3b3e4a;
       }
 
       .capacity1 {
         border: 1px solid #3b3e4a;
         padding: 7px;
+        display: flex;
+        justify-content: center;
+        min-width: 56px;
+        max-width: 63px;
+
+
+        &:hover {
+          background-color: #3b3e4a;
+          @include my-hover(transform, scale(1.1));
+        }
+
+        // .capacity {
+        //   &:active {
+        //     color: #0F1121;
+        //     background-color: #fff;
+        //   }
+        // }
       }
     }
 
@@ -218,6 +245,8 @@
       flex-direction: row;
       gap: 8px;
       margin-bottom: 24px;
+      padding-top: 24px;
+      border-top: 1px solid #4a4d58;
 
       .newPrice {
         font-size: 32px;
@@ -241,10 +270,11 @@
       padding-top: 8px;
       margin-top: auto;
       margin-bottom: 24px;
+      justify-content: center;
 
       .productCardButtonsAdd {
         min-width: 231px;
-        height: 40px;
+        height: 48px;
         background: #905bff;
         border: none;
         font-family: "Mont", sans-serif;
@@ -262,7 +292,7 @@
         }
 
         @include on-tablet {
-          min-width: 180px;
+          min-width: 237px;
         }
 
         @include on-desktop {
@@ -272,11 +302,19 @@
       }
 
       .toFavorite {
+        height: 48px;
+        width: 48px;
+
         @include my-hover(transform, scale(1.1));
+
+        .productCardAddToFavorite {
+          height: 48px;
+          width: 48px;
+        }
       }
 
       .productCardButtonsDisabled {
-        width: 160px;
+        min-width: 231px;
         height: 40px;
         background: #905bff;
         border: none;
@@ -290,11 +328,11 @@
         margin-right: 8px;
 
         @include on-tablet-medium {
-          min-width: 115px;
+          min-width: 180px;
         }
 
         @include on-desktop {
-          width: 160px;
+          min-width: 263px;
           padding: 0;
         }
       }
