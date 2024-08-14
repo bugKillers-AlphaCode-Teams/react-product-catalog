@@ -33,7 +33,7 @@ The design for NiceGadjet is available on [Figma](https://www.figma.com/design/B
 1. **Clone the Repository:**
 
     ```bash
-    git clone https://github.com/MariCodec/react-product-catalog.git
+    git clone https://github.com/bugKillers-AlphaCode-Teams/react-product-catalog.git
 
     ```
 
